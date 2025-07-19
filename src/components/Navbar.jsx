@@ -75,10 +75,10 @@ const Navbar = () => {
               src="/Logo.jpeg"
               alt="TBJS Logo"
               sx={{
-                height: 60,
+                height: { xs: 48, sm: 64 },
                 width: 'auto',
                 mr: 2,
-                display: { xs: 'none', sm: 'block' },
+                display: 'block',
                 objectFit: 'contain',
                 filter: 'brightness(1)',
                 transition: 'none'

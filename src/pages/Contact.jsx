@@ -19,19 +19,19 @@ const Contact = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <LocationOn sx={{ fontSize: 24, mr: 1 }} />
                 <Typography>
-                  123 Education Street, Learning District, City
+                  Mombasa, Kenya
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <Phone sx={{ fontSize: 24, mr: 1 }} />
                 <Typography>
-                  +1 234 567 8900
+                  Admission: +254722983388<br />Office: +254722362974
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Email sx={{ fontSize: 24, mr: 1 }} />
                 <Typography>
-                  info@tbjs.edu.ng
+                  transformerblessedjnr@gmail.com
                 </Typography>
               </Box>
             </Box>

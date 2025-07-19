@@ -37,17 +37,17 @@ const About = () => {
         }}>
           <div>
             <h3 style={{ color: '#1976d2' }}>A Journey of Excellence</h3>
-            <p>Established in 2015, Transformer Blessed Junior School was founded on the principles of academic excellence, character development, and holistic growth. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals ready to face the challenges of the modern world.</p>
+            <p>Established in 2015, Transformer Blessed Junior School was founded on the principles of academic excellence, character development  and holistic growth. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals ready to face the challenges of the modern world.</p>
           </div>
 
           <div>
             <h3 style={{ color: '#1976d2' }}>Early Years</h3>
-            <p>In our formative years, we focused on building a strong foundation of quality education, modern teaching methodologies, and a nurturing learning environment. We introduced innovative programs that combined traditional academic rigor with modern educational practices, emphasizing critical thinking, creativity, and problem-solving skills.</p>
+            <p>In our formative years, we focused on building a strong foundation of quality education, modern teaching methodologies  and a nurturing learning environment. We introduced innovative programs that combined traditional academic rigor with modern educational practices, emphasizing critical thinking, creativity, and problem-solving skills.</p>
           </div>
 
           <div>
             <h3 style={{ color: '#1976d2' }}>Growth and Development</h3>
-            <p>Over the years, we've seen remarkable growth in both our student body and our educational offerings. We've expanded our curriculum to include specialized programs in STEM, arts, and sports, while maintaining our commitment to academic excellence. Our dedicated faculty members, many of whom hold advanced degrees and professional certifications, have played a crucial role in our success.</p>
+            <p>Over the years, we've seen remarkable growth in both our student body and our educational offerings. We've expanded our curriculum to include specialized programs in STEM, arts and sports, while maintaining our commitment to academic excellence. Our dedicated faculty members, many of whom hold advanced degrees and professional certifications, have played a crucial role in our success.</p>
           </div>
 
           <div>
@@ -57,7 +57,7 @@ const About = () => {
 
           <div>
             <h3 style={{ color: '#1976d2' }}>Looking Forward</h3>
-            <p>As we continue to grow and evolve, our commitment to providing exceptional education remains unwavering. We are constantly innovating and adapting to meet the changing needs of our students and the broader educational landscape. Our goal is to prepare each student for success in an ever-changing world while preserving our core values of excellence, integrity, and community service.</p>
+            <p>As we continue to grow and evolve, our commitment to providing exceptional education remains unwavering. We are constantly innovating and adapting to meet the changing needs of our students and the broader educational landscape. Our goal is to prepare each student for success in an ever-changing world while preserving our core values of excellence, integrity  and community service.</p>
           </div>
         </div>
       </div>

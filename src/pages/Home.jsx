@@ -278,7 +278,7 @@ const Home = () => {
                 lineHeight: '1.7',
                 fontSize: '1.05rem'
               }}>
-                Extensive sports program including volleyball, soccer, netball, and more to develop physical fitness, teamwork, and leadership skills in a fun environment.
+                Extensive sports program including volleyball, soccer, netball  and more to develop physical fitness, teamwork, and leadership skills in a fun environment.
               </Typography>
             </Paper>
           </Grid>
@@ -450,7 +450,7 @@ const Home = () => {
                 Cultural Festival
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Celebrate diversity with performances, traditional foods, and cultural exhibitions from around the world.
+                Celebrate diversity with performances, traditional foods and cultural exhibitions from around the world.
               </Typography>
               <Typography variant="body2" sx={{ mt: 2 }}>
                 Date: December 10, 2025

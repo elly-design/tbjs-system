@@ -1,10 +1,8 @@
 import React from 'react';
 import { 
-  Box, 
-  Typography, 
+  Box,
   Container, 
   Grid, 
-  Button, 
   Paper, 
   Card,
   CardContent,
@@ -12,52 +10,60 @@ import {
   CardActionArea,
   Chip,
   Divider,
-  Stack
+  Stack,
+  Typography,
+  Button
 } from '@mui/material';
 import { 
-  ArrowForward, 
   School, 
   SportsBasketball, 
   MusicNote, 
   Science,
-  GroupAdd
+  GroupAdd,
+  ArrowForward
 } from '@mui/icons-material';
+import ImageSlider from '../components/ImageSlider';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Home = () => {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      {/* Hero Section */}
+      {/* Hero Section with Slideshow */}
       <Box sx={{ 
-        bgcolor: 'primary.main',
-        color: 'white',
-        borderRadius: 2,
-        p: 4,
+        position: 'relative', 
         mb: 4,
-        textAlign: 'center'
+        height: 600,
+        borderRadius: 2,
+        overflow: 'hidden',
+        background: 'transparent'
       }}>
-        <Typography variant="h3" component="h1" gutterBottom>
-          Welcome to Transformer Blessed Junior School
-        </Typography>
-        <Typography variant="h5" paragraph>
-          "Transforming Lives Through Quality Education"
-        </Typography>
-        <Typography variant="body1" paragraph>
-          Since 2010, we've been dedicated to providing exceptional education that shapes young minds and builds character.
-        </Typography>
-        <Button
-          variant="outlined"
-          color="inherit"
-          size="large"
-          endIcon={<ArrowForward />}
-          sx={{ mt: 2 }}
+        <ImageSlider />
+        <Box 
+          sx={{ 
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            px: 4,
+            py: 8,
+            zIndex: 1,
+            backdropFilter: 'blur(0.5px)',
+            background: 'rgba(0, 0, 0, 0.03)'
+          }}
         >
-          Start Your Journey
-        </Button>
+
+
+        </Box>
       </Box>
 
       {/* Why Choose Us Section */}
       <Box sx={{ mt: 4 }}>
-        <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4 }}>
+        <Typography variant="h4" gutterBottom sx={{ mb: 4, textAlign: 'center' }}>
           Why Choose Us
         </Typography>
         <Grid container spacing={4}>
@@ -79,7 +85,7 @@ const Home = () => {
                 Sports & Activities
               </Typography>
               <Typography variant="body1">
-                Extensive sports program including basketball, soccer, tennis, and more to develop physical fitness and teamwork.
+                Extensive sports program including volleyball, soccer, netball and more to develop physical fitness and teamwork.
               </Typography>
             </Paper>
           </Grid>
@@ -99,7 +105,7 @@ const Home = () => {
 
       {/* Academic Programs Section */}
       <Box sx={{ mt: 8 }}>
-        <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4 }}>
+        <Typography variant="h4" gutterBottom sx={{ mb: 4, textAlign: 'center' }}>
           Our Academic Programs
         </Typography>
         <Grid container spacing={4}>
@@ -150,7 +156,7 @@ const Home = () => {
 
       {/* Upcoming Events Section */}
       <Box sx={{ mt: 8 }}>
-        <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4 }}>
+        <Typography variant="h4" gutterBottom sx={{ mb: 4, textAlign: 'center' }}>
           Upcoming Events
         </Typography>
         <Grid container spacing={3}>

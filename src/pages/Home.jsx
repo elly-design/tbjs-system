@@ -66,55 +66,70 @@ const Home = () => {
         mt: { xs: 6, md: 10 },
         mb: { xs: 4, md: 8 },
         position: 'relative',
-        px: { xs: 0, sm: 3 }
+        px: { xs: 3, sm: 4 },
+        '& .MuiBox-root': {
+          '&:first-of-type': {
+            mb: { xs: 1, sm: 1.5 }
+          }
+        }
       }}>
         <Box sx={{ 
           textAlign: 'center',
           mb: { xs: 4, md: 6 },
-          px: { xs: 1, sm: 0 }
+          px: { xs: 0, sm: 0 },
+          '& > * + *': {
+            mt: { xs: 2.5, sm: 3 }
+          }
         }}>
           <Box sx={{
             display: 'inline-block',
             background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
             color: 'white',
-            padding: '8px 25px',
+            padding: { xs: '8px 22px', sm: '10px 28px' },
             borderRadius: '30px',
-            fontSize: '1rem',
+            fontSize: { xs: '0.95rem', sm: '1.05rem' },
             fontWeight: '600',
-            marginBottom: '15px',
-            boxShadow: '0 4px 15px rgba(25, 118, 210, 0.2)'
+            boxShadow: '0 4px 15px rgba(25, 118, 210, 0.2)',
+            transform: 'translateZ(0)'
           }}>
             Our Strengths
           </Box>
-          <Typography variant="h3" sx={{
-            fontWeight: '700',
-            color: '#1a237e',
-            mb: 2,
+          <Box sx={{ 
             position: 'relative',
-            display: 'inline-block',
-            fontSize: { xs: '2rem', sm: '2.5rem' },
-            lineHeight: { xs: 1.2, sm: 1.3 },
-            '&:after': {
-              content: '""',
-              position: 'absolute',
-              width: '60px',
-              height: '4px',
-              background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
-              bottom: '-10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              borderRadius: '2px'
-            }
+            pt: { xs: 1, sm: 0 }
           }}>
-            Why Choose <span style={{ color: '#1976d2' }}>Our School</span>
-          </Typography>
+            <Typography variant="h3" sx={{
+              fontWeight: '700',
+              color: '#1a237e',
+              display: 'inline-block',
+              fontSize: { xs: '1.8rem', sm: '2.5rem' },
+              lineHeight: { xs: 1.25, sm: 1.3 },
+              letterSpacing: '0.3px',
+              px: { xs: 0, sm: 0 },
+              '&:after': {
+                content: '""',
+                position: 'absolute',
+                width: '50px',
+                height: '4px',
+                background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                bottom: { xs: '-12px', sm: '-10px' },
+                left: '50%',
+                transform: 'translateX(-50%)',
+                borderRadius: '2px'
+              }
+            }}>
+              Why Choose <span style={{ color: '#1976d2', marginLeft: '0.2em' }}>Our School</span>
+            </Typography>
+          </Box>
           <Typography variant="body1" sx={{
             maxWidth: '700px',
-            margin: { xs: '16px auto 0', md: '20px auto 0' },
+            mx: 'auto',
             color: '#666',
             fontSize: { xs: '1rem', sm: '1.1rem' },
-            lineHeight: { xs: 1.6, sm: 1.7 },
-            px: { xs: 1, sm: 2 }
+            lineHeight: { xs: 1.7, sm: 1.8 },
+            px: { xs: 1, sm: 2 },
+            mt: { xs: 3, sm: 3.5 },
+            mb: { xs: 1, sm: 0 }
           }}>
             We are committed to providing an exceptional educational experience that nurtures every child's potential through innovative programs and dedicated educators.
           </Typography>
@@ -362,49 +377,190 @@ const Home = () => {
       </Box>
 
       {/* Academic Programs Section */}
-      <Box sx={{ mt: 8 }}>
-        <Typography variant="h4" gutterBottom sx={{ mb: 4, textAlign: 'center' }}>
-          Our Academic Programs
-        </Typography>
+      <Box sx={{ mt: 10, mb: 8 }}>
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Chip 
+            label="Learning Excellence" 
+            color="primary" 
+            sx={{ 
+              mb: 2, 
+              px: 2, 
+              py: 1, 
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
+              color: 'white'
+            }} 
+          />
+          <Typography 
+            variant="h4" 
+            sx={{ 
+              fontWeight: 700, 
+              color: '#1a237e',
+              fontSize: { xs: '1.8rem', sm: '2.125rem' },
+              lineHeight: 1.2,
+              mb: 2
+            }}
+          >
+            Our Academic Programs
+          </Typography>
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              color: '#555', 
+              maxWidth: '700px',
+              mx: 'auto',
+              fontSize: '1.1rem',
+              lineHeight: 1.7
+            }}
+          >
+            Nurturing young minds through innovative and engaging learning experiences
+          </Typography>
+        </Box>
+
         <Grid container spacing={4}>
+          {/* PP1 Kindergarten Program */}
           <Grid item xs={12} md={6}>
-            <Card elevation={3}>
-              <CardActionArea>
-                <CardMedia
+            <Card 
+              elevation={3} 
+              sx={{ 
+                height: '100%',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 15px 30px rgba(0,0,0,0.1)'
+                }
+              }}
+            >
+              <CardActionArea sx={{ height: '100%' }}>
+                <Box
                   component="img"
-                  height="200"
-                  image="/images/classroom.jpg"
-                  alt="Modern Classroom"
+                  src="/public/pp1.jpeg"
+                  alt="PP1 Kindergarten Program"
+                  sx={{
+                    width: '100%',
+                    height: { xs: '250px', sm: '300px' },
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/public/pp1.jpg';
+                  }}
                 />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Early Childhood Education
+                <CardContent sx={{ p: 3 }}>
+                  <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 700, color: '#1a237e' }}>
+                    PP1 Kindergarten Program
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Our early childhood program focuses on developing foundational skills through play-based learning and interactive activities.
+                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.7 }}>
+                    Our PP1 program provides a nurturing environment where young learners develop essential skills through play-based learning. Our curriculum focuses on holistic development, including language, numeracy, and social-emotional growth.
                   </Typography>
-                  <Chip label="Ages 3-6" color="primary" sx={{ mt: 2 }} />
+                  <Box sx={{ mt: 3 }}>
+                    <Chip 
+                      label="Ages 4-5 Years" 
+                      color="primary" 
+                      sx={{ 
+                        mr: 1, 
+                        mb: 1,
+                        bgcolor: 'rgba(25, 118, 210, 0.1)',
+                        color: '#1976d2',
+                        fontWeight: 600
+                      }} 
+                    />
+                    <Chip 
+                      label="Play-Based Learning" 
+                      sx={{ 
+                        mr: 1, 
+                        mb: 1,
+                        bgcolor: 'rgba(0, 150, 136, 0.1)',
+                        color: '#00897b',
+                        fontWeight: 600
+                      }} 
+                    />
+                    <Chip 
+                      label="Holistic Development" 
+                      sx={{ 
+                        mr: 1, 
+                        mb: 1,
+                        bgcolor: 'rgba(255, 152, 0, 0.1)',
+                        color: '#ef6c00',
+                        fontWeight: 600
+                      }} 
+                    />
+                  </Box>
                 </CardContent>
               </CardActionArea>
             </Card>
           </Grid>
+
+          {/* CBC Group Discussions */}
           <Grid item xs={12} md={6}>
-            <Card elevation={3}>
-              <CardActionArea>
-                <CardMedia
+            <Card 
+              elevation={3}
+              sx={{ 
+                height: '100%',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 15px 30px rgba(0,0,0,0.1)'
+                }
+              }}
+            >
+              <CardActionArea sx={{ height: '100%' }}>
+                <Box
                   component="img"
-                  height="200"
-                  image="/images/science-lab.jpg"
-                  alt="Science Laboratory"
+                  src="/public/group discussion.jpeg"
+                  alt="CBC Group Discussions"
+                  sx={{
+                    width: '100%',
+                    height: { xs: '250px', sm: '300px' },
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/public/group discussion.jpg';
+                  }}
                 />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Primary Education
+                <CardContent sx={{ p: 3 }}>
+                  <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 700, color: '#1a237e' }}>
+                    CBC Group Discussions
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Our primary program offers a comprehensive curriculum that prepares students for secondary education and beyond.
+                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.7 }}>
+                    Our CBC-aligned group discussions foster critical thinking, communication, and collaboration. Students engage in meaningful dialogues, develop problem-solving skills, and learn to articulate their thoughts effectively in a supportive environment.
                   </Typography>
-                  <Chip label="Ages 7-12" color="primary" sx={{ mt: 2 }} />
+                  <Box sx={{ mt: 3 }}>
+                    <Chip 
+                      label="Critical Thinking" 
+                      sx={{ 
+                        mr: 1, 
+                        mb: 1,
+                        bgcolor: 'rgba(233, 30, 99, 0.1)',
+                        color: '#c2185b',
+                        fontWeight: 600
+                      }} 
+                    />
+                    <Chip 
+                      label="Teamwork" 
+                      sx={{ 
+                        mr: 1, 
+                        mb: 1,
+                        bgcolor: 'rgba(103, 58, 183, 0.1)',
+                        color: '#512da8',
+                        fontWeight: 600
+                      }} 
+                    />
+                    <Chip 
+                      label="Communication" 
+                      sx={{ 
+                        mr: 1, 
+                        mb: 1,
+                        bgcolor: 'rgba(0, 150, 136, 0.1)',
+                        color: '#00796b',
+                        fontWeight: 600
+                      }} 
+                    />
+                  </Box>
                 </CardContent>
               </CardActionArea>
             </Card>
@@ -413,49 +569,170 @@ const Home = () => {
       </Box>
 
       {/* Upcoming Events Section */}
-      <Box sx={{ mt: 8 }}>
-        <Typography variant="h4" gutterBottom sx={{ mb: 4, textAlign: 'center' }}>
-          Upcoming Events
-        </Typography>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={3} sx={{ p: 3 }}>
-              <Typography variant="h6" gutterBottom>
-                Science Fair
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Join us for our annual science fair where students showcase their innovative projects and scientific discoveries.
-              </Typography>
-              <Typography variant="body2" sx={{ mt: 2 }}>
-                Date: October 15, 2025
-              </Typography>
+      <Box sx={{ mt: 10, mb: 8 }}>
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Chip 
+            label="Mark Your Calendars" 
+            color="primary" 
+            sx={{ 
+              mb: 2, 
+              px: 2, 
+              py: 1, 
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
+              color: 'white'
+            }} 
+          />
+          <Typography 
+            variant="h4" 
+            sx={{ 
+              fontWeight: 700, 
+              color: '#1a237e',
+              fontSize: { xs: '1.8rem', sm: '2.125rem' },
+              lineHeight: 1.2,
+              mb: 2
+            }}
+          >
+            Graduation Ceremony 2025
+          </Typography>
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              color: '#555', 
+              maxWidth: '700px',
+              mx: 'auto',
+              fontSize: '1.1rem',
+              lineHeight: 1.7
+            }}
+          >
+            Celebrating the Achievements of Our PP2 Graduates
+          </Typography>
+        </Box>
+
+        <Grid container spacing={4} alignItems="center">
+          <Grid item xs={12} md={6}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                borderRadius: 2,
+                overflow: 'hidden',
+                height: '100%',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.15)'
+                }
+              }}
+            >
+              <Box
+                component="img"
+                src="/public/graduation.jpeg"
+                alt="PP2 Graduation Ceremony"
+                sx={{
+                  width: '100%',
+                  height: { xs: '300px', sm: '400px' },
+                  objectFit: 'cover',
+                  display: 'block'
+                }}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/public/graduation.jpg';
+                }}
+              />
             </Paper>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={3} sx={{ p: 3 }}>
-              <Typography variant="h6" gutterBottom>
-                Sports Day
+          
+          <Grid item xs={12} md={6}>
+            <Box sx={{ 
+              p: { xs: 3, md: 4 },
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}>
+              <Typography 
+                variant="h5" 
+                sx={{ 
+                  fontWeight: 700, 
+                  color: '#1976d2',
+                  mb: 3,
+                  fontSize: { xs: '1.4rem', sm: '1.6rem' }
+                }}
+              >
+                Join Us in Celebrating Excellence
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                A day of friendly competition and team spirit featuring various sports activities for all students.
+              
+              <Box sx={{ mb: 4 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <Box sx={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    bgcolor: 'primary.main',
+                    mr: 2
+                  }} />
+                  <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                    <strong>Date:</strong> December 15, 2025
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <Box sx={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    bgcolor: 'primary.main',
+                    mr: 2
+                  }} />
+                  <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                    <strong>Time:</strong> 10:00 AM - 1:00 PM
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                  <Box sx={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    bgcolor: 'primary.main',
+                    mr: 2
+                  }} />
+                  <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                    <strong>Venue:</strong> School Grounds 
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Typography variant="body1" sx={{ 
+                color: '#555', 
+                mb: 4,
+                lineHeight: 1.7,
+                fontSize: '1.05rem'
+              }}>
+                We are thrilled to invite you to our annual PP2 Graduation Ceremony, where we'll celebrate the incredible journey of our young graduates. This special day marks their transition to the next exciting chapter of their educational adventure.
               </Typography>
-              <Typography variant="body2" sx={{ mt: 2 }}>
-                Date: November 5, 2025
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={3} sx={{ p: 3 }}>
-              <Typography variant="h6" gutterBottom>
-                Cultural Festival
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Celebrate diversity with performances, traditional foods and cultural exhibitions from around the world.
-              </Typography>
-              <Typography variant="body2" sx={{ mt: 2 }}>
-                Date: December 10, 2025
-              </Typography>
-            </Paper>
+              
+              <Box sx={{ mt: 'auto' }}>
+                <Button 
+                  variant="contained" 
+                  size="large"
+                  endIcon={<ArrowForward />}
+                  sx={{
+                    bgcolor: '#1976d2',
+                    '&:hover': {
+                      bgcolor: '#1565c0'
+                    },
+                    px: 4,
+                    py: 1.5,
+                    borderRadius: '50px',
+                    textTransform: 'none',
+                    fontSize: '1rem',
+                    fontWeight: 600
+                  }}
+                >
+                  RSVP Now
+                </Button>
+              </Box>
+            </Box>
           </Grid>
         </Grid>
       </Box>
@@ -739,24 +1016,39 @@ const Home = () => {
         borderRadius: 2,
         p: 4,
         mt: 8,
-        textAlign: 'center'
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        '&:before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(135deg, #1976d2 0%, #0d47a1 100%)',
+          zIndex: 0,
+          opacity: 0.9
+        }
       }}>
-        <Typography variant="h4" gutterBottom>
-          Ready to Transform Your Child's Future?
-        </Typography>
-        <Typography variant="body1" paragraph>
-          Join the TBJS community and give your child the best start in life.
-        </Typography>
-        <Button
-          variant="outlined"
-          color="inherit"
-          size="large"
-          endIcon={<ArrowForward />}
-          sx={{ mt: 2 }}
-          href="/admission"
-        >
-          Apply Now
-        </Button>
+        <Box position="relative" zIndex={1}>
+          <Typography variant="h4" gutterBottom>
+            Ready to Transform Your Child's Future?
+          </Typography>
+          <Typography variant="body1" paragraph>
+            Join the TBJS community and give your child the best start in life.
+          </Typography>
+          <Button
+            variant="outlined"
+            color="inherit"
+            size="large"
+            endIcon={<ArrowForward />}
+            sx={{ mt: 2 }}
+            href="/admission"
+          >
+            Apply Now
+          </Button>
+        </Box>
       </Box>
     </Container>
   );

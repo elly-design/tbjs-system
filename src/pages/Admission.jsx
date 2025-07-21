@@ -185,9 +185,40 @@ const Admission = () => {
               </FormControl>
             </Grid>
 
+            <Grid item xs={12}>
+              <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
+                School Clearance Details
+              </Typography>
+              <Typography variant="body2" color="text.secondary" paragraph>
+                Please provide the following details from your previous school.
+              </Typography>
+            </Grid>
+
             <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                label="UPI Number"
+                variant="outlined"
+                margin="normal"
+                placeholder="e.g., 123456789012"
+                helperText="Unique Personal Identifier (UPI) from previous school"
+              />
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                label="Assessment Number"
+                variant="outlined"
+                margin="normal"
+                placeholder="e.g., ASSESS-2023-1234"
+                helperText="Assessment/Admission number from previous school"
+              />
+            </Grid>
+
+            <Grid item xs={12}>
               <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel htmlFor="school-clearance">School Clearance</InputLabel>
+                <InputLabel htmlFor="school-clearance">School Clearance Letter</InputLabel>
                 <OutlinedInput
                   id="school-clearance"
                   type="file"
@@ -198,6 +229,9 @@ const Admission = () => {
                     </InputAdornment>
                   }
                 />
+                <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+                  Please upload the official clearance letter from the previous school
+                </Typography>
               </FormControl>
             </Grid>
 

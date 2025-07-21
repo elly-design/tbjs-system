@@ -32,6 +32,7 @@ const Navbar = () => {
   const menuItems = [
     { text: 'Home', path: '/' },
     { text: 'About Us', path: '/about' },
+    { text: 'Clubs', path: '/clubs' },
     { text: 'Admission', path: '/admission' },
     { text: 'Contact', path: '/contact' }
   ];
@@ -41,7 +42,27 @@ const Navbar = () => {
   };
 
   const handleMenuItemClick = (path) => {
-    navigate(path);
+    if (path === '/#clubs') {
+      // If on home page, scroll to section
+      if (window.location.pathname === '/') {
+        const element = document.getElementById('clubs');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // If not on home page, navigate to home first
+        navigate('/');
+        // Use a small timeout to ensure the page has loaded before scrolling
+        setTimeout(() => {
+          const element = document.getElementById('clubs');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    } else {
+      navigate(path);
+    }
     setMobileMenuOpen(false);
   };
 

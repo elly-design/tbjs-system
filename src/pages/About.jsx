@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Container, Grid } from '@mui/material';
+import { Typography, Container, Grid, Box, Chip } from '@mui/material';
 
 const About = () => {
   return (
@@ -63,206 +63,235 @@ const About = () => {
       </div>
 
       {/* Vision Section */}
-      <div style={{ margin: '60px 0' }}>
-        <div style={{
+      <Container maxWidth="lg" sx={{ py: 6 }}>
+        <Box sx={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '40px',
+          gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
+          gap: { xs: 4, md: 6 },
           alignItems: 'center',
           backgroundColor: '#f8faff',
-          borderRadius: '12px',
+          borderRadius: 3,
           overflow: 'hidden',
-          boxShadow: '0 8px 30px rgba(25, 118, 210, 0.1)'
+          boxShadow: '0 4px 20px rgba(25, 118, 210, 0.1)',
+          maxWidth: '1400px',
+          mx: 'auto',
+          '&:hover': {
+            boxShadow: '0 6px 25px rgba(25, 118, 210, 0.15)'
+          }
         }}>
           {/* Vision Content */}
-          <div style={{ 
-            padding: '50px',
-            position: 'relative',
-            zIndex: 1
+          <Box sx={{ 
+            px: { xs: 3, md: 4, lg: 5 },
+            py: { xs: 4, md: 5 },
+            order: { xs: 2, lg: 1 }
           }}>
-            <div style={{
-              display: 'inline-block',
-              background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
-              color: 'white',
-              padding: '8px 20px',
-              borderRadius: '30px',
-              fontSize: '0.9rem',
-              fontWeight: '600',
-              marginBottom: '20px',
-              boxShadow: '0 4px 15px rgba(25, 118, 210, 0.2)'
-            }}>
-              Our Vision
-            </div>
-            
-            <h2 style={{
-              fontSize: '2.2rem',
-              fontWeight: '700',
-              color: '#1a237e',
-              margin: '15px 0 25px',
-              lineHeight: '1.3',
-              position: 'relative',
-              paddingBottom: '15px'
-            }}>
-              Unlocking Every Child's <span style={{ color: '#1976d2' }}>Full Potential</span>
-              <span style={{
-                display: 'block',
-                width: '60px',
-                height: '4px',
-                background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
-                marginTop: '15px',
-                borderRadius: '2px'
-              }}></span>
-            </h2>
-            
-            <p style={{
-              fontSize: '1.1rem',
-              color: '#444',
-              lineHeight: '1.8',
-              marginBottom: '25px'
-            }}>
-              To develop the talent of every pupil to its maximum potential through innovative education and personalized learning experiences.
-            </p>
-            
-            <div style={{
-              display: 'flex',
-              gap: '15px',
-              marginTop: '30px',
-              flexWrap: 'wrap'
-            }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                background: 'rgba(25, 118, 210, 0.1)',
-                padding: '10px 15px',
-                borderRadius: '8px',
-                minWidth: '200px'
-              }}>
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'rgba(25, 118, 210, 0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: '12px',
-                  color: '#1976d2',
-                  fontSize: '1.2rem'
-                }}>
-                  🎯
-                </div>
-                <div>
-                  <div style={{
-                    fontWeight: '600',
-                    color: '#1a237e',
-                    fontSize: '0.9rem'
-                  }}>Personalized Learning</div>
-                  <div style={{
-                    fontSize: '0.8rem',
-                    color: '#555'
-                  }}>Tailored to each child</div>
-                </div>
-              </div>
-              
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                background: 'rgba(25, 118, 210, 0.1)',
-                padding: '10px 15px',
-                borderRadius: '8px',
-                minWidth: '200px'
-              }}>
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'rgba(25, 118, 210, 0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: '12px',
-                  color: '#1976d2',
-                  fontSize: '1.2rem'
-                }}>
-                  🌟
-                </div>
-                <div>
-                  <div style={{
-                    fontWeight: '600',
-                    color: '#1a237e',
-                    fontSize: '0.9rem'
-                  }}>Holistic Growth</div>
-                  <div style={{
-                    fontSize: '0.8rem',
-                    color: '#555'
-                  }}>Mind, body & spirit</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Vision Image */}
-          <div style={{
-            position: 'relative',
-            height: '100%',
-            minHeight: '500px',
-            overflow: 'hidden'
-          }}>
-            <img 
-              src="/public/selfie.jpeg" 
-              alt="School Vision" 
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                filter: 'brightness(0.97)'
+            <Chip 
+              label="Our Vision"
+              sx={{
+                background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
+                color: 'white',
+                fontWeight: 600,
+                px: 2,
+                py: 1,
+                mb: 3,
+                '& .MuiChip-label': {
+                  px: 0.5
+                }
               }}
             />
-            <div style={{
-              position: 'absolute',
-              bottom: '0',
-              left: '0',
-              right: '0',
-              background: 'linear-gradient(to top, rgba(25, 118, 210, 0.8), transparent)',
-              padding: '30px',
-              color: 'white',
-              textAlign: 'center'
-            }}>
-              <div style={{
-                fontSize: '1.2rem',
-                fontWeight: '600',
-                marginBottom: '10px',
-                textShadow: '0 2px 4px rgba(0,0,0,0.2)'
-              }}>Our Commitment</div>
-              <p style={{
-                fontSize: '1rem',
-                opacity: '0.9',
-                margin: '0',
-                textShadow: '0 1px 2px rgba(0,0,0,0.2)'
-              }}>Nurturing excellence in every student through quality education and character development</p>
-            </div>
             
-            {/* Decorative Elements */}
-            <div style={{
+            <Typography variant="h3" sx={{
+              fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+              fontWeight: 700,
+              color: 'primary.dark',
+              mb: 3,
+              lineHeight: 1.2,
+              '& span': {
+                color: 'primary.main',
+                display: 'inline-block',
+                ml: 0.5
+              }
+            }}>
+              Unlocking Every Child's <span>Full Potential</span>
+              <Box sx={{
+                width: 60,
+                height: 4,
+                background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                mt: 2,
+                borderRadius: 2
+              }} />
+            </Typography>
+            
+            <Typography variant="body1" sx={{
+              fontSize: { xs: '1rem', md: '1.05rem' },
+              lineHeight: 1.8,
+              color: 'text.secondary',
+              mb: 4
+            }}>
+              To develop the talent of every pupil to its maximum potential through innovative education and personalized learning experiences.
+            </Typography>
+            
+            <Grid container spacing={2} sx={{ mt: 2 }}>
+              {[
+                { 
+                  icon: '🎯', 
+                  title: 'Personalized Learning', 
+                  subtitle: 'Tailored to each child' 
+                },
+                { 
+                  icon: '🌟', 
+                  title: 'Holistic Growth', 
+                  subtitle: 'Mind, body & spirit' 
+                }
+              ].map((item, index) => (
+                <Grid item xs={12} sm={6} key={index}>
+                  <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    bgcolor: 'rgba(25, 118, 210, 0.05)',
+                    p: 2,
+                    borderRadius: 2,
+                    height: '100%',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      bgcolor: 'rgba(25, 118, 210, 0.08)'
+                    }
+                  }}>
+                    <Box sx={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: '50%',
+                      bgcolor: 'rgba(25, 118, 210, 0.1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      flexShrink: 0,
+                      fontSize: '1.2rem'
+                    }}>
+                      {item.icon}
+                    </Box>
+                    <Box>
+                      <Typography variant="subtitle2" sx={{ 
+                        fontWeight: 600,
+                        color: 'primary.dark',
+                        lineHeight: 1.2,
+                        mb: 0.25
+                      }}>
+                        {item.title}
+                      </Typography>
+                      <Typography variant="caption" sx={{ 
+                        color: 'text.secondary',
+                        fontSize: '0.75rem',
+                        lineHeight: 1.4,
+                        display: 'block'
+                      }}>
+                        {item.subtitle}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+          
+          {/* Vision Image */}
+          <Box sx={{
+            position: 'relative',
+            height: { xs: 300, sm: 350, md: 400, lg: '100%' },
+            minHeight: { xs: 300, md: 400 },
+            order: { xs: 1, lg: 2 }
+          }}>
+            <Box sx={{
+              width: '100%',
+              height: '100%',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <Box
+                component="img"
+                src="/public/cooking.jpeg"
+                alt="School Vision"
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  display: 'block',
+                  transition: 'transform 0.5s ease',
+                  '&:hover': {
+                    transform: 'scale(1.03)'
+                  }
+                }}
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+              <Box sx={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)',
+                p: 3,
+                color: 'white',
+                textAlign: 'center',
+                zIndex: 2
+              }}>
+                <Typography variant="h6" sx={{
+                  fontWeight: 600,
+                  mb: 1,
+                  textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                }}>
+                  Our Commitment
+                </Typography>
+                <Typography variant="body2" sx={{
+                  opacity: 0.95,
+                  textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+                  lineHeight: 1.5,
+                  maxWidth: '90%',
+                  mx: 'auto'
+                }}>
+                  Nurturing excellence in every student through quality education and character development
+                </Typography>
+              </Box>
+            </Box>
+            
+            {/* Decorative Element */}
+            <Box sx={{
               position: 'absolute',
-              top: '40px',
-              right: '40px',
-              width: '60px',
-              height: '60px',
+              top: { xs: 20, sm: 30 },
+              right: { xs: 20, sm: 30 },
+              width: 50,
+              height: 50,
               borderRadius: '50%',
-              background: 'rgba(255, 255, 255, 0.2)',
+              bgcolor: 'rgba(255, 255, 255, 0.2)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              backdropFilter: 'blur(5px)',
-              border: '2px solid rgba(255, 255, 255, 0.3)'
+              backdropFilter: 'blur(4px)',
+              border: '2px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+              zIndex: 3,
+              animation: 'pulse 2s infinite',
+              '@keyframes pulse': {
+                '0%': {
+                  boxShadow: '0 0 0 0 rgba(255, 255, 255, 0.4)'
+                },
+                '70%': {
+                  boxShadow: '0 0 0 10px rgba(255, 255, 255, 0)'
+                },
+                '100%': {
+                  boxShadow: '0 0 0 0 rgba(255, 255, 255, 0)'
+                }
+              }
             }}>
-              <span style={{ fontSize: '1.5rem' }}>✨</span>
-            </div>
-          </div>
-        </div>
-      </div>
+              <Box component="span" sx={{ fontSize: '1.25rem' }}>✨</Box>
+            </Box>
+          </Box>
+        </Box>
+      </Container>
 
       <div style={{ marginTop: '40px' }}>
         <div style={{ 

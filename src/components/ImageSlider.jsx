@@ -4,15 +4,13 @@ import { Box, Typography, CircularProgress, Button } from '@mui/material';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import './ImageSlider.css';
 
-
-
 const ImageSlider = () => {
 
   const images = [
     '/public/swimming%20pool.jpeg',
-    '/public/Assembly2.jpeg',
-    '/public/Wildwaters%20tour.png',
-    '/public/selfie.jpeg'
+    '/public/monday.jpeg',
+    '/public/tuesday.jpeg',
+    '/public/ppe.jpeg'
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -75,18 +73,16 @@ const ImageSlider = () => {
     <Box
       sx={{
         position: 'relative',
-        height: 600,
+        height: { xs: '80vh', sm: 600 },
+        minHeight: '400px',
         overflow: 'hidden',
-        borderRadius: 4,
+        borderRadius: { xs: 0, sm: 4 },
         mb: 4,
-        boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-        transition: 'transform 0.3s ease',
-        '&:hover': {
-          transform: 'scale(1.02)'
-        }
+        boxShadow: { xs: 'none', sm: '0 8px 24px rgba(0,0,0,0.15)' },
+        width: '100%',
+        backgroundColor: '#f5f5f5',
       }}
     >
-
       {error ? (
         <Box
           sx={{
@@ -100,18 +96,6 @@ const ImageSlider = () => {
         >
           <Typography>{error}</Typography>
         </Box>
-      ) : isLoading ? (
-        <Box
-          sx={{
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <CircularProgress />
-        </Box>
       ) : (
         <Box
           sx={{
@@ -119,56 +103,67 @@ const ImageSlider = () => {
             height: '100%',
             position: 'relative',
             overflow: 'hidden',
-            borderRadius: 4,
-            transition: 'all 0.3s ease'
           }}
         >
-          <img
-            src={images[currentIndex]}
-            alt="School Activity"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+          {images.map((image, index) => (
+            <Box
+              key={index}
+              sx={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                opacity: currentIndex === index ? 1 : 0,
+                transition: 'opacity 0.8s ease-in-out',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundImage: `url(${image})`,
+                WebkitBackfaceVisibility: 'hidden',
+                transform: 'translateZ(0)',
+                WebkitTransform: 'translateZ(0)',
+                willChange: 'opacity',
+              }}
+            />
+          ))}
+          
+          {/* Subtle gradient overlay for better text visibility */}
+          <Box
+            sx={{
               position: 'absolute',
               top: 0,
               left: 0,
-              zIndex: 0,
-              opacity: 1,
-              transition: 'all 0.3s ease-in-out'
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%)',
+              zIndex: 1,
+              pointerEvents: 'none',
             }}
           />
+          
+          {/* Content */}
           <Box
             sx={{
               position: 'absolute',
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              zIndex: 1,
+              zIndex: 2,
               textAlign: 'center',
-              px: 6,
-              py: 10,
-              backdropFilter: 'blur(4px)',
-              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%)',
-              borderRadius: 4,
-              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1)',
-              width: '80%',
-              maxWidth: '800px',
-              color: 'white'
+              px: { xs: 3, sm: 6 },
+              py: { xs: 4, sm: 10 },
+              width: '100%',
+              maxWidth: '1200px',
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
             }}
           >
             <Typography
               variant="h2"
               sx={{
-                mb: 4,
+                fontSize: { xs: '2.2rem', sm: '3.5rem' },
                 fontWeight: 700,
+                mb: 2,
                 lineHeight: 1.2,
-                textShadow: '4px 4px 8px rgba(0, 0, 0, 0.4)',
-                letterSpacing: '0.02em',
-                color: 'white',
-                opacity: 0,
-                transform: 'translateY(20px)',
-                animation: 'fadeInUp 1.2s ease-out 0.4s forwards'
               }}
             >
               Welcome to Transformer Blessed Junior School
@@ -176,44 +171,51 @@ const ImageSlider = () => {
             <Typography
               variant="h5"
               sx={{
-                mb: 6,
-                opacity: 0.9,
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
-                color: 'white',
-                maxWidth: '600px',
-                mx: 'auto',
-                opacity: 0,
-                transform: 'translateY(20px)',
-                animation: 'fadeInUp 1.2s ease-out 0.6s forwards'
+                fontSize: { xs: '1.2rem', sm: '1.5rem' },
+                mb: 4,
+                fontWeight: 400,
               }}
             >
               Where Excellence Meets Opportunity. Discover a world of learning, growth and endless possibilities at our premier educational institution.
             </Typography>
             <Button
               variant="contained"
+              color="primary"
               size="large"
+              endIcon={<ArrowForward />}
               sx={{
-                bgcolor: 'primary.main',
+                px: 4,
+                py: 1.5,
+                fontSize: '1.1rem',
+                fontWeight: 600,
+                borderRadius: '50px',
                 textTransform: 'none',
-                px: 6,
-                py: 3,
-                borderRadius: 4,
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
                 '&:hover': {
-                  bgcolor: 'primary.dark',
                   transform: 'translateY(-2px)',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)'
+                  boxShadow: '0 6px 20px rgba(0,0,0,0.25)',
                 },
-                opacity: 0,
-                transform: 'translateY(20px)',
-                animation: 'fadeInUp 1.2s ease-out 0.8s forwards'
+                transition: 'all 0.3s ease',
               }}
-              endIcon={<ArrowForward sx={{ ml: 1 }} />}
             >
               Discover More
             </Button>
           </Box>
+          
+          {/* Loading indicator */}
+          {isLoading && (
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 3,
+              }}
+            >
+              <CircularProgress color="primary" />
+            </Box>
+          )}
         </Box>
       )}
     </Box>

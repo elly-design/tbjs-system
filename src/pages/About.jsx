@@ -37,17 +37,17 @@ const About = () => {
         }}>
           <div>
             <h3 style={{ color: '#1976d2' }}>A Journey of Excellence</h3>
-            <p>Established in 2015, Transformer Blessed Junior School was founded on the principles of academic excellence, character development  and holistic growth. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals ready to face the challenges of the modern world.</p>
+            <p>Established in 2016, Transformer Blessed Junior School was founded on the principles of academic excellence, character development and holistic growth as a fountain of spiritual growth. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals, spiritually grounded and ready to face the challenges of the modern world with wisdom and resilience.</p>
           </div>
 
           <div>
             <h3 style={{ color: '#1976d2' }}>Early Years</h3>
-            <p>In our formative years, we focused on building a strong foundation of quality education, modern teaching methodologies  and a nurturing learning environment. We introduced innovative programs that combined traditional academic rigor with modern educational practices, emphasizing critical thinking, creativity, and problem-solving skills.</p>
+            <p>In our formative years, we focused on building a strong foundation of quality education, modern teaching methodologies and a nurturing learning environment. We introduced innovative programs that combined traditional academic rigor with modern educational practices, emphasizing critical thinking, creativity, and problem-solving skills.</p>
           </div>
 
           <div>
             <h3 style={{ color: '#1976d2' }}>Growth and Development</h3>
-            <p>Over the years, we've seen remarkable growth in both our student body and our educational offerings. We've expanded our curriculum to include specialized programs in STEM, arts and sports, while maintaining our commitment to academic excellence. Our dedicated faculty members, many of whom hold advanced degrees and professional certifications, have played a crucial role in our success.</p>
+            <p>Over the years, we've seen remarkable growth in both our student body and our educational offerings. We've expanded our curriculum to include specialized programs in STEM, arts and sports while maintaining our commitment to academic excellence. Our dedicated faculty members, many of whom hold advanced degrees and professional certifications, have played a crucial role in our success.</p>
           </div>
 
           <div>
@@ -253,7 +253,7 @@ const About = () => {
                   maxWidth: '90%',
                   mx: 'auto'
                 }}>
-                  Nurturing excellence in every student through quality education and character development
+                  Nurturing talent in every student through quality education and character development
                 </Typography>
               </Box>
             </Box>
@@ -420,7 +420,7 @@ const About = () => {
             fontWeight: '700',
             lineHeight: '1.3'
           }}>
-            Nurturing Potential, Building Futures
+            Be a Centre of Learning Excellence
           </h2>
           <p style={{
             fontSize: '1.1rem',
@@ -429,7 +429,7 @@ const About = () => {
             margin: '0 auto',
             lineHeight: '1.8'
           }}>
-            At Transformer Blessed Junior School, we are committed to providing a nurturing and inclusive environment where every student can develop their full potential academically, socially and spiritually. We foster a love for learning, encourage personal growth, and prepare our students to become responsible global citizens who contribute positively to their communities.
+            To be a centre of learning that provides an ideal learning environment which enables learners to become responsible, active and self-reliant individuals. We are committed to fostering academic excellence, character development, and spiritual growth in a nurturing and supportive setting that prepares students to meet the challenges of an ever-changing world.
           </p>
           
           <div style={{

@@ -37,7 +37,7 @@ const About = () => {
         }}>
           <div>
             <h3 style={{ color: '#1976d2' }}>A Journey of Excellence</h3>
-            <p>Established in 2016, Transformer Blessed Junior School was founded on the principles of academic excellence, character development and holistic growth as a fountain of spiritual growth. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals, spiritually grounded and ready to face the challenges of the modern world with wisdom and resilience.</p>
+            <p>Established in 2016, Transformer Blessed Junior School was founded on the principles of academic excellence, character development and holistic growth as a foundation of spiritual growth. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals, spiritually grounded and ready to face the challenges of the modern world with wisdom and resilience.</p>
           </div>
 
           <div>

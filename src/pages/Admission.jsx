@@ -558,7 +558,7 @@ const Admission = () => {
               </Typography>
 
               <Typography variant="body2" color="textSecondary" align="center" sx={{ mt: 1, mb: 2 }}>
-                By submitting this form, you agree to our terms and conditions.
+                By submitting this form you agree to our terms and conditions.
               </Typography>
             </Grid>
           </Grid>

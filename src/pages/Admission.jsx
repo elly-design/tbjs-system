@@ -303,10 +303,11 @@ const Admission = () => {
               </TextField>
             </Grid>
             
+            {/* UPI Number */}
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="UPI Number"
+                label="UPI Number *"
                 name="upiNumber"
                 value={formData.upiNumber}
                 onChange={handleChange}
@@ -318,10 +319,11 @@ const Admission = () => {
               />
             </Grid>
             
+            {/* Assessment Number */}
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Assessment Number"
+                label="Assessment Number *"
                 name="assessmentNumber"
                 value={formData.assessmentNumber}
                 onChange={handleChange}
@@ -366,7 +368,7 @@ const Admission = () => {
               <TextField
                 fullWidth
                 name="email"
-                label="Email (Optional)"
+                label="Email "
                 variant="outlined"
                 margin="normal"
                 type="email"
@@ -553,7 +555,6 @@ const Admission = () => {
               </Button>
 
               <Typography variant="body2" color="textSecondary" align="center" sx={{ mt: 2 }}>
-                * Required fields
               </Typography>
 
               <Typography variant="body2" color="textSecondary" align="center" sx={{ mt: 1, mb: 2 }}>

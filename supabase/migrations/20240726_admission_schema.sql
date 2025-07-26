@@ -4,7 +4,6 @@ CREATE TABLE IF NOT EXISTS public.students (
   full_name TEXT NOT NULL,
   date_of_birth DATE NOT NULL,
   gender TEXT,
-  admission_number TEXT UNIQUE,
   upi_number TEXT UNIQUE,
   assessment_number TEXT,
   admission_date TIMESTAMPTZ DEFAULT NOW(),
@@ -45,7 +44,7 @@ CREATE TABLE IF NOT EXISTS public.documents (
 CREATE TABLE IF NOT EXISTS public.admission_status (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   student_id UUID REFERENCES public.students(id) ON DELETE CASCADE,
-  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'under_review', 'accepted', 'rejected')),
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'under_review', 'approved', 'rejected')),
   notes TEXT,
   reviewed_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
   reviewed_at TIMESTAMPTZ,

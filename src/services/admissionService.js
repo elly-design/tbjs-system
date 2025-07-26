@@ -143,40 +143,25 @@ export const submitAdmission = async (formData, documents) => {
 
 /**
  * Get admission status for a student
- * @param {string} admissionNumber - The admission number to check
+ * @param {string} studentId - The student ID to check
  * @returns {Promise<Object>} - The admission status or error
  */
-export const checkAdmissionStatus = async (admissionNumber) => {
+export const checkAdmissionStatus = async (studentId) => {
   try {
-    const { data, error } = await supabase
-      .from('students')
-      .select(`
-        id,
-        full_name,
-        admission_number,
-        class_level,
-        admission_status:admission_status(
-          status,
-          notes,
-          reviewed_at,
-          reviewed_by:profiles(
-            full_name
-          )
-        )
-      `)
-      .eq('admission_number', admissionNumber)
+    // Get the admission status for the student
+    const { data: status, error: statusError } = await supabase
+      .from('admission_status')
+      .select('*')
+      .eq('student_id', studentId)
       .single();
 
-    if (error) throw error;
-    if (!data) return { success: false, error: 'Admission not found' };
+    if (statusError) throw statusError;
+    if (!status) return { success: false, error: 'Admission status not found' };
 
-    return { success: true, data };
+    return { success: true, data: status };
   } catch (error) {
     console.error('Error checking admission status:', error);
-    return { 
-      success: false, 
-      error: error.message || 'Failed to check admission status' 
-    };
+    return { success: false, error: error.message };
   }
 };
 

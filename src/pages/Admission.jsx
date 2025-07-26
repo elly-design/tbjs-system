@@ -290,6 +290,7 @@ const Admission = () => {
                 SelectProps={{ native: true }}
               >
                 <option value="">Select Class</option>
+                <option value="PP0">Baby Class</option>
                 <option value="PP1">PP1</option>
                 <option value="PP2">PP2</option>
                 <option value="Grade 1">Grade 1</option>

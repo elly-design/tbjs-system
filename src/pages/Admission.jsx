@@ -224,7 +224,7 @@ const Admission = () => {
           <Grid container spacing={3}>
             {/* Student Information */}
             <Grid item xs={12}>
-              <Typography variant="h6" gutterBottom>Student Information</Typography>
+              <Typography variant="h6" gutterBottom></Typography>
             </Grid>
             
             <Grid item xs={12} sm={6}>

@@ -36,6 +36,8 @@ const Admission = () => {
     dateOfBirth: '',
     gender: '',
     classLevel: '',
+    upiNumber: '',
+    assessmentNumber: '',
     address: '',
     phone: '',
     email: '',
@@ -151,6 +153,8 @@ const Admission = () => {
           dateOfBirth: '',
           gender: '',
           classLevel: '',
+          upiNumber: '',
+          assessmentNumber: '',
           address: '',
           phone: '',
           email: '',
@@ -277,18 +281,57 @@ const Admission = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                name="classLevel"
                 label="Class Level"
-                variant="outlined"
-                margin="normal"
-                required
+                name="classLevel"
                 value={formData.classLevel}
                 onChange={handleChange}
-                InputProps={{
-                  startAdornment: <School sx={{ mr: 1 }} />,
+                required
+                select
+                SelectProps={{ native: true }}
+              >
+                <option value="">Select Class</option>
+                <option value="PP1">PP1</option>
+                <option value="PP2">PP2</option>
+                <option value="Grade 1">Grade 1</option>
+                <option value="Grade 2">Grade 2</option>
+                <option value="Grade 3">Grade 3</option>
+                <option value="Grade 4">Grade 4</option>
+                <option value="Grade 5">Grade 5</option>
+                <option value="Grade 6">Grade 6</option>
+                
+              </TextField>
+            </Grid>
+            
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="UPI Number"
+                name="upiNumber"
+                value={formData.upiNumber}
+                onChange={handleChange}
+                placeholder="e.g., ABC123-XYZ456"
+                inputProps={{
+                  // Client-side validation removed to prevent regex errors
+                  title: 'Enter UPI number (letters, numbers, and hyphens only)'
                 }}
               />
             </Grid>
+            
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Assessment Number"
+                name="assessmentNumber"
+                value={formData.assessmentNumber}
+                onChange={handleChange}
+                placeholder="e.g., ASS-2023-001"
+                inputProps={{
+                  // Removed pattern validation to prevent regex errors
+                  title: 'Please enter an assessment number (e.g., ASS-2023-001)'
+                }}
+              />
+            </Grid>
+            
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth

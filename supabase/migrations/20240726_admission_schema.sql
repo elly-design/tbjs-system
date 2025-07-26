@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS public.students (
   date_of_birth DATE NOT NULL,
   gender TEXT,
   admission_number TEXT UNIQUE,
+  upi_number TEXT UNIQUE,
+  assessment_number TEXT,
   admission_date TIMESTAMPTZ DEFAULT NOW(),
   class_level TEXT,
   address TEXT,

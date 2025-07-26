@@ -70,6 +70,8 @@ export const submitAdmission = async (formData, documents) => {
           date_of_birth: formData.dateOfBirth,
           gender: formData.gender,
           class_level: formData.classLevel,
+          upi_number: formData.upiNumber || null,
+          assessment_number: formData.assessmentNumber || null,
           address: formData.address,
           phone_number: formData.phone,
           email: formData.email

@@ -38,6 +38,120 @@ const About = () => {
           <div>
             <h3 style={{ color: '#1976d2' }}>A Journey of Excellence</h3>
             <p>Established in 2016, Transformer Blessed Junior School was founded on the principles of academic excellence, character development and holistic growth as a foundation of spiritual growth. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals, spiritually grounded and ready to face the challenges of the modern world with wisdom and resilience.</p>
+            
+            <div style={{
+              margin: '60px auto',
+              maxWidth: '1000px',
+              position: 'relative',
+              padding: '0 20px'
+            }}>
+              <div style={{
+                background: 'white',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 15px 50px rgba(25, 118, 210, 0.2)',
+                transition: 'all 0.4s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 20px 60px rgba(25, 118, 210, 0.3)'
+                }
+              }}>
+                <div style={{
+                  position: 'relative',
+                  paddingBottom: '50%',
+                  overflow: 'hidden'
+                }}>
+                  <img 
+                    src="/uniform.jpeg" 
+                    alt="Our Dedicated Staff"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'transform 0.8s ease',
+                      '&:hover': {
+                        transform: 'scale(1.05)'
+                      }
+                    }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                    padding: { xs: '15px 20px', sm: '20px 30px', md: '25px 40px' },
+                    color: 'white',
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-end',
+                    minHeight: '50%',
+                    boxSizing: 'border-box'
+                  }}>
+                    <h3 style={{
+                      margin: '0 0 8px 0',
+                      fontSize: { xs: '1.4rem', sm: '1.6rem', md: '1.8rem' },
+                      fontWeight: '700',
+                      textShadow: '0 2px 6px rgba(0,0,0,0.6)',
+                      lineHeight: '1.2',
+                      letterSpacing: '0.5px'
+                    }}>
+                      Our Exceptional Team
+                    </h3>
+                    <div style={{
+                      width: '60px',
+                      height: '3px',
+                      background: 'rgba(255,255,255,0.8)',
+                      margin: '0 auto 10px',
+                      borderRadius: '3px'
+                    }} />
+                    <p style={{
+                      margin: '8px 0 0 0',
+                      fontSize: { xs: '0.95rem', sm: '1.05rem', md: '1.1rem' },
+                      opacity: '0.95',
+                      maxWidth: '700px',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      lineHeight: '1.5',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+                      fontWeight: '400'
+                    }}>
+                      Passionate educators dedicated to nurture young minds
+                    </p>
+                  </div>
+                </div>
+                
+                <div style={{
+                  padding: '25px',
+                  background: 'white',
+                  textAlign: 'center',
+                  borderTop: '1px solid rgba(0,0,0,0.05)'
+                }}>
+                  <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '10px 25px',
+                    background: 'linear-gradient(135deg, #1976d2, #2196f3)',
+                    color: 'white',
+                    borderRadius: '50px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 5px 15px rgba(25, 118, 210, 0.3)'
+                    }
+                  }}>
+                    👥 Meet Our Team
+                    <span style={{ marginLeft: '10px' }}>→</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div>

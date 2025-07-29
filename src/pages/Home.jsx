@@ -20,14 +20,71 @@ import {
   MusicNote, 
   Science,
   GroupAdd,
-  ArrowForward
+  ArrowForward,
+  Star,
+  EmojiEvents,
+  Groups,
+  Person,
+  PersonOutline,
+  PersonPin,
+  PersonPinCircle,
+  PersonAdd,
+  PersonAddAlt,
+  PersonAddAlt1,
+  PersonAddAltOutlined,
+  PersonAddDisabled,
+  PersonOff,
+  PersonOutlineOutlined,
+  PersonPinCircleOutlined,
+  PersonPinOutlined,
+  PersonRemove,
+  PersonRemoveAlt1,
+  PersonRemoveOutlined,
+  PersonSearch,
+  PersonSearchOutlined,
+  PersonSearchRounded,
+  PersonSearchSharp,
+  PersonSearchTwoTone,
+  PersonSharp,
+  PersonTwoTone,
+  PersonOutlineSharp,
+  PersonOutlineTwoTone,
+  PersonOffOutlined,
+  PersonOffRounded,
+  PersonOffSharp,
+  PersonOffTwoTone,
+  PersonAddAltRounded,
+  PersonAddAltSharp,
+  PersonAddAltTwoTone,
+  PersonAddDisabledOutlined,
+  PersonAddDisabledRounded,
+  PersonAddDisabledSharp,
+  PersonAddDisabledTwoTone,
+  PersonAddOutlined,
+  PersonAddRounded,
+  PersonAddSharp,
+  PersonAddTwoTone,
+  PersonOutlineRounded,
+  PersonPinCircleRounded,
+  PersonPinCircleSharp,
+  PersonPinCircleTwoTone,
+  PersonPinRounded,
+  PersonPinSharp,
+  PersonPinTwoTone,
+  PersonRemoveAlt1Outlined,
+  PersonRemoveAlt1Rounded,
+  PersonRemoveAlt1Sharp,
+  PersonRemoveAlt1TwoTone,
+  PersonRemoveRounded,
+  PersonRemoveSharp,
+  PersonRemoveTwoTone
 } from '@mui/icons-material';
 import ImageSlider from '../components/ImageSlider';
 import { Link as RouterLink } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4, position: 'relative' }}>
       {/* Hero Section with Slideshow */}
       <Box sx={{ 
         position: 'relative', 
@@ -568,173 +625,511 @@ const Home = () => {
         </Grid>
       </Box>
 
-      {/* Upcoming Events Section */}
-      <Box sx={{ mt: 10, mb: 8 }}>
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Chip 
-            label="Mark Your Calendars" 
-            color="primary" 
+      {/* Enhanced Statistics Section */}
+      <Box sx={{
+        mt: { xs: 8, md: 12 },
+        mb: 6,
+        position: 'relative',
+        overflow: 'hidden',
+        '&:before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '100%',
+          background: 'linear-gradient(135deg, rgba(245, 247, 250, 0.95) 0%, rgba(228, 232, 240, 0.95) 100%)',
+          zIndex: -1,
+          transform: 'skewY(-2deg)',
+          transformOrigin: 'top left',
+          boxShadow: '0 10px 40px rgba(0,0,0,0.05)'
+        },
+        '&:after': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'radial-gradient(circle at 10% 20%, rgba(25, 118, 210, 0.06) 0%, transparent 25%), radial-gradient(circle at 90% 80%, rgba(100, 181, 246, 0.06) 0%, transparent 25%)',
+          zIndex: -1,
+          pointerEvents: 'none'
+        },
+        py: { xs: 6, md: 8 }
+      }}>
+        <Container maxWidth="lg">
+          <Box 
             sx={{ 
-              mb: 2, 
-              px: 2, 
-              py: 1, 
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
-              color: 'white'
-            }} 
-          />
-          <Typography 
-            variant="h4" 
-            sx={{ 
-              fontWeight: 700, 
-              color: '#1a237e',
-              fontSize: { xs: '1.8rem', sm: '2.125rem' },
-              lineHeight: 1.2,
-              mb: 2
+              textAlign: 'center', 
+              mb: { xs: 6, md: 8 },
+              position: 'relative',
+              '&:after': {
+                content: '""',
+                display: 'block',
+                width: '60px',
+                height: '3px',
+                background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                margin: '24px auto 0',
+                borderRadius: '3px'
+              }
             }}
           >
-            Graduation Ceremony 2025
-          </Typography>
-          <Typography 
-            variant="body1" 
-            sx={{ 
-              color: '#555', 
-              maxWidth: '700px',
-              mx: 'auto',
-              fontSize: '1.1rem',
-              lineHeight: 1.7
-            }}
-          >
-            Celebrating the Achievements of Our PP2 Graduates
-          </Typography>
-        </Box>
-
-        <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={6}>
-            <Paper 
-              elevation={3} 
+            <Chip 
+              label="Our Impact" 
+              color="primary" 
               sx={{ 
-                borderRadius: 2,
+                mb: 3, 
+                px: 2.5, 
+                py: 0.5, 
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
+                color: 'white',
+                boxShadow: '0 5px 15px rgba(25, 118, 210, 0.2)',
+                letterSpacing: '0.5px',
+                textTransform: 'uppercase',
+                position: 'relative',
                 overflow: 'hidden',
-                height: '100%',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-5px)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.15)'
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%)',
+                  zIndex: 1
                 }
+              }} 
+              icon={
+                <Star sx={{ 
+                  color: 'white', 
+                  fontSize: '1rem',
+                  marginLeft: '8px',
+                  filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.1))'
+                }} />
+              }
+            />
+            <Typography 
+              variant="h3" 
+              component="h2"
+              sx={{ 
+                fontWeight: 800, 
+                color: '#0a1f44',
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                lineHeight: 1.2,
+                mb: 2,
+                letterSpacing: '-0.5px',
+                background: 'linear-gradient(90deg, #0a1f44, #1976d2)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'inline-block'
               }}
             >
-              <Box
-                component="img"
-                src="/public/graduation.jpeg"
-                alt="PP2 Graduation Ceremony"
-                sx={{
-                  width: '100%',
-                  height: { xs: '300px', sm: '400px' },
-                  objectFit: 'cover',
-                  display: 'block'
-                }}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = '/public/graduation.jpg';
-                }}
-              />
-            </Paper>
-          </Grid>
-          
-          <Grid item xs={12} md={6}>
-            <Box sx={{ 
-              p: { xs: 3, md: 4 },
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center'
-            }}>
-              <Typography 
-                variant="h5" 
-                sx={{ 
-                  fontWeight: 700, 
-                  color: '#1976d2',
-                  mb: 3,
-                  fontSize: { xs: '1.4rem', sm: '1.6rem' }
-                }}
-              >
-                Join Us in Celebrating Excellence
-              </Typography>
-              
-              <Box sx={{ mb: 4 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                  <Box sx={{
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    bgcolor: 'primary.main',
-                    mr: 2
-                  }} />
-                  <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                    <strong>Date:</strong> December 15, 2025
-                  </Typography>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                  <Box sx={{
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    bgcolor: 'primary.main',
-                    mr: 2
-                  }} />
-                  <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                    <strong>Time:</strong> 10:00 AM - 1:00 PM
-                  </Typography>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                  <Box sx={{
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    bgcolor: 'primary.main',
-                    mr: 2
-                  }} />
-                  <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                    <strong>Venue:</strong> School Grounds 
-                  </Typography>
-                </Box>
-              </Box>
-
-              <Typography variant="body1" sx={{ 
-                color: '#555', 
-                mb: 4,
+              Building Futures, Creating Leaders
+            </Typography>
+            <Typography 
+              variant="body1" 
+              sx={{ 
+                color: '#4a5568', 
+                maxWidth: '720px',
+                mx: 'auto',
+                fontSize: { xs: '1.1rem', md: '1.2rem' },
                 lineHeight: 1.7,
-                fontSize: '1.05rem'
+                fontWeight: 400,
+                px: { xs: 2, sm: 0 }
+              }}
+            >
+              Join our growing community of learners, educators and successful alumni making a difference in the world. Our commitment to excellence shapes tomorrow's leaders today.
+            </Typography>
+          </Box>
+
+          <Grid container spacing={4} justifyContent="center">
+            {/* Alumni Stat */}
+            <Grid item xs={12} sm={6} md={4}>
+              <Box sx={{
+                background: 'white',
+                borderRadius: 4,
+                p: 4,
+                height: '100%',
+                textAlign: 'center',
+                boxShadow: '0 15px 35px rgba(0,0,0,0.05)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                position: 'relative',
+                overflow: 'hidden',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                  '&:before': {
+                    transform: 'scale(1.1)'
+                  },
+                  '& .stat-icon': {
+                    transform: 'scale(1.1) rotate(5deg)'
+                  }
+                },
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '4px',
+                  background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                  transition: 'transform 0.4s ease'
+                }
               }}>
-                We are thrilled to invite you to our annual PP2 Graduation Ceremony, where we'll celebrate the incredible journey of our young graduates. This special day marks their transition to the next exciting chapter of their educational adventure.
-              </Typography>
-              
-              <Box sx={{ mt: 'auto' }}>
-                <Button 
-                  variant="contained" 
-                  size="large"
-                  endIcon={<ArrowForward />}
+                <Box 
+                  className="stat-icon"
                   sx={{
-                    bgcolor: '#1976d2',
-                    '&:hover': {
-                      bgcolor: '#1565c0'
+                    width: '100px',
+                    height: '100px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.08) 0%, rgba(100, 181, 246, 0.2) 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 24px',
+                    color: '#1976d2',
+                    fontSize: '2.5rem',
+                    fontWeight: '800',
+                    position: 'relative',
+                    transition: 'all 0.4s ease',
+                    '&:before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: '-5px',
+                      left: '-5px',
+                      right: '-5px',
+                      bottom: '-5px',
+                      borderRadius: '50%',
+                      border: '2px dashed rgba(25, 118, 210, 0.2)',
+                      animation: 'spin 20s linear infinite',
+                      '@keyframes spin': {
+                        '0%': { transform: 'rotate(0deg)' },
+                        '100%': { transform: 'rotate(360deg)' }
+                      }
                     },
-                    px: 4,
-                    py: 1.5,
-                    borderRadius: '50px',
-                    textTransform: 'none',
-                    fontSize: '1rem',
-                    fontWeight: 600
+                    '& .icon-container': {
+                      position: 'relative',
+                      zIndex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      '& .count': {
+                        fontSize: '2.5rem',
+                        fontWeight: 800,
+                        lineHeight: 1,
+                        marginBottom: '4px'
+                      },
+                      '& .icon': {
+                        fontSize: '2rem',
+                        marginTop: '4px',
+                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
+                      }
+                    }
                   }}
                 >
-                  RSVP Now
-                </Button>
+                  <Box className="icon-container">
+                    <EmojiEvents className="icon" sx={{ mb: 1 }} />
+                    <Box className="count">500+</Box>
+                  </Box>
+                </Box>
+                <Typography 
+                  variant="h5" 
+                  sx={{ 
+                    fontWeight: 800, 
+                    color: '#0a1f44',
+                    mb: 2,
+                    fontSize: '1.5rem',
+                    position: 'relative',
+                    display: 'inline-block',
+                    '&:after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: '-8px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '40px',
+                      height: '3px',
+                      background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                      borderRadius: '3px'
+                    }
+                  }}
+                >
+                  Successful Alumni
+                </Typography>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    color: '#4a5568',
+                    mt: 2,
+                    fontSize: '1.05rem',
+                    lineHeight: 1.7,
+                    px: { xs: 1, sm: 2 }
+                  }}
+                >
+                  Graduates excelling in diverse fields, making significant impacts in their communities and beyond.
+                </Typography>
               </Box>
-            </Box>
+            </Grid>
+
+            {/* Students Stat */}
+            <Grid item xs={12} sm={6} md={4}>
+              <Box sx={{
+                background: 'white',
+                borderRadius: 4,
+                p: 4,
+                height: '100%',
+                textAlign: 'center',
+                boxShadow: '0 15px 35px rgba(0,0,0,0.05)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                position: 'relative',
+                overflow: 'hidden',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                  '&:before': {
+                    transform: 'scale(1.1)'
+                  },
+                  '& .stat-icon': {
+                    transform: 'scale(1.1) rotate(5deg)'
+                  }
+                },
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '4px',
+                  background: 'linear-gradient(90deg, #4caf50, #81c784)',
+                  transition: 'transform 0.4s ease'
+                }
+              }}>
+                <Box 
+                  className="stat-icon"
+                  sx={{
+                    width: '100px',
+                    height: '100px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(129, 199, 132, 0.2) 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 24px',
+                    color: '#4caf50',
+                    fontSize: '2.5rem',
+                    fontWeight: '800',
+                    position: 'relative',
+                    transition: 'all 0.4s ease',
+                    '&:before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: '-5px',
+                      left: '-5px',
+                      right: '-5px',
+                      bottom: '-5px',
+                      borderRadius: '50%',
+                      border: '2px dashed rgba(76, 175, 80, 0.2)',
+                      animation: 'spin 20s linear infinite',
+                      '@keyframes spin': {
+                        '0%': { transform: 'rotate(0deg)' },
+                        '100%': { transform: 'rotate(360deg)' }
+                      }
+                    },
+                    '& .icon-container': {
+                      position: 'relative',
+                      zIndex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      '& .count': {
+                        fontSize: '2.5rem',
+                        fontWeight: 800,
+                        lineHeight: 1,
+                        marginBottom: '4px'
+                      },
+                      '& .icon': {
+                        fontSize: '2rem',
+                        marginTop: '4px',
+                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
+                      }
+                    }
+                  }}
+                >
+                  <Box className="icon-container">
+                    <School className="icon" sx={{ mb: 1 }} />
+                    <Box className="count">1000+</Box>
+                  </Box>
+                </Box>
+                <Typography 
+                  variant="h5" 
+                  sx={{ 
+                    fontWeight: 800, 
+                    color: '#0a1f44',
+                    mb: 2,
+                    fontSize: '1.5rem',
+                    position: 'relative',
+                    display: 'inline-block',
+                    '&:after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: '-8px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '40px',
+                      height: '3px',
+                      background: 'linear-gradient(90deg, #4caf50, #81c784)',
+                      borderRadius: '3px'
+                    }
+                  }}
+                >
+                  Dedicated Students
+                </Typography>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    color: '#4a5568',
+                    mt: 2,
+                    fontSize: '1.05rem',
+                    lineHeight: 1.7,
+                    px: { xs: 1, sm: 2 }
+                  }}
+                >
+                  Nurturing young minds in an innovative, supportive, and inspiring learning environment.
+                </Typography>
+              </Box>
+            </Grid>
+
+            {/* Staff Stat */}
+            <Grid item xs={12} sm={6} md={4}>
+              <Box sx={{
+                background: 'white',
+                borderRadius: 4,
+                p: 4,
+                height: '100%',
+                textAlign: 'center',
+                boxShadow: '0 15px 35px rgba(0,0,0,0.05)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                position: 'relative',
+                overflow: 'hidden',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                  '&:before': {
+                    transform: 'scale(1.1)'
+                  },
+                  '& .stat-icon': {
+                    transform: 'scale(1.1) rotate(5deg)'
+                  }
+                },
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '4px',
+                  background: 'linear-gradient(90deg, #ff9800, #ffb74d)',
+                  transition: 'transform 0.4s ease'
+                }
+              }}>
+                <Box 
+                  className="stat-icon"
+                  sx={{
+                    width: '100px',
+                    height: '100px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, rgba(255, 152, 0, 0.08) 0%, rgba(255, 183, 77, 0.2) 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 24px',
+                    color: '#ff9800',
+                    fontSize: '2.5rem',
+                    fontWeight: '800',
+                    position: 'relative',
+                    transition: 'all 0.4s ease',
+                    '&:before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: '-5px',
+                      left: '-5px',
+                      right: '-5px',
+                      bottom: '-5px',
+                      borderRadius: '50%',
+                      border: '2px dashed rgba(255, 152, 0, 0.2)',
+                      animation: 'spin 20s linear infinite',
+                      '@keyframes spin': {
+                        '0%': { transform: 'rotate(0deg)' },
+                        '100%': { transform: 'rotate(360deg)' }
+                      }
+                    },
+                    '& .icon-container': {
+                      position: 'relative',
+                      zIndex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      '& .count': {
+                        fontSize: '2.5rem',
+                        fontWeight: 800,
+                        lineHeight: 1,
+                        marginBottom: '4px'
+                      },
+                      '& .icon': {
+                        fontSize: '2rem',
+                        marginTop: '4px',
+                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
+                      }
+                    }
+                  }}
+                >
+                  <Box className="icon-container">
+                    <Groups className="icon" sx={{ mb: 1 }} />
+                    <Box className="count">15+</Box>
+                  </Box>
+                </Box>
+                <Typography 
+                  variant="h5" 
+                  sx={{ 
+                    fontWeight: 800, 
+                    color: '#0a1f44',
+                    mb: 2,
+                    fontSize: '1.5rem',
+                    position: 'relative',
+                    display: 'inline-block',
+                    '&:after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: '-8px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '40px',
+                      height: '3px',
+                      background: 'linear-gradient(90deg, #ff9800, #ffb74d)',
+                      borderRadius: '3px'
+                    }
+                  }}
+                >
+                  Expert Staff
+                </Typography>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    color: '#4a5568',
+                    mt: 2,
+                    fontSize: '1.05rem',
+                    lineHeight: 1.7,
+                    px: { xs: 1, sm: 2 }
+                  }}
+                >
+                  Passionate, qualified educators committed to nurturing each student's potential and success.
+                </Typography>
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
+        </Container>
       </Box>
 
       {/* Testimonials Section */}

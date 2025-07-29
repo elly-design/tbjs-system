@@ -94,7 +94,7 @@ const Navbar = () => {
             <Box
               component="img"
               src="/logo.png"
-              alt="TBJS Logo"
+              alt=""
               sx={{
                 height: { xs: 48, sm: 64 },
                 width: 'auto',
@@ -113,7 +113,6 @@ const Navbar = () => {
                 fontWeight: 'bold'
               }}
             >
-              TBJS
             </Typography>
           </Box>
         </Box>

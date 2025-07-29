@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Container, Grid, Box, Chip } from '@mui/material';
+import { Typography, Container, Grid, Box, Chip, Button } from '@mui/material';
 
 const About = () => {
   return (
@@ -37,7 +37,7 @@ const About = () => {
         }}>
           <div>
             <h3 style={{ color: '#1976d2' }}>A Journey of Excellence</h3>
-            <p>Established in 2016, Transformer Blessed Junior School was founded on the principles of academic excellence, character development and holistic growth as a foundation of spiritual growth. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals, spiritually grounded and ready to face the challenges of the modern world with wisdom and resilience.</p>
+            <p>Established in 2016, Transformer Blessed Junior School was founded on the principles of academic excellence, character development and holistic growth, all firmly rooted in the foundation of Christianity. Our commitment to nurturing young minds is guided by Christian values, fostering spiritual growth alongside intellectual and moral development. Our journey began with a vision to create an educational institution that would not only nurture academic prowess but also shape well-rounded individuals, spiritually grounded and ready to face the challenges of the modern world with wisdom and resilience.</p>
             
             <div style={{
               margin: '60px auto',
@@ -71,9 +71,11 @@ const About = () => {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      transition: 'transform 0.8s ease',
+                      filter: 'brightness(1.1) contrast(1.1) saturate(1.1)',
+                      transition: 'all 0.8s ease',
                       '&:hover': {
-                        transform: 'scale(1.05)'
+                        transform: 'scale(1.05)',
+                        filter: 'brightness(1.15) contrast(1.15) saturate(1.15)'
                       }
                     }}
                   />
@@ -97,7 +99,7 @@ const About = () => {
                       fontSize: { xs: '1.4rem', sm: '1.6rem', md: '1.8rem' },
                       fontWeight: '700',
                       textShadow: '0 2px 6px rgba(0,0,0,0.6)',
-                      lineHeight: '1.2',
+                      lineHeight: 1.2,
                       letterSpacing: '0.5px'
                     }}>
                       Our Exceptional Team
@@ -131,24 +133,42 @@ const About = () => {
                   textAlign: 'center',
                   borderTop: '1px solid rgba(0,0,0,0.05)'
                 }}>
-                  <div style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    padding: '10px 25px',
-                    background: 'linear-gradient(135deg, #1976d2, #2196f3)',
-                    color: 'white',
-                    borderRadius: '50px',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 5px 15px rgba(25, 118, 210, 0.3)'
-                    }
-                  }}>
-                    👥 Meet Our Team
-                    <span style={{ marginLeft: '10px' }}>→</span>
-                  </div>
+                  <Button
+                    variant="contained"
+                    startIcon={<span>👥</span>}
+                    endIcon={<span>→</span>}
+                    sx={{
+                      py: 1.5,
+                      px: 4,
+                      borderRadius: '50px',
+                      background: 'linear-gradient(135deg, #1976d2, #2196f3)',
+                      color: 'white',
+                      fontWeight: 500,
+                      textTransform: 'none',
+                      fontSize: '1rem',
+                      '&:hover': {
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 5px 15px rgba(25, 118, 210, 0.3)',
+                        background: 'linear-gradient(135deg, #1565c0, #1976d2)'
+                      },
+                      '& .MuiButton-startIcon': {
+                        marginRight: 1,
+                        '& > *:nth-of-type(1)': {
+                          fontSize: '1.2rem',
+                          lineHeight: 1
+                        }
+                      },
+                      '& .MuiButton-endIcon': {
+                        marginLeft: 1,
+                        '& > *:nth-of-type(1)': {
+                          fontSize: '1.2rem',
+                          lineHeight: 1
+                        }
+                      }
+                    }}
+                  >
+                    Meet Our Team
+                  </Button>
                 </div>
               </div>
             </div>
@@ -630,7 +650,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

@@ -144,7 +144,7 @@ const Admission = () => {
       if (result.success) {
         setSnackbar({
           open: true,
-          message: 'Thank you! Your admission form has been submitted and is under review. We’ll be in touch via email soon.',
+          message: 'Thank you! Your admission has been successfully submitted!',
           severity: 'success'
         });
         // Reset form

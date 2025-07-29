@@ -93,7 +93,7 @@ const Navbar = () => {
           >
             <Box
               component="img"
-              src="/Logo.jpeg"
+              src="/logo.png"
               alt="TBJS Logo"
               sx={{
                 height: { xs: 48, sm: 64 },

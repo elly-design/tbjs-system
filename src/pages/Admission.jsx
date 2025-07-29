@@ -273,7 +273,6 @@ const Admission = () => {
                 >
                   <MenuItem value="Male">Male</MenuItem>
                   <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -314,7 +313,7 @@ const Admission = () => {
                 placeholder="e.g., ABC123-XYZ456"
                 inputProps={{
                   // Client-side validation removed to prevent regex errors
-                  title: 'Enter UPI number (letters, numbers, and hyphens only)'
+                  title: 'Enter UPI number (letters, numbers and hyphens only)'
                 }}
               />
             </Grid>
@@ -406,7 +405,6 @@ const Admission = () => {
                   <MenuItem value="Mother">Mother</MenuItem>
                   <MenuItem value="Father">Father</MenuItem>
                   <MenuItem value="Guardian">Guardian</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -429,7 +427,7 @@ const Admission = () => {
             <Grid item xs={12}>
               <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>Required Documents</Typography>
               <Typography variant="body2" color="textSecondary" gutterBottom>
-                Please upload the following documents (PDF, JPG, or PNG, max 5MB each):
+                Please upload the following documents (PDF, JPG or PNG max 5MB each):
               </Typography>
             </Grid>
 
@@ -461,7 +459,7 @@ const Admission = () => {
 
             <Grid item xs={12} sm={6} md={4}>
               <FormControl fullWidth margin="normal">
-                <InputLabel shrink>Passport Photo *</InputLabel>
+                <InputLabel shrink>Student's Passport Photo *</InputLabel>
                 <OutlinedInput
                   type="file"
                   id="passport-photo"

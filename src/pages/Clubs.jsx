@@ -22,28 +22,28 @@ const Clubs = () => {
   const clubs = [
     {
       title: 'Scouts Club',
-      description: 'Join our Scouts program to develop leadership, survival skills, and community service values. Our Scouts engage in exciting outdoor adventures, learn essential life skills, and participate in community projects that make a real difference.',
+      description: 'Join our Scouts program to develop leadership, survival skills and community service values. Our Scouts engage in exciting outdoor adventures, learn essential life skills and participate in community projects that make a real difference.',
       image: '/scouts.jpg',
       fallbackImage: 'https://source.unsplash.com/random/800x600/?scouts',
       tags: ['Leadership', 'Outdoor Skills', 'Community Service', 'Teamwork']
     },
     {
       title: 'Swimming Club',
-      description: 'Dive into excellence with our Swimming Club, where students of all skill levels can improve their swimming techniques, build endurance, and learn water safety. Our program focuses on both competitive swimming and recreational enjoyment of the water.',
+      description: 'Dive into excellence with our Swimming Club, where students of all skill levels can improve their swimming techniques, build endurance and learn water safety. Our program focuses on both competitive swimming and recreational enjoyment of the water.',
       image: '/swimming pool.jpeg',
       fallbackImage: 'https://source.unsplash.com/random/800x600/?swimming',
       tags: ['Competition', 'Fitness', 'Water Safety', 'Technique']
     },
     {
       title: 'Wildlife Club',
-      description: 'Explore the wonders of nature and wildlife conservation with our Wildlife Club. Students learn about local ecosystems, participate in conservation projects, and develop a deep appreciation for biodiversity through hands-on activities and field trips.',
+      description: 'Explore the wonders of nature and wildlife conservation with our Wildlife Club. Students learn about local ecosystems, participate in conservation projects and develop a deep appreciation for biodiversity through hands-on activities and field trips.',
       image: '/wildlife.jpeg',
       fallbackImage: 'https://source.unsplash.com/random/800x600/?wildlife',
       tags: ['Conservation', 'Outdoor Learning', 'Eco-Awareness']
     },
     {
       title: 'Debate Club',
-      description: 'Hone your public speaking and critical thinking skills in our dynamic Debate Club. Students learn to construct persuasive arguments, think on their feet, and engage in respectful discourse on a variety of topics.',
+      description: 'Hone your public speaking and critical thinking skills in our dynamic Debate Club. Students learn to construct persuasive arguments, think on their feet and engage in respectful discourse on a variety of topics.',
       image: '/debate.jpeg',
       fallbackImage: 'https://source.unsplash.com/random/800x600/?debate',
       tags: ['Public Speaking', 'Critical Thinking', 'Research', 'Teamwork']
@@ -122,7 +122,7 @@ const Clubs = () => {
             lineHeight: 1.7
           }}
         >
-          Fostering talents, skills, and passions beyond the classroom
+          Fostering talents, skills and passions beyond the classroom
         </Typography>
       </Box>
 

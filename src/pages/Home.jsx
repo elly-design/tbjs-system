@@ -510,7 +510,7 @@ const Home = () => {
                     PP1 Kindergarten Program
                   </Typography>
                   <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.7 }}>
-                    Our PP1 program provides a nurturing environment where young learners develop essential skills through play-based learning. Our curriculum focuses on holistic development, including language, numeracy, and social-emotional growth.
+                    Our PP1 program provides a nurturing environment where young learners develop essential skills through play-based learning. Our curriculum focuses on holistic development, including language, numeracy and social-emotional growth.
                   </Typography>
                   <Box sx={{ mt: 3 }}>
                     <Chip 
@@ -584,7 +584,7 @@ const Home = () => {
                     CBC Group Discussions
                   </Typography>
                   <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.7 }}>
-                    Our CBC-aligned group discussions foster critical thinking, communication, and collaboration. Students engage in meaningful dialogues, develop problem-solving skills, and learn to articulate their thoughts effectively in a supportive environment.
+                    Our CBC-aligned group discussions foster critical thinking, communication and collaboration. Students engage in meaningful dialogues, develop problem-solving skills, and learn to articulate their thoughts effectively in a supportive environment.
                   </Typography>
                   <Box sx={{ mt: 3 }}>
                     <Chip 
@@ -996,7 +996,7 @@ const Home = () => {
                     px: { xs: 1, sm: 2 }
                   }}
                 >
-                  Nurturing young minds in an innovative, supportive, and inspiring learning environment.
+                  Nurturing young minds in an innovative, supportive and inspiring learning environment.
                 </Typography>
               </Box>
             </Grid>
@@ -1364,7 +1364,7 @@ const Home = () => {
                 position: 'relative',
                 zIndex: '1'
               }}>
-                The communication from the school is excellent, and I appreciate how they involve parents in the learning journey. The teachers truly care about each child's success.
+                The communication from the school is excellent and I appreciate how they involve parents in the learning journey. The teachers truly care about each child's success.
               </Typography>
               <Box sx={{
                 display: 'flex',

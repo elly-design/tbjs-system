@@ -122,15 +122,13 @@ const Footer = () => {
             }}>
               Transformer Blessed Junior School
             </Typography>
-            <Typography variant="body2" sx={{ 
+            <Box sx={{ 
               mb: 3,
-              textAlign: isMobile ? 'center' : 'left',
               maxWidth: '350px',
               mx: isMobile ? 'auto' : 'unset',
               opacity: 0.9
             }}>
               <Typography 
-                variant="h5" 
                 component="div"
                 sx={{ 
                   fontFamily: '"Yu Gothic UI Semibold", sans-serif',
@@ -145,7 +143,7 @@ const Footer = () => {
               >
                 Transforming Lives
               </Typography>
-            </Typography>
+            </Box>
             
             <Box sx={{ 
               display: 'flex', 

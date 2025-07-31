@@ -8,12 +8,73 @@ import {
   CardActionArea, 
   CardContent, 
   Chip,
-  Button
+  Button,
+  useTheme,
+  useMediaQuery
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { ArrowBack } from '@mui/icons-material';
+import { ArrowBack, Nature, Public, Pool, School } from '@mui/icons-material';
 
 const Clubs = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  
+  const clubs = [
+    {
+      title: 'Scouts Club',
+      description: 'Join our Scouts program to develop leadership, survival skills, and community service values. Our Scouts engage in exciting outdoor adventures, learn essential life skills, and participate in community projects that make a real difference.',
+      image: '/scouts.jpg',
+      fallbackImage: 'https://source.unsplash.com/random/800x600/?scouts',
+      tags: ['Leadership', 'Outdoor Skills', 'Community Service', 'Teamwork']
+    },
+    {
+      title: 'Swimming Club',
+      description: 'Dive into excellence with our Swimming Club, where students of all skill levels can improve their swimming techniques, build endurance, and learn water safety. Our program focuses on both competitive swimming and recreational enjoyment of the water.',
+      image: '/swimming pool.jpeg',
+      fallbackImage: 'https://source.unsplash.com/random/800x600/?swimming',
+      tags: ['Competition', 'Fitness', 'Water Safety', 'Technique']
+    },
+    {
+      title: 'Wildlife Club',
+      description: 'Explore the wonders of nature and wildlife conservation with our Wildlife Club. Students learn about local ecosystems, participate in conservation projects, and develop a deep appreciation for biodiversity through hands-on activities and field trips.',
+      image: '/wildlife.jpeg',
+      fallbackImage: 'https://source.unsplash.com/random/800x600/?wildlife',
+      tags: ['Conservation', 'Outdoor Learning', 'Eco-Awareness']
+    },
+    {
+      title: 'Debate Club',
+      description: 'Hone your public speaking and critical thinking skills in our dynamic Debate Club. Students learn to construct persuasive arguments, think on their feet, and engage in respectful discourse on a variety of topics.',
+      image: '/debate.jpeg',
+      fallbackImage: 'https://source.unsplash.com/random/800x600/?debate',
+      tags: ['Public Speaking', 'Critical Thinking', 'Research', 'Teamwork']
+    }
+  ];
+  
+  const getIcon = (title) => {
+    switch(title) {
+      case 'Scouts Club':
+        return <Nature sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
+      case 'Swimming Club':
+        return <Pool sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
+      case 'Wildlife Club':
+        return <Public sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
+      case 'Debate Club':
+        return <School sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
+      default:
+        return null;
+    }
+  };
+  
+  const getTagColor = (index) => {
+    const colors = [
+      { bg: 'rgba(76, 175, 80, 0.1)', text: '#2e7d32' },
+      { bg: 'rgba(0, 150, 136, 0.1)', text: '#00796b' },
+      { bg: 'rgba(255, 152, 0, 0.1)', text: '#ef6c00' },
+      { bg: 'rgba(233, 30, 99, 0.1)', text: '#c2185b' },
+      { bg: 'rgba(156, 39, 176, 0.1)', text: '#7b1fa2' }
+    ];
+    return colors[index % colors.length];
+  };
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
       <Button
@@ -65,170 +126,154 @@ const Clubs = () => {
         </Typography>
       </Box>
 
-      <Grid container spacing={6}>
-        {/* Wildlife Club */}
-        <Grid item xs={12} md={6}>
-          <Card 
-            elevation={3}
-            sx={{ 
-              height: '100%',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              '&:hover': {
-                transform: 'translateY(-5px)',
-                boxShadow: '0 15px 30px rgba(0,0,0,0.1)'
-              }
-            }}
-          >
-            <CardActionArea sx={{ height: '100%' }}>
-              <Box
-                component="img"
-                src="/public/wildlife.jpeg"
-                alt="Wildlife Club"
-                sx={{
-                  width: '100%',
-                  height: { xs: '300px', sm: '400px', md: '450px' },
-                  objectFit: 'cover',
-                  display: 'block'
-                }}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = '/public/wildlife.jpg';
-                }}
-              />
-              <CardContent sx={{ p: 4 }}>
-                <Typography gutterBottom variant="h4" component="div" sx={{ fontWeight: 700, color: '#1a237e', mb: 3 }}>
-                  Wildlife Club
-                </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.7, fontSize: '1.05rem' }}>
-                  Explore the wonders of nature and wildlife conservation with our Wildlife Club. Students learn about local ecosystems, participate in conservation projects, and develop a deep appreciation for biodiversity through hands-on activities and field trips.
-                </Typography>
-                <Box sx={{ mt: 4 }}>
-                  <Chip 
-                    label="Conservation" 
-                    sx={{ 
-                      mr: 1, 
-                      mb: 1,
-                      bgcolor: 'rgba(76, 175, 80, 0.1)',
-                      color: '#2e7d32',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      px: 1.5,
-                      py: 0.5
-                    }} 
+      <Grid container spacing={4}>
+        {clubs.map((club, index) => (
+          <Grid item xs={12} md={6} key={index}>
+            <Card 
+              elevation={3}
+              sx={{ 
+                height: '100%',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 15px 30px rgba(0,0,0,0.1)'
+                },
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <CardActionArea sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                <Box
+                  component="div"
+                  sx={{
+                    width: '100%',
+                    height: { xs: '250px', sm: '300px', md: '350px' },
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={club.image}
+                    alt={club.title}
+                    onError={(e) => {
+                      if (e.target.src !== club.fallbackImage) {
+                        e.target.src = club.fallbackImage;
+                      }
+                    }}
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0
+                    }}
                   />
-                  <Chip 
-                    label="Outdoor Learning" 
-                    sx={{ 
-                      mr: 1, 
-                      mb: 1,
-                      bgcolor: 'rgba(0, 150, 136, 0.1)',
-                      color: '#00796b',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      px: 1.5,
-                      py: 0.5
-                    }} 
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7))',
+                    }}
                   />
-                  <Chip 
-                    label="Eco-Awareness" 
-                    sx={{ 
-                      mr: 1, 
-                      mb: 1,
-                      bgcolor: 'rgba(255, 152, 0, 0.1)',
-                      color: '#ef6c00',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      px: 1.5,
-                      py: 0.5
-                    }} 
-                  />
+                  <Box sx={{ 
+                    position: 'absolute', 
+                    bottom: 20, 
+                    left: 20, 
+                    zIndex: 2,
+                    textAlign: 'left'
+                  }}>
+                    <Typography 
+                      variant="h3" 
+                      sx={{ 
+                        color: 'white', 
+                        fontWeight: 700,
+                        fontSize: isMobile ? '1.75rem' : '2.125rem',
+                        textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                        mb: 1
+                      }}
+                    >
+                      {club.title}
+                    </Typography>
+                    <Box sx={{ 
+                      height: '4px', 
+                      width: '60px', 
+                      background: theme.palette.primary.main,
+                      mb: 2
+                    }} />
+                  </Box>
                 </Box>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
-
-        {/* Debate Club */}
-        <Grid item xs={12} md={6}>
-          <Card 
-            elevation={3}
-            sx={{ 
-              height: '100%',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              '&:hover': {
-                transform: 'translateY(-5px)',
-                boxShadow: '0 15px 30px rgba(0,0,0,0.1)'
-              }
-            }}
-          >
-            <CardActionArea sx={{ height: '100%' }}>
-              <Box
-                component="img"
-                src="/public/debate.jpeg"
-                alt="Debate Club"
-                sx={{
-                  width: '100%',
-                  height: { xs: '300px', sm: '400px', md: '450px' },
-                  objectFit: 'cover',
-                  display: 'block'
-                }}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = '/public/debate.jpg';
-                }}
-              />
-              <CardContent sx={{ p: 4 }}>
-                <Typography gutterBottom variant="h4" component="div" sx={{ fontWeight: 700, color: '#1a237e', mb: 3 }}>
-                  Debate Club
-                </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.7, fontSize: '1.05rem' }}>
-                  Hone your public speaking and critical thinking skills in our dynamic Debate Club. Students learn to construct persuasive arguments, think on their feet, and engage in respectful discourse on a variety of topics, building confidence and communication skills that last a lifetime.
-                </Typography>
-                <Box sx={{ mt: 4 }}>
-                  <Chip 
-                    label="Public Speaking" 
+                
+                <CardContent sx={{ 
+                  p: 4, 
+                  flexGrow: 1,
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}>
+                  <Box sx={{ textAlign: 'center', mb: 3 }}>
+                    {getIcon(club.title)}
+                  </Box>
+                  
+                  <Typography 
+                    variant="body1" 
+                    color="text.secondary" 
                     sx={{ 
-                      mr: 1, 
-                      mb: 1,
-                      bgcolor: 'rgba(233, 30, 99, 0.1)',
-                      color: '#c2185b',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      px: 1.5,
-                      py: 0.5
-                    }} 
-                  />
-                  <Chip 
-                    label="Critical Thinking" 
-                    sx={{ 
-                      mr: 1, 
-                      mb: 1,
-                      bgcolor: 'rgba(103, 58, 183, 0.1)',
-                      color: '#512da8',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      px: 1.5,
-                      py: 0.5
-                    }} 
-                  />
-                  <Chip 
-                    label="Teamwork" 
-                    sx={{ 
-                      mr: 1, 
-                      mb: 1,
-                      bgcolor: 'rgba(63, 81, 181, 0.1)',
-                      color: '#303f9f',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      px: 1.5,
-                      py: 0.5
-                    }} 
-                  />
-                </Box>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
+                      mb: 3, 
+                      lineHeight: 1.7, 
+                      fontSize: '1.05rem',
+                      flexGrow: 1
+                    }}
+                  >
+                    {club.description}
+                  </Typography>
+                  
+                  <Box sx={{ mt: 'auto', pt: 2 }}>
+                    <Typography 
+                      variant="subtitle2" 
+                      sx={{ 
+                        color: theme.palette.text.secondary,
+                        fontWeight: 600,
+                        mb: 2,
+                        fontSize: '0.9rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px'
+                      }}
+                    >
+                      Key Focus Areas:
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                      {club.tags.map((tag, tagIndex) => {
+                        const color = getTagColor(tagIndex);
+                        return (
+                          <Chip 
+                            key={tagIndex}
+                            label={tag} 
+                            sx={{ 
+                              bgcolor: color.bg,
+                              color: color.text,
+                              fontWeight: 600,
+                              fontSize: '0.8rem',
+                              px: 1.5,
+                              py: 0.5,
+                              height: 'auto',
+                              '& .MuiChip-label': {
+                                py: 0.5
+                              }
+                            }} 
+                          />
+                        );
+                      })}
+                    </Box>
+                  </Box>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );

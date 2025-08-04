@@ -831,7 +831,7 @@ const Home = () => {
                 >
                   <Box className="icon-container">
                     <EmojiEvents className="icon" sx={{ mb: 1 }} />
-                    <Box className="count">500+</Box>
+                    <Box className="count">200+</Box>
                   </Box>
                 </Box>
                 <Typography 
@@ -959,7 +959,7 @@ const Home = () => {
                 >
                   <Box className="icon-container">
                     <School className="icon" sx={{ mb: 1 }} />
-                    <Box className="count">500+</Box>
+                    <Box className="count">600+</Box>
                   </Box>
                 </Box>
                 <Typography 

@@ -959,7 +959,7 @@ const Home = () => {
                 >
                   <Box className="icon-container">
                     <School className="icon" sx={{ mb: 1 }} />
-                    <Box className="count">1000+</Box>
+                    <Box className="count">500+</Box>
                   </Box>
                 </Box>
                 <Typography 
@@ -1385,14 +1385,14 @@ const Home = () => {
                   fontWeight: 'bold',
                   fontSize: '1.2rem'
                 }}>
-                  SA
+                  SM
                 </Box>
                 <Box>
                   <Typography variant="subtitle1" sx={{
                     fontWeight: '600',
                     color: '#1a237e',
                     marginBottom: '4px'
-                  }}>Sarah Atieno</Typography>
+                  }}>Sarah Mwazighe</Typography>
                   <Typography variant="body2" sx={{
                     color: '#777',
                     fontSize: '0.85rem'

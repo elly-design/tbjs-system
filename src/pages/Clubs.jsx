@@ -13,7 +13,7 @@ import {
   useMediaQuery
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { ArrowBack, Nature, Public, Pool, School, MusicNote } from '@mui/icons-material';
+import { ArrowBack, Nature, Public, Pool, School, SportsMartialArts as SportsMartialArtsIcon } from '@mui/icons-material';
 
 const Clubs = () => {
   const theme = useTheme();
@@ -21,11 +21,11 @@ const Clubs = () => {
   
   const clubs = [
     {
-      title: 'Music & Band Club',
-      description: 'Unleash your musical potential with our Music & Band Club. Students explore various instruments, learn music theory and perform in school events. Whether you\'re a beginner or advanced musician, our club offers opportunities to grow your skills and showcase your talent.',
-      image: '/zoom trumpets.jpg',
-      fallbackImage: 'https://source.unsplash.com/random/800x600/?orchestra',
-      tags: ['Instruments', 'Performance', 'Music Theory', 'Ensemble']
+      title: 'Taekwondo Club',
+      description: 'Master the Korean martial art of Taekwondo with our expert instructors. Students learn self-defense techniques, develop discipline, and improve physical fitness through structured training. Our program focuses on the five tenets of Taekwondo: courtesy, integrity, perseverance, self-control, and indomitable spirit. Students have opportunities to progress through belt ranks and participate in local competitions.',
+      image: '/taekwondo3.jpg',
+      fallbackImage: 'https://source.unsplash.com/random/800x600/?taekwondo',
+      tags: ['Self-Defense', 'Discipline', 'Fitness', 'Martial Arts']
     },
     {
       title: 'Scouts Club',
@@ -67,8 +67,8 @@ const Clubs = () => {
         return <Public sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
       case 'Debate Club':
         return <School sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
-      case 'Music & Band Club':
-        return <MusicNote sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
+      case 'Taekwondo Club':
+        return <SportsMartialArtsIcon sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
       default:
         return null;
     }

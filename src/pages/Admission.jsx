@@ -437,7 +437,7 @@ const Admission = () => {
               <TextField
                 fullWidth
                 name="email"
-                label="Email "
+                label="Parent/Guardian Email *"
                 variant="outlined"
                 margin="normal"
                 type="email"
@@ -455,7 +455,7 @@ const Admission = () => {
               <TextField
                 fullWidth
                 name="parentName"
-                label="Parent/Guardian Name"
+                label="Parent/Guardian Name "
                 variant="outlined"
                 margin="normal"
                 required

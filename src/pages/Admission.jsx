@@ -555,7 +555,7 @@ const Admission = () => {
 
             <Grid item xs={12} sm={6} md={4}>
               <FormControl fullWidth margin="normal">
-                <InputLabel shrink>Parent/Guardian ID</InputLabel>
+                <InputLabel shrink>Parent/Guardian ID *</InputLabel>
                 <OutlinedInput
                   type="file"
                   id="parent-id"
@@ -580,7 +580,7 @@ const Admission = () => {
 
             <Grid item xs={12} sm={6} md={4}>
               <FormControl fullWidth margin="normal">
-                <InputLabel shrink>School Clearance</InputLabel>
+                <InputLabel shrink>School Clearance *</InputLabel>
                 <OutlinedInput
                   type="file"
                   id="school-clearance"

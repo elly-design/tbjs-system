@@ -193,7 +193,7 @@ const ImageSlider = () => {
               }}
             />
             <AnimatedText
-              text="Raising Godly Leaders, Impacting Generations!"
+              text="Raising Godly Leaders, Impacting Generations !"
               variant="h5"
               speed={40} // Slightly faster than heading but still readable
               delay={1000} // Shorter delay after heading starts

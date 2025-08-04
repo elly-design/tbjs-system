@@ -22,8 +22,8 @@ const Clubs = () => {
   const clubs = [
     {
       title: 'Taekwondo Club',
-      description: 'Master the Korean martial art of Taekwondo with our expert instructors. Students learn self-defense techniques, develop discipline, and improve physical fitness through structured training. Our program focuses on the five tenets of Taekwondo: courtesy, integrity, perseverance, self-control, and indomitable spirit. Students have opportunities to progress through belt ranks and participate in local competitions.',
-      image: '/taekwondo3.jpg',
+      description: 'Master the Korean martial art of Taekwondo with our expert instructors. Students learn self-defense techniques, develop discipline and improve physical fitness through structured training. Our program focuses on the five tenets of Taekwondo: courtesy, integrity, perseverance, self-control, and indomitable spirit. Students have opportunities to progress through belt ranks and participate in local competitions.',
+      image: '/taekwondo4.jpg',
       fallbackImage: 'https://source.unsplash.com/random/800x600/?taekwondo',
       tags: ['Self-Defense', 'Discipline', 'Fitness', 'Martial Arts']
     },

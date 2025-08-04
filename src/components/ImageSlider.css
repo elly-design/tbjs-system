@@ -8,3 +8,19 @@
     transform: translateY(0);
   }
 }
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.zoom-effect {
+  animation: zoomInOut 20s ease-in-out infinite alternate;
+  will-change: transform;
+  transform-origin: center;
+  transition: transform 1s ease-in-out;
+}

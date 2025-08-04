@@ -86,14 +86,6 @@ const Clubs = () => {
   };
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
-      <Button
-        component={Link}
-        to="/"
-        startIcon={<ArrowBack />}
-        sx={{ mb: 4, textTransform: 'none' }}
-      >
-        Back to Home
-      </Button>
       
       <Box sx={{ textAlign: 'center', mb: 8 }}>
         <Chip 

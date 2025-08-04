@@ -196,9 +196,79 @@ const Admission = () => {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom align="center">
-        Student Admission
-      </Typography>
+      <Box sx={{
+        position: 'relative',
+        height: { xs: '250px', sm: '350px', md: '400px' },
+        minHeight: '40vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("/graduation.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 30%',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: { xs: 'scroll', md: 'fixed' },
+        borderRadius: '16px',
+        overflow: 'hidden',
+        mb: 8,
+        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.3) 0%, rgba(13, 71, 161, 0.4) 100%)',
+          zIndex: 1
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '100px',
+          background: 'linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%)',
+          zIndex: 1,
+          opacity: 0.1
+        }
+      }}>
+        <Box sx={{
+          position: 'relative',
+          zIndex: 2,
+          textAlign: 'center',
+          px: 3,
+          maxWidth: '800px',
+          mx: 'auto',
+          py: 4
+        }}>
+          <Typography 
+            variant="h2" 
+            component="h1" 
+            sx={{
+              color: 'white',
+              fontSize: { xs: '2.2rem', sm: '3rem', md: '3.5rem' },
+              fontWeight: '800',
+              lineHeight: 1.1,
+              mb: 2,
+              textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+              letterSpacing: { xs: '0.5px', md: '1px' },
+              textTransform: 'uppercase'
+            }}
+          >
+            Student Admission
+          </Typography>
+          <Box sx={{
+            width: '80px',
+            height: '4px',
+            background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+            margin: '0 auto',
+            borderRadius: '2px',
+            boxShadow: '0 2px 8px rgba(25, 118, 210, 0.5)'
+          }} />
+        </Box>
+      </Box>
       
       <Snackbar
         open={snackbar.open}

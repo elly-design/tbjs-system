@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, CircularProgress, Button } from '@mui/material';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import './ImageSlider.css';
+import AnimatedText from './AnimatedText';
 
 const ImageSlider = () => {
 
@@ -175,49 +176,39 @@ const ImageSlider = () => {
               textShadow: '0 2px 4px rgba(0,0,0,0.3)',
             }}
           >
-            <Typography
+            <AnimatedText
+              text="Welcome to Transformer Blessed Junior School"
               variant="h2"
+              speed={100} // Standard typing speed (~50-100ms per character)
+              trigger={currentIndex} // Reset animation when currentIndex changes
               sx={{
                 fontSize: { xs: '2.2rem', sm: '3.5rem' },
                 fontWeight: 700,
                 mb: 2,
                 lineHeight: 1.2,
+                minHeight: { xs: '6.6rem', sm: '8.4rem' }, // Prevent layout shift
+                display: 'inline-block',
+                textAlign: 'center',
+                width: '100%'
               }}
-            >
-              Welcome to Transformer Blessed Junior School
-            </Typography>
-            <Typography
+            />
+            <AnimatedText
+              text="Raising Godly Leaders, Impacting Generations!"
               variant="h5"
+              speed={40} // Slightly faster than heading but still readable
+              delay={1000} // Shorter delay after heading starts
+              trigger={currentIndex} // Reset animation when currentIndex changes
               sx={{
                 fontSize: { xs: '1.2rem', sm: '1.5rem' },
                 mb: 4,
                 fontWeight: 400,
+                minHeight: { xs: '4.8rem', sm: '6rem' }, // Prevent layout shift
+                display: 'inline-block',
+                textAlign: 'center',
+                width: '100%'
               }}
-            >
-              Where Excellence Meets Opportunity. Discover a world of learning, growth and endless possibilities at our premier educational institution.
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              endIcon={<ArrowForward />}
-              sx={{
-                px: 4,
-                py: 1.5,
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                borderRadius: '50px',
-                textTransform: 'none',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 6px 20px rgba(0,0,0,0.25)',
-                },
-                transition: 'all 0.3s ease',
-              }}
-            >
-              Discover More
-            </Button>
+            />
+            
           </Box>
           
           {/* Loading indicator */}

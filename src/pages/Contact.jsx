@@ -68,7 +68,20 @@ const Contact = () => {
   };
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom align="center">
+      <Typography 
+        variant="h4" 
+        component="h1" 
+        gutterBottom 
+        align="center"
+        sx={{
+          fontFamily: '"Berlin Sans FB Demi", "Arial Rounded MT Bold", "Arial", sans-serif',
+          fontWeight: 'bold',
+          letterSpacing: '0.5px',
+          textTransform: 'uppercase',
+          color: '#1976d2',
+          textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
+        }}
+      >
         Contact Us
       </Typography>
 

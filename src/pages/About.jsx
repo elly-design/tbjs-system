@@ -8,19 +8,99 @@ const About = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginBottom: '40px'
+        justifyContent: 'center',
+        minHeight: '60vh',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(\"/education.jpg\")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        borderRadius: '12px',
+        margin: '20px 0 50px',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+        padding: '40px 20px'
       }}>
-        <h1 style={{ marginBottom: '10px' }}>About Us</h1>
-        <div style={{ 
-          background: '#1976d2',
-          color: 'white',
-          padding: '10px 20px',
-          borderRadius: '25px',
-          fontSize: '1.5rem',
-          fontWeight: 'bold',
-          boxShadow: '0 4px 15px rgba(25, 118, 210, 0.3)'
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(45deg, rgba(25, 118, 210, 0.2) 0%, rgba(13, 71, 161, 0.3) 100%)',
+          zIndex: 1
+        }}></div>
+        
+        <div style={{
+          position: 'relative',
+          zIndex: 2,
+          textAlign: 'center',
+          maxWidth: '1000px',
+          margin: '0 auto',
+          padding: '20px',
+          color: 'white'
         }}>
-          Transforming Lives
+          <h1 style={{ 
+            fontSize: '4rem',
+            fontWeight: '800',
+            margin: '0 0 20px',
+            color: 'white',
+            textShadow: '2px 2px 8px rgba(0,0,0,0.5)',
+            lineHeight: '1.2',
+            letterSpacing: '1px'
+          }}>
+            About Us
+          </h1>
+          
+          <div style={{
+            position: 'relative',
+            display: 'inline-block',
+            margin: '40px 0'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '-60px',
+              width: '40px',
+              height: '2px',
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.7))'
+            }}></div>
+            
+            <div style={{
+              background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
+              color: 'white',
+              padding: '15px 40px',
+              borderRadius: '50px',
+              fontSize: '2.2rem',
+              fontWeight: '700',
+              boxShadow: '0 8px 25px rgba(25, 118, 210, 0.4)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '15px',
+              transform: 'perspective(100px) rotateX(2deg)',
+              transformStyle: 'preserve-3d',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'perspective(100px) rotateX(2deg) translateY(-3px)',
+                boxShadow: '0 12px 30px rgba(25, 118, 210, 0.5)'
+              }
+            }}>
+              <span style={{ display: 'inline-block', transform: 'translateY(2px)' }}></span>
+              <span>Transforming Lives</span>
+              <span style={{ display: 'inline-block', transform: 'translateY(2px)' }}></span>
+            </div>
+            
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              right: '-60px',
+              width: '40px',
+              height: '2px',
+              background: 'linear-gradient(90deg, rgba(255,255,255,0.7), transparent)'
+            }}></div>
+          </div>
+          
+
         </div>
       </div>
 

@@ -12,7 +12,9 @@ import {
   Divider,
   Stack,
   Typography,
-  Button
+  Button,
+  Fade,
+  Slide
 } from '@mui/material';
 import { 
   School, 
@@ -178,18 +180,33 @@ const Home = () => {
               Why Choose <span style={{ color: '#1976d2', marginLeft: '0.2em' }}>Our School</span>
             </Typography>
           </Box>
-          <Typography variant="body1" sx={{
-            maxWidth: '700px',
-            mx: 'auto',
-            color: '#666',
-            fontSize: { xs: '1rem', sm: '1.1rem' },
-            lineHeight: { xs: 1.7, sm: 1.8 },
-            px: { xs: 1, sm: 2 },
-            mt: { xs: 3, sm: 3.5 },
-            mb: { xs: 1, sm: 0 }
-          }}>
-            We are committed to providing an exceptional educational experience that nurtures every child's potential through innovative programs and dedicated educators.
-          </Typography>
+          <Box sx={{ overflow: 'hidden' }}>
+            <Fade in={true} timeout={1000}>
+              <Slide direction="up" in={true} timeout={800} mountOnEnter unmountOnExit>
+                <Typography 
+                  variant="body1" 
+                  sx={{
+                    maxWidth: '700px',
+                    mx: 'auto',
+                    color: '#666',
+                    fontSize: { xs: '1rem', sm: '1.1rem' },
+                    lineHeight: { xs: 1.7, sm: 1.8 },
+                    px: { xs: 1, sm: 2 },
+                    mt: { xs: 3, sm: 3.5 },
+                    mb: { xs: 1, sm: 0 },
+                    opacity: 0,
+                    animation: 'fadeIn 1s ease-out 0.3s forwards',
+                    '@keyframes fadeIn': {
+                      '0%': { opacity: 0, transform: 'translateY(20px)' },
+                      '100%': { opacity: 1, transform: 'translateY(0)' }
+                    }
+                  }}
+                >
+                  We are committed to providing an exceptional educational experience that nurtures every child's potential through innovative programs and dedicated educators.
+                </Typography>
+              </Slide>
+            </Fade>
+          </Box>
         </Box>
 
         <Grid container spacing={0} sx={{ 

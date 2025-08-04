@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { Box, Typography, CircularProgress, Button } from '@mui/material';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import './ImageSlider.css';
@@ -7,33 +6,42 @@ import './ImageSlider.css';
 const ImageSlider = () => {
 
   const images = [
-    '/public/swimming%20pool.jpeg',
-    '/public/monday.jpeg',
-    '/public/tuesday.jpeg',
-    '/public/ppe.jpeg'
-  ];
+    '/swimming pool.jpeg',
+    '/monday.jpeg',
+    '/tuesday.jpeg',
+    '/ppe.jpeg',
+  ].map(img => img.replace(' ', '%20'));  // URL encode spaces in filenames
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentImage, setCurrentImage] = useState('');
 
   useEffect(() => {
+    
     console.log('Current index:', currentIndex);
-    console.log('Image path:', images[currentIndex]);
+    const imagePath = images[currentIndex];
+    console.log('Trying to load image:', imagePath);
     
     const loadImage = () => {
       const img = new Image();
-      img.src = images[currentIndex];
+      img.src = imagePath;
+      console.log('Image source set to:', img.src);
+      
       img.onload = () => {
-        console.log('Image loaded successfully:', images[currentIndex]);
+        console.log('Image loaded successfully:', imagePath);
+        console.log('Image dimensions:', img.width, 'x', img.height);
+        setCurrentImage(imagePath);
         setIsLoading(false);
         setError(null);
       };
+      
       img.onerror = (error) => {
         console.error('Image load error:', error);
-        console.error('Failed to load image:', images[currentIndex]);
+        console.error('Failed to load image:', imagePath);
+        console.error('Full image URL:', new URL(imagePath, window.location.origin).href);
         setIsLoading(false);
-        setError(`Failed to load image: ${images[currentIndex]}`);
+        setError(`Failed to load image: ${imagePath}`);
       };
     };
 
@@ -73,8 +81,9 @@ const ImageSlider = () => {
     <Box
       sx={{
         position: 'relative',
-        height: { xs: '80vh', sm: 600 },
-        minHeight: '400px',
+        height: { xs: '90vh', sm: '90vh', md: '85vh' },
+        maxHeight: '1200px',
+        minHeight: '500px',
         overflow: 'hidden',
         borderRadius: { xs: 0, sm: 4 },
         mb: 4,
@@ -115,13 +124,22 @@ const ImageSlider = () => {
                 opacity: currentIndex === index ? 1 : 0,
                 transition: 'opacity 0.8s ease-in-out',
                 backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                backgroundPosition: 'center 30%',  // Adjust vertical position to show people
                 backgroundRepeat: 'no-repeat',
                 backgroundImage: `url(${image})`,
+                backgroundAttachment: 'fixed',
+                backgroundColor: '#f5f5f5',
+                objectFit: 'cover',
+                objectPosition: 'center 30%',  // Match background position for better consistency
                 WebkitBackfaceVisibility: 'hidden',
                 transform: 'translateZ(0)',
                 WebkitTransform: 'translateZ(0)',
                 willChange: 'opacity',
+                '@media (max-width: 900px)': {
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundAttachment: 'scroll',
+                },
               }}
             />
           ))}
@@ -134,7 +152,7 @@ const ImageSlider = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%)',
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%)',
               zIndex: 1,
               pointerEvents: 'none',
             }}

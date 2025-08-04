@@ -77,7 +77,7 @@ const Footer = () => {
       icon: <Phone sx={{ mr: 1 }} />, 
       text: (
         <>
-          <Box component="span" display="block">Admission: +254722983388</Box>
+          <Box component="span" display="block">Admission: +254722983388 / +254727492055</Box>
           <Box component="span" display="block">Office: +254722362974</Box>
         </>
       ) 

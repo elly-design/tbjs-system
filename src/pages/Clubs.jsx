@@ -13,13 +13,20 @@ import {
   useMediaQuery
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { ArrowBack, Nature, Public, Pool, School } from '@mui/icons-material';
+import { ArrowBack, Nature, Public, Pool, School, MusicNote } from '@mui/icons-material';
 
 const Clubs = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   
   const clubs = [
+    {
+      title: 'Music & Band Club',
+      description: 'Unleash your musical potential with our Music & Band Club. Students explore various instruments, learn music theory and perform in school events. Whether you\'re a beginner or advanced musician, our club offers opportunities to grow your skills and showcase your talent.',
+      image: '/zoom trumpets.jpg',
+      fallbackImage: 'https://source.unsplash.com/random/800x600/?orchestra',
+      tags: ['Instruments', 'Performance', 'Music Theory', 'Ensemble']
+    },
     {
       title: 'Scouts Club',
       description: 'Join our Scouts program to develop leadership, survival skills and community service values. Our Scouts engage in exciting outdoor adventures, learn essential life skills and participate in community projects that make a real difference.',
@@ -60,6 +67,8 @@ const Clubs = () => {
         return <Public sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
       case 'Debate Club':
         return <School sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
+      case 'Music & Band Club':
+        return <MusicNote sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 2 }} />;
       default:
         return null;
     }
@@ -76,7 +85,7 @@ const Clubs = () => {
     return colors[index % colors.length];
   };
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
       <Button
         component={Link}
         to="/"

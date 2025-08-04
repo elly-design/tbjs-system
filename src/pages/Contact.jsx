@@ -88,7 +88,7 @@ const Contact = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <Phone sx={{ fontSize: 24, mr: 1 }} />
                 <Typography>
-                  Admission: +254722983388<br />Office: +254722362974
+                  Admission: +254722983388 / +254727492055<br />Office: +254722362974
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>

@@ -201,11 +201,22 @@ const ImageSlider = () => {
               sx={{
                 fontSize: { xs: '1.2rem', sm: '1.5rem' },
                 mb: 4,
-                fontWeight: 400,
-                minHeight: { xs: '4.8rem', sm: '6rem' }, // Prevent layout shift
+                fontWeight: 600,
+                background: 'linear-gradient(90deg, #0066ff, #00aaff)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundSize: '200% auto',
+                animation: 'gradient 3s ease infinite',
+                minHeight: { xs: '4.8rem', sm: '6rem' },
                 display: 'inline-block',
                 textAlign: 'center',
-                width: '100%'
+                width: '100%',
+                textShadow: '0 2px 8px rgba(0, 119, 255, 0.2)',
+                '@keyframes gradient': {
+                  '0%': { backgroundPosition: '0% 50%' },
+                  '50%': { backgroundPosition: '100% 50%' },
+                  '100%': { backgroundPosition: '0% 50%' }
+                }
               }}
             />
             

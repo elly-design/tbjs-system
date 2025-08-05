@@ -22,7 +22,8 @@ const Footer = () => {
     e.preventDefault();
     
     // Basic email validation
-    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    const trimmedEmail = email.trim().toLowerCase();
+    if (!trimmedEmail || !/\S+@\S+\.\S+/.test(trimmedEmail)) {
       setSnackbar({
         open: true,
         message: 'Please enter a valid email address',
@@ -34,12 +35,29 @@ const Footer = () => {
     setLoading(true);
 
     try {
-      const { data, error } = await supabase
+      // First check if email already exists
+      const { data: existing, error: checkError } = await supabase
         .from('newsletter_subscribers')
-        .insert([{ email, created_at: new Date() }])
-        .select();
+        .select('email')
+        .eq('email', trimmedEmail)
+        .maybeSingle();
 
-      if (error) throw error;
+      if (checkError) throw checkError;
+      
+      if (existing) {
+        throw { code: 'P0001', message: 'Email already subscribed' };
+      }
+
+      // If email doesn't exist, insert new subscription
+      const { error: insertError } = await supabase
+        .from('newsletter_subscribers')
+        .insert([{ 
+          email: trimmedEmail,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }]);
+
+      if (insertError) throw insertError;
 
       setSnackbar({
         open: true,
@@ -48,12 +66,21 @@ const Footer = () => {
       });
       setEmail('');
     } catch (error) {
-      console.error('Error subscribing:', error);
+      console.error('Subscription error:', error);
+      
+      let errorMessage = 'Failed to subscribe. Please try again.';
+      
+      if (error.code === 'P0001' || error.message?.includes('already subscribed')) {
+        errorMessage = 'This email is already subscribed.';
+      } else if (error.message?.includes('permission denied')) {
+        errorMessage = 'Subscription service is currently unavailable.';
+      } else if (error.message?.includes('network')) {
+        errorMessage = 'Network error. Please check your connection and try again.';
+      }
+      
       setSnackbar({
         open: true,
-        message: error.message.includes('duplicate key value')
-          ? 'This email is already subscribed.'
-          : 'Failed to subscribe. Please try again.',
+        message: errorMessage,
         severity: 'error',
       });
     } finally {

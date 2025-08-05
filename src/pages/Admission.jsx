@@ -95,11 +95,20 @@ const Admission = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    // Validate required fields
+    // Base required fields
     const requiredFields = [
       'fullName', 'dateOfBirth', 'gender', 'classLevel', 'address',
       'phone', 'parentName', 'relationship', 'parentPhone'
     ];
+    
+    // Additional required fields for Grades 3-6
+    const isGrade3To6 = ['Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'].includes(formData.classLevel);
+    
+    // Add UPI and Assessment Number as required for Grades 3-6
+    if (isGrade3To6) {
+      if (!formData.upiNumber) requiredFields.push('upiNumber');
+      if (!formData.assessmentNumber) requiredFields.push('assessmentNumber');
+    }
     
     const missingFields = requiredFields.filter(field => !formData[field]);
     if (missingFields.length > 0) {
@@ -126,6 +135,11 @@ const Admission = () => {
       DOCUMENT_TYPES.BIRTH_CERTIFICATE,
       DOCUMENT_TYPES.PASSPORT_PHOTO
     ];
+    
+    // Add School Clearance as required for Grades 3-6
+    if (isGrade3To6) {
+      requiredDocs.push(DOCUMENT_TYPES.SCHOOL_CLEARANCE);
+    }
     
     const missingDocs = requiredDocs.filter(doc => !documents[doc]);
     if (missingDocs.length > 0) {

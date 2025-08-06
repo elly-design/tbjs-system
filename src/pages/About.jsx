@@ -517,84 +517,193 @@ const About = () => {
           borderRadius: '8px',
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
-          <div>
-            <h2 style={{ color: '#1976d2' }}>Core Values</h2>
-            <div style={{ 
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '30px',
-              marginTop: '20px'
-            }}>
-              <div style={{ textAlign: 'center', padding: '20px' }}>
-                <div style={{ 
-                  width: '80px',
-                  height: '80px',
-                  borderRadius: '50%',
-                  background: '#1976d2',
-                  margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'white',
-                  fontSize: '24px',
-                  fontWeight: 'bold'
-                }}>❤️</div>
-                <h3 style={{ color: '#1976d2' }}>Love</h3>
-                <p style={{ color: '#666' }}>Caring for each other and our community</p>
-              </div>
-              <div style={{ textAlign: 'center', padding: '20px' }}>
-                <div style={{ 
-                  width: '80px',
-                  height: '80px',
-                  borderRadius: '50%',
-                  background: '#1976d2',
-                  margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'white',
-                  fontSize: '24px',
-                  fontWeight: 'bold'
-                }}>🤝</div>
-                <h3 style={{ color: '#1976d2' }}>Respect</h3>
-                <p style={{ color: '#666' }}>Honor and value every individual</p>
-              </div>
-              <div style={{ textAlign: 'center', padding: '20px' }}>
-                <div style={{ 
-                  width: '80px',
-                  height: '80px',
-                  borderRadius: '50%',
-                  background: '#1976d2',
-                  margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'white',
-                  fontSize: '24px',
-                  fontWeight: 'bold'
-                }}>✅</div>
-                <h3 style={{ color: '#1976d2' }}>Honesty</h3>
-                <p style={{ color: '#666' }}>Always truthful in our actions</p>
-              </div>
-              <div style={{ textAlign: 'center', padding: '20px' }}>
-                <div style={{ 
-                  width: '80px',
-                  height: '80px',
-                  borderRadius: '50%',
-                  background: '#1976d2',
-                  margin: '0 auto 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'white',
-                  fontSize: '24px',
-                  fontWeight: 'bold'
-                }}>🛡️</div>
-                <h3 style={{ color: '#1976d2' }}>Integrity</h3>
-                <p style={{ color: '#666' }}>Upholding moral principles</p>
-              </div>
-            </div>
-          </div>
+          <Box sx={{ 
+            py: { xs: 6, md: 10 },
+            background: 'linear-gradient(135deg, #f8f9ff 0%, #f1f5ff 100%)',
+            borderRadius: 4,
+            position: 'relative',
+            overflow: 'hidden',
+            '&:before': {
+              content: '""',
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              top: 0,
+              left: 0,
+              background: 'radial-gradient(circle at 10% 20%, rgba(25, 118, 210, 0.03) 0%, transparent 20%), radial-gradient(circle at 90% 90%, rgba(25, 118, 210, 0.03) 0%, transparent 20%)',
+              zIndex: 1
+            }
+          }}>
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
+              <Box textAlign="center" mb={{ xs: 6, md: 8 }} data-aos="fade-up">
+                <Chip 
+                  label="Core Value" 
+                  sx={{ 
+                    mb: 2, 
+                    px: 2, 
+                    py: 1, 
+                    fontWeight: 600, 
+                    fontSize: '0.9rem',
+                    background: 'rgba(66, 165, 245, 0.15)',
+                    color: '#1565c0',
+                    border: '1px solid rgba(66, 165, 245, 0.3)'
+                  }} 
+                />
+                <Typography 
+                  variant="h3" 
+                  component="h2" 
+                  sx={{ 
+                    fontWeight: 800,
+                    color: 'text.primary',
+                    mb: 2,
+                    fontSize: { xs: '2rem', md: '2.5rem' },
+                    lineHeight: 1.2
+                  }}
+                >
+                  Core Values That Define Us
+                </Typography>
+                <Typography 
+                  variant="subtitle1" 
+                  sx={{ 
+                    color: 'text.secondary', 
+                    maxWidth: '700px', 
+                    mx: 'auto',
+                    fontSize: { xs: '1rem', md: '1.125rem' },
+                    lineHeight: 1.7
+                  }}
+                >
+                  Our foundational principles guide every decision we make and reflect our unwavering commitment to excellence and integrity in everything we do.
+                </Typography>
+              </Box>
+
+              <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
+                {[
+                  { 
+                    icon: '❤️', 
+                    title: 'Love', 
+                    description: 'Caring for each other and building a supportive community',
+                    color: '#ff4081'
+                  },
+                  { 
+                    icon: '🤝', 
+                    title: 'Respect', 
+                    description: 'Valuing diversity and treating everyone with dignity',
+                    color: '#7b1fa2'
+                  },
+                  { 
+                    icon: '✅', 
+                    title: 'Honesty', 
+                    description: 'Maintaining transparency and truthfulness in all actions',
+                    color: '#1976d2'
+                  },
+                  { 
+                    icon: '🛡️', 
+                    title: 'Integrity', 
+                    description: 'Upholding strong moral principles and ethical standards',
+                    color: '#2e7d32'
+                  }
+                ].map((value, index) => (
+                  <Grid item xs={12} sm={6} md={3} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+                    <Box 
+                      sx={{
+                        height: '100%',
+                        p: { xs: 3, md: 4 },
+                        textAlign: 'center',
+                        borderRadius: 3,
+                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                        bgcolor: 'background.paper',
+                        border: '1px solid',
+                        borderColor: 'divider',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+                        '&:hover': {
+                          transform: 'translateY(-8px)',
+                          boxShadow: '0 15px 30px rgba(25, 118, 210, 0.15)',
+                          borderColor: 'transparent',
+                          '& .value-icon': {
+                            transform: 'scale(1.1) rotate(5deg)',
+                            boxShadow: '0 10px 25px rgba(0,0,0,0.1)'
+                          }
+                        },
+                        position: 'relative',
+                        overflow: 'hidden',
+                        '&:after': {
+                          content: '""',
+                          position: 'absolute',
+                          bottom: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '4px',
+                          background: `linear-gradient(90deg, ${value.color} 0%, ${value.color}80 100%)`,
+                          transform: 'scaleX(0)',
+                          transformOrigin: 'left',
+                          transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                        },
+                        '&:hover:after': {
+                          transform: 'scaleX(1)'
+                        }
+                      }}
+                    >
+                      <Box
+                        className="value-icon"
+                        sx={{
+                          width: 100,
+                          height: 100,
+                          borderRadius: '50%',
+                          background: `linear-gradient(135deg, ${value.color} 0%, ${value.color}cc 100%)`,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          mx: 'auto',
+                          mb: 3,
+                          color: 'white',
+                          fontSize: '42px',
+                          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                          boxShadow: '0 8px 20px rgba(0,0,0,0.1)'
+                        }}
+                      >
+                        {value.icon}
+                      </Box>
+                      <Typography 
+                        variant="h5" 
+                        component="h3" 
+                        sx={{ 
+                          fontWeight: 700,
+                          color: 'text.primary',
+                          mb: 2,
+                          fontSize: '1.4rem',
+                          position: 'relative',
+                          display: 'inline-block',
+                          '&:after': {
+                            content: '""',
+                            position: 'absolute',
+                            bottom: -8,
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: '40px',
+                            height: '3px',
+                            background: `linear-gradient(90deg, ${value.color} 0%, ${value.color}80 100%)`,
+                            borderRadius: '3px'
+                          }
+                        }}
+                      >
+                        {value.title}
+                      </Typography>
+                      <Typography 
+                        variant="body1" 
+                        sx={{ 
+                          color: 'text.secondary',
+                          lineHeight: 1.7,
+                          fontSize: '1rem'
+                        }}
+                      >
+                        {value.description}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </Box>
 
         </div>
       </div>

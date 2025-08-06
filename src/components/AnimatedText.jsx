@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@mui/material';
 
-const AnimatedText = ({ text, variant = 'body1', sx = {}, delay = 1000, speed = 100, trigger = 0 }) => {
+const AnimatedText = ({ text, variant = 'body1', sx = {}, delay = 0, speed = 2000, trigger = 0 }) => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);

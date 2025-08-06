@@ -200,9 +200,10 @@ const About = () => {
                       marginRight: 'auto',
                       lineHeight: '1.5',
                       textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-                      fontWeight: '400'
+                      fontWeight: '400',
+                      fontFamily: '"Montserrat", sans-serif'
                     }}>
-                      Passionate educators dedicated to nurture young minds
+                      Nurturing talent in every student through quality education and character development
                     </p>
                   </div>
                 </div>
@@ -350,12 +351,12 @@ const About = () => {
                 { 
                   icon: '🎯', 
                   title: 'Personalized Learning', 
-                  subtitle: 'Tailored to each child' 
+                  subtitle: <span style={{ fontStyle: 'italic', color: '#E74C3C' }}>Tailored to each child</span>
                 },
                 { 
                   icon: '🌟', 
                   title: 'Holistic Growth', 
-                  subtitle: 'Mind, body & spirit' 
+                  subtitle: <span style={{ fontStyle: 'italic', color: '#E74C3C' }}>Mind. Body. Spirit</span>
                 }
               ].map((item, index) => (
                 <Grid item xs={12} sm={6} key={index}>

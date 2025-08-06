@@ -502,7 +502,7 @@ const About = () => {
                 }
               }
             }}>
-              <Box component="span" sx={{ fontSize: '1.25rem' }}>✨</Box>
+             
             </Box>
           </Box>
         </Box>

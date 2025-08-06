@@ -94,8 +94,8 @@ const Footer = () => {
 
   const quickLinks = [
     { text: 'About Us', href: '/about' },
-    { text: 'Admission', href: '/admission' },
-    { text: 'Clubs', href: '/clubs' }
+    { text: 'Clubs', href: '/clubs' },
+    { text: 'Admission', href: '/admission' }
   ];
 
   const contactInfo = [

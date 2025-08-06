@@ -1422,45 +1422,147 @@ const Home = () => {
       </Box>
 
       {/* Call to Action Section */}
-      <Box sx={{ 
-        bgcolor: 'primary.main',
-        color: 'white',
-        borderRadius: 2,
-        p: 4,
-        mt: 8,
-        textAlign: 'center',
+      <Box 
+      sx={{
         position: 'relative',
+        color: 'white',
+        py: { xs: 10, md: 12 },
+        px: 4,
+        borderRadius: 4,
+        textAlign: 'center',
         overflow: 'hidden',
-        '&:before': {
+        mb: 8,
+        backgroundImage: 'linear-gradient(135deg, rgba(25, 118, 210, 0.9) 0%, rgba(13, 71, 161, 0.95) 100%)',
+        boxShadow: '0 15px 35px rgba(0,0,0,0.1)',
+        '&::before': {
           content: '""',
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(135deg, #1976d2 0%, #0d47a1 100%)',
-          zIndex: 0,
-          opacity: 0.9
+          background: 'url("/classroom2.jpg") center/cover no-repeat',
+          zIndex: -1,
+          opacity: 0.15
         }
       }}>
-        <Box position="relative" zIndex={1}>
-          <Typography variant="h4" gutterBottom>
-            Ready to Transform Your Child's Future?
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Join the TBJS community and give your child the best start in life.
-          </Typography>
-          <Button
-            variant="outlined"
-            color="inherit"
-            size="large"
-            endIcon={<ArrowForward />}
-            sx={{ mt: 2 }}
-            href="/admission"
+        <Container maxWidth="md">
+          <Box 
+            position="relative" 
+            zIndex={1}
+            sx={{
+              px: { xs: 2, sm: 4 },
+              py: { xs: 4, md: 6 },
+              backdropFilter: 'blur(2px)',
+              borderRadius: 3
+            }}
           >
-            Apply Now
-          </Button>
-        </Box>
+            <Typography 
+              variant="h3" 
+              component="h2"
+              gutterBottom 
+              sx={{
+                fontWeight: 700,
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                lineHeight: 1.2,
+                mb: 3,
+                textShadow: '0 2px 4px rgba(0,0,0,0.2)'
+              }}
+            >
+              Ready to Transform Your Child's Future?
+            </Typography>
+            
+            <Typography 
+              variant="h6" 
+              component="p"
+              sx={{
+                maxWidth: '700px',
+                mx: 'auto',
+                mb: 4,
+                fontSize: { xs: '1.1rem', md: '1.25rem' },
+                lineHeight: 1.6,
+                opacity: 0.95
+              }}
+            >
+              Join the TBJS community and give your child the best start in life.
+              <Box 
+                component="span" 
+                sx={{ 
+                  display: 'block',
+                  mt: 1,
+                  fontWeight: 500,
+                  color: 'rgba(255,255,255,0.9)'
+                }}
+              >
+                Enrollment ongoing. Reserve your spot today.
+              </Box>
+            </Typography>
+            
+            <Box sx={{ 
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              gap: 2,
+              justifyContent: 'center',
+              mt: 2
+            }}>
+              <Button
+                variant="contained"
+                color="secondary"
+                size="large"
+                endIcon={<ArrowForward />}
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  fontSize: '1.1rem',
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  borderRadius: 2,
+                  boxShadow: '0 4px 14px rgba(25, 118, 210, 0.4)',
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 6px 20px rgba(25, 118, 210, 0.5)'
+                  },
+                  transition: 'all 0.3s ease'
+                }}
+                href="/admission"
+              >
+                Apply Now
+              </Button>
+              
+              <Button
+                variant="outlined"
+                color="inherit"
+                size="large"
+                startIcon={<School />}
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  fontSize: '1.1rem',
+                  fontWeight: 500,
+                  textTransform: 'none',
+                  borderRadius: 2,
+                  borderWidth: '2px',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255,255,255,0.1)',
+                    borderWidth: '2px'
+                  }
+                }}
+                href="/about"
+              >
+                Learn More
+              </Button>
+            </Box>
+            
+            <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 3, alignItems: 'center' }}>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star key={star} sx={{ color: '#ffd700', fontSize: '1.5rem' }} />
+              ))}
+              <Typography variant="body2" sx={{ ml: 1, opacity: 0.9 }}>
+                Rated 5/5 by 100+ parents
+              </Typography>
+            </Box>
+          </Box>
+        </Container>
       </Box>
     </Container>
   );

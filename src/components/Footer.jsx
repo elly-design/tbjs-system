@@ -21,9 +21,19 @@ const Footer = () => {
   const handleSubscribe = async (e) => {
     e.preventDefault();
     
-    // Basic email validation
     const trimmedEmail = email.trim().toLowerCase();
-    if (!trimmedEmail || !/\S+@\S+\.\S+/.test(trimmedEmail)) {
+    
+    // Enhanced validation
+    if (!trimmedEmail) {
+      setSnackbar({
+        open: true,
+        message: 'Please enter an email address',
+        severity: 'error',
+      });
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
       setSnackbar({
         open: true,
         message: 'Please enter a valid email address',
@@ -35,47 +45,52 @@ const Footer = () => {
     setLoading(true);
 
     try {
-      // First check if email already exists
+      // First check if email exists
       const { data: existing, error: checkError } = await supabase
         .from('newsletter_subscribers')
-        .select('email')
+        .select('email, created_at, updated_at')
         .eq('email', trimmedEmail)
         .maybeSingle();
 
       if (checkError) throw checkError;
-      
+
       if (existing) {
-        throw { code: 'P0001', message: 'Email already subscribed' };
+        // Email already exists
+        setSnackbar({
+          open: true,
+          message: 'You are already subscribed!',
+          severity: 'error',
+        });
+      } else {
+        // Insert new subscription
+        const { data, error: insertError } = await supabase
+          .from('newsletter_subscribers')
+          .insert([{ 
+            email: trimmedEmail,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          }])
+          .select();
+
+        if (insertError) throw insertError;
+
+        setSnackbar({
+          open: true,
+          message: 'Thank you for subscribing!',
+          severity: 'success',
+        });
       }
 
-      // If email doesn't exist, insert new subscription
-      const { error: insertError } = await supabase
-        .from('newsletter_subscribers')
-        .insert([{ 
-          email: trimmedEmail,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        }]);
-
-      if (insertError) throw insertError;
-
-      setSnackbar({
-        open: true,
-        message: 'Thank you for subscribing to our newsletter!',
-        severity: 'success',
-      });
       setEmail('');
     } catch (error) {
       console.error('Subscription error:', error);
       
       let errorMessage = 'Failed to subscribe. Please try again.';
       
-      if (error.code === 'P0001' || error.message?.includes('already subscribed')) {
-        errorMessage = 'This email is already subscribed.';
-      } else if (error.message?.includes('permission denied')) {
-        errorMessage = 'Subscription service is currently unavailable.';
-      } else if (error.message?.includes('network')) {
-        errorMessage = 'Network error. Please check your connection and try again.';
+      if (error.code === '42501') { // Insufficient privileges
+        errorMessage = 'Subscription service is currently unavailable. Please try again later.';
+      } else if (error.message?.toLowerCase().includes('network')) {
+        errorMessage = 'Network error. Please check your connection.';
       }
       
       setSnackbar({
@@ -123,13 +138,92 @@ const Footer = () => {
   ];
 
   return (
-    <Box component="footer" sx={{ 
-      bgcolor: 'primary.dark', 
-      color: 'white', 
-      pt: { xs: 6, md: 8 },
-      pb: { xs: 3, md: 4 },
-      borderTop: '1px solid rgba(255, 255, 255, 0.1)'
-    }}>
+    <>
+      {/* Snackbar for notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        TransitionProps={{
+          appear: true,
+          timeout: 300,
+        }}
+        sx={{
+          '&.MuiSnackbar-root': {
+            top: '24px',
+          },
+          '& .MuiPaper-root': {
+            minWidth: '300px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
+            '&.MuiAlert-filledSuccess': {
+              backgroundColor: '#00c853', // Brighter, more vibrant green
+              background: 'linear-gradient(135deg, #00c853 0%, #5efc82 100%)',
+              color: '#fff',
+              boxShadow: '0 4px 15px rgba(0, 200, 83, 0.3)',
+              borderLeft: '4px solid #00e676',
+              '& .MuiAlert-icon': {
+                color: '#fff',
+              },
+            },
+            '&.MuiAlert-filledError': {
+              backgroundColor: '#f44336',
+              color: '#fff',
+            },
+            '&.MuiAlert-filledInfo': {
+              backgroundColor: '#ff3d00',
+              background: 'linear-gradient(135deg, #ff3d00 0%, #ff9e80 100%)',
+              color: '#fff',
+              boxShadow: '0 4px 15px rgba(255, 61, 0, 0.3)',
+              borderLeft: '4px solid #ff6e40',
+              '& .MuiAlert-icon': {
+                color: '#fff',
+              },
+            },
+            '&.MuiAlert-filledWarning': {
+              backgroundColor: '#ff9800',
+              color: '#fff',
+            },
+          },
+        }}
+      >
+        <Alert 
+          onClose={handleCloseSnackbar} 
+          severity={snackbar.severity} 
+          variant="filled"
+          sx={{ 
+            width: '100%',
+            alignItems: 'center',
+          py: 1,
+          '& .MuiAlert-message': {
+            fontSize: '1.05rem',
+            fontWeight: 600,
+            letterSpacing: '0.3px',
+          },
+          '& .MuiSvgIcon-root': {
+            fontSize: '1.75rem',
+            marginRight: '12px',
+          },
+          '& .MuiAlert-action': {
+            paddingLeft: '16px',
+            marginRight: 0,
+          }
+          }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
+
+      <Box component="footer" sx={{ 
+        bgcolor: 'primary.dark', 
+        color: 'white', 
+        pt: { xs: 6, md: 8 },
+        pb: { xs: 3, md: 4 },
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        position: 'relative',
+        zIndex: 1
+      }}>
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 6 }}>
           {/* School Info Column */}
@@ -658,7 +752,8 @@ const Footer = () => {
           </Box>
         </Box>
       </Container>
-    </Box>
+      </Box>
+    </>
   );
 };
 

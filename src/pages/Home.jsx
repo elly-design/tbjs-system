@@ -239,7 +239,7 @@ const Home = () => {
                 width: '80px',
                 height: '80px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.1), rgba(100, 181, 246, 0.1))',
+                background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.15), rgba(255, 138, 128, 0.15))',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -252,7 +252,7 @@ const Home = () => {
                   width: '100%',
                   height: '100%',
                   borderRadius: '50%',
-                  border: '2px dashed rgba(25, 118, 210, 0.2)',
+                  border: '2px dashed rgba(255, 82, 82, 0.3)',
                   animation: 'spin 20s linear infinite',
                   '@keyframes spin': {
                     '0%': { transform: 'rotate(0deg)' },
@@ -262,7 +262,7 @@ const Home = () => {
               }}>
                 <School sx={{
                   fontSize: 40,
-                  color: '#1976d2',
+                  color: '#ff5252',
                   position: 'relative',
                   zIndex: 1
                 }} />
@@ -278,7 +278,7 @@ const Home = () => {
                   display: 'block',
                   width: '40px',
                   height: '3px',
-                  background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                  background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
                   margin: '12px auto 0',
                   borderRadius: '3px'
                 }
@@ -319,7 +319,7 @@ const Home = () => {
                 width: '80px',
                 height: '80px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 193, 7, 0.1))',
+                background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.15), rgba(255, 138, 128, 0.15))',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -332,13 +332,13 @@ const Home = () => {
                   width: '100%',
                   height: '100%',
                   borderRadius: '50%',
-                  border: '2px dashed rgba(255, 152, 0, 0.2)',
+                  border: '2px dashed rgba(255, 82, 82, 0.3)',
                   animation: 'spin 20s linear infinite',
                 }
               }}>
                 <SportsBasketball sx={{
                   fontSize: 40,
-                  color: '#ff9800',
+                  color: '#d32f2f',
                   position: 'relative',
                   zIndex: 1
                 }} />
@@ -354,7 +354,7 @@ const Home = () => {
                   display: 'block',
                   width: '40px',
                   height: '3px',
-                  background: 'linear-gradient(90deg, #ff9800, #ffc107)',
+                  background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
                   margin: '12px auto 0',
                   borderRadius: '3px'
                 }
@@ -392,29 +392,33 @@ const Home = () => {
               }
             }}>
               <Box sx={{
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1))',
+                width: '90px',
+                height: '90px',
+                borderRadius: '24px',
+                background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.15), rgba(255, 138, 128, 0.15))',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                margin: '0 auto 25px',
+                margin: '0 auto 30px',
                 position: 'relative',
-                transition: 'all 0.3s ease',
+                transition: 'all 0.4s ease',
+                '&:hover': {
+                  transform: 'scale(1.1) rotate(5deg)',
+                  backgroundColor: 'rgba(25, 118, 210, 0.15)'
+                },
                 '&:before': {
                   content: '""',
                   position: 'absolute',
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '50%',
-                  border: '2px dashed rgba(76, 175, 80, 0.2)',
-                  animation: 'spin 20s linear infinite',
+                  width: 'calc(100% + 10px)',
+                  height: 'calc(100% + 10px)',
+                  borderRadius: '30px',
+                  border: '2px dashed rgba(255, 82, 82, 0.4)',
+                  animation: 'pulse 3s ease-in-out infinite',
                 }
               }}>
                 <Science sx={{
-                  fontSize: 40,
-                  color: '#4caf50',
+                  fontSize: 46,
+                  color: '#ff1744',
                   position: 'relative',
                   zIndex: 1
                 }} />
@@ -428,11 +432,17 @@ const Home = () => {
                 '&:after': {
                   content: '""',
                   display: 'block',
-                  width: '40px',
-                  height: '3px',
-                  background: 'linear-gradient(90deg, #4caf50, #8bc34a)',
-                  margin: '12px auto 0',
-                  borderRadius: '3px'
+                  width: '50px',
+                  height: '4px',
+                  background: 'linear-gradient(90deg, #ff1744, #ff5252)',
+                  margin: '15px auto 0',
+                  borderRadius: '4px',
+                  transition: 'all 0.3s ease',
+                  transformOrigin: 'center'
+                },
+                '&:hover:after': {
+                  width: '70px',
+                  background: 'linear-gradient(90deg, #ff5252, #ff1744)'
                 }
               }}>
                 Modern Facilities
@@ -495,18 +505,22 @@ const Home = () => {
         <Grid container spacing={4}>
           {/* PP1 Kindergarten Program */}
           <Grid item xs={12} md={6}>
-            <Card 
+            <Paper 
               elevation={3} 
               sx={{ 
-                height: '100%',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                p: 4, 
+                height: '100%', 
+                borderRadius: '16px',
+                transition: 'all 0.3s ease',
+                background: 'linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%)',
+                border: '1px solid rgba(25, 118, 210, 0.1)',
                 '&:hover': {
-                  transform: 'translateY(-5px)',
-                  boxShadow: '0 15px 30px rgba(0,0,0,0.1)'
+                  transform: 'translateY(-8px)',
+                  boxShadow: '0 20px 40px rgba(25, 118, 210, 0.15)'
                 }
               }}
             >
-              <CardActionArea sx={{ height: '100%' }}>
+              <Box sx={{ height: '100%' }}>
                 <Box
                   component="img"
                   src="/public/pp1.jpeg"
@@ -515,18 +529,19 @@ const Home = () => {
                     width: '100%',
                     height: { xs: '250px', sm: '300px' },
                     objectFit: 'cover',
-                    display: 'block'
+                    display: 'block',
+                    borderRadius: '8px 8px 0 0'
                   }}
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = '/public/pp1.jpg';
                   }}
                 />
-                <CardContent sx={{ p: 3 }}>
+                <Box sx={{ p: 3 }}>
                   <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 700, color: '#1a237e' }}>
                     PP1 Kindergarten Program
                   </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.7 }}>
+                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: '1.7' }}>
                     Our PP1 program provides a nurturing environment where young learners develop essential skills through play-based learning. Our curriculum focuses on holistic development, including language, numeracy and social-emotional growth.
                   </Typography>
                   <Box sx={{ mt: 3 }}>
@@ -536,8 +551,8 @@ const Home = () => {
                       sx={{ 
                         mr: 1, 
                         mb: 1,
-                        bgcolor: 'rgba(25, 118, 210, 0.1)',
-                        color: '#1976d2',
+                        background: 'rgba(211, 47, 47, 0.1)',
+                        color: '#ff5252',
                         fontWeight: 600
                       }} 
                     />
@@ -546,7 +561,7 @@ const Home = () => {
                       sx={{ 
                         mr: 1, 
                         mb: 1,
-                        bgcolor: 'rgba(0, 150, 136, 0.1)',
+                        background: 'rgba(25, 118, 210, 0.1)',
                         color: '#00897b',
                         fontWeight: 600
                       }} 
@@ -556,31 +571,35 @@ const Home = () => {
                       sx={{ 
                         mr: 1, 
                         mb: 1,
-                        bgcolor: 'rgba(255, 152, 0, 0.1)',
+                        background: 'rgba(211, 47, 47, 0.1)',
                         color: '#ef6c00',
                         fontWeight: 600
                       }} 
                     />
                   </Box>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+                </Box>
+              </Box>
+            </Paper>
           </Grid>
 
           {/* CBC Group Discussions */}
           <Grid item xs={12} md={6}>
-            <Card 
-              elevation={3}
+            <Paper 
+              elevation={3} 
               sx={{ 
-                height: '100%',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                p: 4, 
+                height: '100%', 
+                borderRadius: '16px',
+                transition: 'all 0.3s ease',
+                background: 'linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%)',
+                border: '1px solid rgba(25, 118, 210, 0.1)',
                 '&:hover': {
-                  transform: 'translateY(-5px)',
-                  boxShadow: '0 15px 30px rgba(0,0,0,0.1)'
+                  transform: 'translateY(-8px)',
+                  boxShadow: '0 20px 40px rgba(25, 118, 210, 0.15)'
                 }
               }}
             >
-              <CardActionArea sx={{ height: '100%' }}>
+              <Box sx={{ height: '100%' }}>
                 <Box
                   component="img"
                   src="/public/group discussion.jpeg"
@@ -589,18 +608,19 @@ const Home = () => {
                     width: '100%',
                     height: { xs: '250px', sm: '300px' },
                     objectFit: 'cover',
-                    display: 'block'
+                    display: 'block',
+                    borderRadius: '8px 8px 0 0'
                   }}
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = '/public/group discussion.jpg';
                   }}
                 />
-                <CardContent sx={{ p: 3 }}>
+                <Box sx={{ p: 3 }}>
                   <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 700, color: '#1a237e' }}>
                     CBC Group Discussions
                   </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.7 }}>
+                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: '1.7' }}>
                     Our CBC-aligned group discussions foster critical thinking, communication and collaboration. Students engage in meaningful dialogues, develop problem-solving skills, and learn to articulate their thoughts effectively in a supportive environment.
                   </Typography>
                   <Box sx={{ mt: 3 }}>
@@ -609,7 +629,7 @@ const Home = () => {
                       sx={{ 
                         mr: 1, 
                         mb: 1,
-                        bgcolor: 'rgba(233, 30, 99, 0.1)',
+                        background: 'rgba(233, 30, 99, 0.1)',
                         color: '#c2185b',
                         fontWeight: 600
                       }} 
@@ -619,7 +639,7 @@ const Home = () => {
                       sx={{ 
                         mr: 1, 
                         mb: 1,
-                        bgcolor: 'rgba(103, 58, 183, 0.1)',
+                        background: 'rgba(103, 58, 183, 0.1)',
                         color: '#512da8',
                         fontWeight: 600
                       }} 
@@ -629,15 +649,15 @@ const Home = () => {
                       sx={{ 
                         mr: 1, 
                         mb: 1,
-                        bgcolor: 'rgba(0, 150, 136, 0.1)',
+                        background: 'rgba(25, 118, 210, 0.1)',
                         color: '#00796b',
                         fontWeight: 600
                       }} 
                     />
                   </Box>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+                </Box>
+              </Box>
+            </Paper>
           </Grid>
         </Grid>
       </Box>
@@ -791,7 +811,7 @@ const Home = () => {
                   left: 0,
                   right: 0,
                   height: '4px',
-                  background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                  background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
                   transition: 'transform 0.4s ease'
                 }
               }}>
@@ -801,12 +821,12 @@ const Home = () => {
                     width: '100px',
                     height: '100px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.08) 0%, rgba(100, 181, 246, 0.2) 100%)',
+                    background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.1) 0%, rgba(255, 138, 128, 0.2) 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     margin: '0 auto 24px',
-                    color: '#1976d2',
+                    color: '#ff5252',
                     fontSize: '2.5rem',
                     fontWeight: '800',
                     position: 'relative',
@@ -819,7 +839,7 @@ const Home = () => {
                       right: '-5px',
                       bottom: '-5px',
                       borderRadius: '50%',
-                      border: '2px dashed rgba(25, 118, 210, 0.2)',
+                      border: '2px dashed rgba(255, 82, 82, 0.3)',
                       animation: 'spin 20s linear infinite',
                       '@keyframes spin': {
                         '0%': { transform: 'rotate(0deg)' },
@@ -868,7 +888,7 @@ const Home = () => {
                       transform: 'translateX(-50%)',
                       width: '40px',
                       height: '3px',
-                      background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                      background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
                       borderRadius: '3px'
                     }
                   }}
@@ -929,12 +949,12 @@ const Home = () => {
                     width: '100px',
                     height: '100px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(129, 199, 132, 0.2) 100%)',
+                    background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.1) 0%, rgba(255, 138, 128, 0.2) 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     margin: '0 auto 24px',
-                    color: '#4caf50',
+                    color: '#d32f2f',
                     fontSize: '2.5rem',
                     fontWeight: '800',
                     position: 'relative',
@@ -947,7 +967,7 @@ const Home = () => {
                       right: '-5px',
                       bottom: '-5px',
                       borderRadius: '50%',
-                      border: '2px dashed rgba(76, 175, 80, 0.2)',
+                      border: '2px dashed rgba(255, 82, 82, 0.3)',
                       animation: 'spin 20s linear infinite',
                       '@keyframes spin': {
                         '0%': { transform: 'rotate(0deg)' },
@@ -1057,12 +1077,12 @@ const Home = () => {
                     width: '100px',
                     height: '100px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(255, 152, 0, 0.08) 0%, rgba(255, 183, 77, 0.2) 100%)',
+                    background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.1) 0%, rgba(255, 138, 128, 0.2) 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     margin: '0 auto 24px',
-                    color: '#ff9800',
+                    color: '#d32f2f',
                     fontSize: '2.5rem',
                     fontWeight: '800',
                     position: 'relative',
@@ -1075,7 +1095,7 @@ const Home = () => {
                       right: '-5px',
                       bottom: '-5px',
                       borderRadius: '50%',
-                      border: '2px dashed rgba(255, 152, 0, 0.2)',
+                      border: '2px dashed rgba(255, 82, 82, 0.3)',
                       animation: 'spin 20s linear infinite',
                       '@keyframes spin': {
                         '0%': { transform: 'rotate(0deg)' },
@@ -1260,7 +1280,7 @@ const Home = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginRight: '15px',
-                  color: '#1976d2',
+                  color: '#ff5252',
                   fontWeight: 'bold',
                   fontSize: '1.2rem'
                 }}>
@@ -1329,7 +1349,7 @@ const Home = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginRight: '15px',
-                  color: '#1976d2',
+                  color: '#ff5252',
                   fontWeight: 'bold',
                   fontSize: '1.2rem'
                 }}>
@@ -1398,7 +1418,7 @@ const Home = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginRight: '15px',
-                  color: '#1976d2',
+                  color: '#ff5252',
                   fontWeight: 'bold',
                   fontSize: '1.2rem'
                 }}>

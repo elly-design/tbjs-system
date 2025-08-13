@@ -140,16 +140,38 @@ const Home = () => {
             mt: { xs: 2.5, sm: 3 }
           }
         }}>
-          <Box sx={{
+          <Box sx={{ 
             display: 'inline-block',
             background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
             color: 'white',
-            padding: { xs: '8px 22px', sm: '10px 28px' },
-            borderRadius: '30px',
-            fontSize: { xs: '0.95rem', sm: '1.05rem' },
+            padding: { xs: '10px 24px', sm: '12px 30px' },
+            borderRadius: '50px',
+            fontSize: { xs: '1rem', sm: '1.1rem' },
             fontWeight: '600',
-            boxShadow: '0 4px 15px rgba(25, 118, 210, 0.2)',
-            transform: 'translateZ(0)'
+            boxShadow: '0 6px 20px rgba(25, 118, 210, 0.3)',
+            position: 'relative',
+            overflow: 'hidden',
+            zIndex: 1,
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 10px 25px rgba(25, 118, 210, 0.4)',
+            },
+            '&:before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(45deg, #1976d2, #42a5f5, #1976d2)',
+              zIndex: -1,
+              opacity: 0,
+              transition: 'opacity 0.5s ease',
+            },
+            '&:hover:before': {
+              opacity: 1,
+            }
           }}>
             Our Strengths
           </Box>
@@ -209,15 +231,18 @@ const Home = () => {
           </Box>
         </Box>
 
-        <Grid container spacing={0} sx={{ 
-          mt: 2,
+        <Grid container spacing={{ xs: 3, md: 4 }} sx={{ 
+          mt: { xs: 3, md: 5 },
+          px: { xs: 2, sm: 3 },
+          justifyContent: 'center',
           '& > .MuiGrid-item': {
-            px: { xs: 2, sm: 3 },
-            mb: { xs: 2, md: 0 }
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'stretch'
           }
         }}>
           {/* Academic Excellence */}
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <Paper elevation={0} sx={{
               p: 4,
               height: '100%',
@@ -235,36 +260,43 @@ const Home = () => {
                 }
               }
             }}>
-              <Box sx={{
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.15), rgba(255, 138, 128, 0.15))',
+              <Box className="strength-icon-container" sx={{
+                width: '90px',
+                height: '90px',
+                borderRadius: '25px',
+                background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(129, 199, 132, 0.15))',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                margin: '0 auto 25px',
+                margin: '0 auto 30px',
                 position: 'relative',
-                transition: 'all 0.3s ease',
+                transition: 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                boxShadow: '0 10px 30px rgba(255, 152, 0, 0.15)',
                 '&:before': {
                   content: '""',
                   position: 'absolute',
                   width: '100%',
                   height: '100%',
-                  borderRadius: '50%',
-                  border: '2px dashed rgba(255, 82, 82, 0.3)',
-                  animation: 'spin 20s linear infinite',
-                  '@keyframes spin': {
-                    '0%': { transform: 'rotate(0deg)' },
-                    '100%': { transform: 'rotate(360deg)' }
-                  }
+                  borderRadius: '30px',
+                  border: '2px dashed rgba(255, 82, 82, 0.4)',
+                  animation: 'pulse 3s ease-in-out infinite',
                 }
               }}>
                 <School sx={{
-                  fontSize: 40,
-                  color: '#ff5252',
+                  fontSize: { xs: 42, sm: 50 },
+                  color: '#ff1744',
                   position: 'relative',
-                  zIndex: 1
+                  zIndex: 1,
+                  filter: 'drop-shadow(0 4px 8px rgba(255, 23, 68, 0.3))'
+                }} />
+                <Box sx={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '20px',
+                  background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)',
+                  zIndex: 0,
+                  opacity: 0.6
                 }} />
               </Box>
               <Typography variant="h5" sx={{
@@ -297,7 +329,7 @@ const Home = () => {
           </Grid>
 
           {/* Sports & Activities */}
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <Paper elevation={0} sx={{
               p: 4,
               height: '100%',
@@ -337,10 +369,20 @@ const Home = () => {
                 }
               }}>
                 <SportsBasketball sx={{
-                  fontSize: 40,
-                  color: '#d32f2f',
+                  fontSize: { xs: 40, sm: 44 },
+                  color: '#ff1744',
                   position: 'relative',
-                  zIndex: 1
+                  zIndex: 1,
+                  filter: 'drop-shadow(0 4px 8px rgba(255, 23, 68, 0.3))'
+                }} />
+                <Box sx={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '20px',
+                  background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)',
+                  zIndex: 0,
+                  opacity: 0.6
                 }} />
               </Box>
               <Typography variant="h5" sx={{
@@ -373,7 +415,7 @@ const Home = () => {
           </Grid>
 
           {/* Modern Facilities */}
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <Paper elevation={0} sx={{
               p: 4,
               height: '100%',
@@ -704,29 +746,30 @@ const Home = () => {
                 content: '""',
                 display: 'block',
                 width: '60px',
-                height: '3px',
-                background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
-                margin: '24px auto 0',
-                borderRadius: '3px'
               }
             }}
           >
             <Chip 
               label="Our Impact" 
-              color="primary" 
               sx={{ 
                 mb: 3, 
-                px: 2.5, 
-                py: 0.5, 
-                fontSize: '0.9rem',
-                fontWeight: 600,
+                px: 3, 
+                py: 1, 
+                fontSize: '0.95rem',
+                fontWeight: 700,
                 background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
                 color: 'white',
-                boxShadow: '0 5px 15px rgba(25, 118, 210, 0.2)',
-                letterSpacing: '0.5px',
+                boxShadow: '0 8px 20px rgba(25, 118, 210, 0.25)',
+                letterSpacing: '1px',
                 textTransform: 'uppercase',
                 position: 'relative',
                 overflow: 'hidden',
+                transform: 'translateY(0)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 12px 25px rgba(25, 118, 210, 0.35)'
+                },
                 '&:before': {
                   content: '""',
                   position: 'absolute',
@@ -734,16 +777,18 @@ const Home = () => {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%)',
+                  background: 'linear-gradient(45deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)',
                   zIndex: 1
                 }
               }} 
               icon={
                 <Star sx={{ 
                   color: 'white', 
-                  fontSize: '1rem',
-                  marginLeft: '8px',
-                  filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.1))'
+                  fontSize: '1.1rem',
+                  ml: 0.5,
+                  filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.1))',
+                  position: 'relative',
+                  zIndex: 2
                 }} />
               }
             />
@@ -751,57 +796,139 @@ const Home = () => {
               variant="h3" 
               component="h2"
               sx={{ 
-                fontWeight: 800, 
-                color: '#0a1f44',
-                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-                lineHeight: 1.2,
-                mb: 2,
-                letterSpacing: '-0.5px',
-                background: 'linear-gradient(90deg, #0a1f44, #1976d2)',
+                fontWeight: 900, 
+                fontSize: { xs: '2.25rem', sm: '2.75rem', md: '3.5rem' },
+                lineHeight: 1.1,
+                mb: 3,
+                letterSpacing: '-1px',
+                background: 'linear-gradient(90deg, #1565c0, #42a5f5)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
+                display: 'block',
+                position: 'relative',
+                maxWidth: '800px',
+                mx: 'auto',
+                '&:after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-12px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '100px',
+                  height: '4px',
+                  background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                  borderRadius: '4px',
+                  transition: 'all 0.4s ease',
+                  boxShadow: '0 2px 8px rgba(25, 118, 210, 0.3)'
+                },
+                '&:hover:after': {
+                  width: '150px',
+                  background: 'linear-gradient(90deg, #64b5f6, #1976d2)'
+                },
+                '@media (max-width: 600px)': {
+                  fontSize: '2rem',
+                  lineHeight: 1.2,
+                  mb: 2,
+                  '&:after': {
+                    bottom: '-10px',
+                    height: '3px',
+                    width: '80px'
+                  },
+                  '&:hover:after': {
+                    width: '100px'
+                  }
+                }
               }}
             >
-              Building Futures, Creating Leaders
+              Building Futures,<br />Creating Leaders
             </Typography>
             <Typography 
               variant="body1" 
               sx={{ 
                 color: '#4a5568', 
-                maxWidth: '720px',
+                maxWidth: '800px',
                 mx: 'auto',
-                fontSize: { xs: '1.1rem', md: '1.2rem' },
+                fontSize: { xs: '1.15rem', md: '1.3rem' },
                 lineHeight: 1.7,
                 fontWeight: 400,
-                px: { xs: 2, sm: 0 }
+                px: { xs: 2, sm: 3, md: 0 },
+                textShadow: '0 1px 2px rgba(0,0,0,0.05)'
               }}
             >
-              Join our growing community of learners, educators and successful alumni making a difference in the world. Our commitment to excellence shapes tomorrow's leaders today.
+              Join our growing community of learners, educators, and successful alumni making a difference in the world. Our commitment to excellence shapes tomorrow's leaders today.
             </Typography>
           </Box>
 
-          <Grid container spacing={4} justifyContent="center">
+          <Grid container spacing={{ xs: 3, md: 4 }} sx={{ 
+            justifyContent: 'center',
+            position: 'relative',
+            zIndex: 1,
+            '&:before': {
+              content: '""',
+              position: 'absolute',
+              top: '-100px',
+              right: '-100px',
+              width: '300px',
+              height: '300px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(255,82,82,0.05) 0%, rgba(255,255,255,0) 70%)',
+              zIndex: -1,
+              '@media (max-width: 600px)': {
+                width: '200px',
+                height: '200px',
+                top: '-50px',
+                right: '-50px'
+              }
+            },
+            '&:after': {
+              content: '""',
+              position: 'absolute',
+              bottom: '-150px',
+              left: '-100px',
+              width: '400px',
+              height: '400px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(25,118,210,0.05) 0%, rgba(255,255,255,0) 70%)',
+              zIndex: -1,
+              '@media (max-width: 600px)': {
+                width: '250px',
+                height: '250px',
+                bottom: '-100px',
+                left: '-80px'
+              }
+            }
+          }}>
             {/* Alumni Stat */}
             <Grid item xs={12} sm={6} md={4}>
               <Box sx={{
-                background: 'white',
-                borderRadius: 4,
-                p: 4,
+                background: 'rgba(255, 255, 255, 0.9)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '20px',
+                p: { xs: 3, md: 4 },
                 height: '100%',
                 textAlign: 'center',
-                boxShadow: '0 15px 35px rgba(0,0,0,0.05)',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                boxShadow: '0 10px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.02)',
+                transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
                 position: 'relative',
                 overflow: 'hidden',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
                 '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                  transform: 'translateY(-10px) scale(1.02)',
+                  boxShadow: '0 25px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.03)',
                   '&:before': {
-                    transform: 'scale(1.1)'
+                    transform: 'scaleX(1.1)'
                   },
                   '& .stat-icon': {
-                    transform: 'scale(1.1) rotate(5deg)'
+                    transform: 'scale(1.1) rotate(8deg)',
+                    '&:before': {
+                      transform: 'rotate(360deg)',
+                      opacity: 0.7
+                    }
+                  },
+                  '& .count': {
+                    background: 'linear-gradient(45deg, #ff5252, #ff8a80)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
                   }
                 },
                 '&:before': {
@@ -810,58 +937,91 @@ const Home = () => {
                   top: 0,
                   left: 0,
                   right: 0,
-                  height: '4px',
+                  height: '6px',
                   background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
-                  transition: 'transform 0.4s ease'
+                  transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                  zIndex: 1
+                },
+                '&:after': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%)',
+                  zIndex: -1,
+                  borderRadius: '20px',
+                  border: '1px solid rgba(255, 255, 255, 0.5)'
                 }
               }}>
                 <Box 
                   className="stat-icon"
                   sx={{
-                    width: '100px',
-                    height: '100px',
+                    width: { xs: '100px', md: '120px' },
+                    height: { xs: '100px', md: '120px' },
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.1) 0%, rgba(255, 138, 128, 0.2) 100%)',
+                    background: 'linear-gradient(145deg, #ffffff, #f5f5f5)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    margin: '0 auto 24px',
-                    color: '#ff5252',
-                    fontSize: '2.5rem',
-                    fontWeight: '800',
+                    margin: '0 auto 30px',
                     position: 'relative',
-                    transition: 'all 0.4s ease',
+                    transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                    boxShadow: '8px 8px 16px rgba(0,0,0,0.08), -8px -8px 16px rgba(255,255,255,0.8)',
                     '&:before': {
                       content: '""',
                       position: 'absolute',
-                      top: '-5px',
-                      left: '-5px',
-                      right: '-5px',
-                      bottom: '-5px',
+                      top: '-6px',
+                      left: '-6px',
+                      right: '-6px',
+                      bottom: '-6px',
                       borderRadius: '50%',
-                      border: '2px dashed rgba(255, 82, 82, 0.3)',
-                      animation: 'spin 20s linear infinite',
-                      '@keyframes spin': {
-                        '0%': { transform: 'rotate(0deg)' },
-                        '100%': { transform: 'rotate(360deg)' }
+                      background: 'linear-gradient(135deg, rgba(255,82,82,0.1), rgba(255,138,128,0.2))',
+                      zIndex: -1,
+                      transition: 'all 0.6s ease',
+                      opacity: 0.5,
+                      animation: 'pulse 4s ease-in-out infinite',
+                      '@keyframes pulse': {
+                        '0%, 100%': { transform: 'scale(1)', opacity: 0.5 },
+                        '50%': { transform: 'scale(1.05)', opacity: 0.8 }
                       }
+                    },
+                    '&:after': {
+                      content: '""',
+                      position: 'absolute',
+                      top: '2px',
+                      left: '2px',
+                      right: '2px',
+                      bottom: '2px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(145deg, #ffffff, #f5f5f5)',
+                      zIndex: 0,
+                      boxShadow: 'inset 2px 2px 5px rgba(0,0,0,0.05)'
                     },
                     '& .icon-container': {
                       position: 'relative',
-                      zIndex: 1,
+                      zIndex: 2,
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
                       '& .count': {
-                        fontSize: '2.5rem',
-                        fontWeight: 800,
+                        fontSize: { xs: '2.5rem', md: '3rem' },
+                        fontWeight: 900,
                         lineHeight: 1,
-                        marginBottom: '4px'
+                        marginBottom: '6px',
+                        color: '#0a1f44',
+                        background: 'linear-gradient(45deg, #0a1f44, #d32f2f)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        transition: 'all 0.6s ease'
                       },
                       '& .icon': {
-                        fontSize: '2rem',
-                        marginTop: '4px',
-                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
+                        fontSize: { xs: '2rem', md: '2.5rem' },
+                        marginTop: '6px',
+                        color: '#ff5252',
+                        filter: 'drop-shadow(0 4px 8px rgba(255,82,82,0.2))',
+                        transition: 'all 0.4s ease'
                       }
                     }
                   }}
@@ -876,20 +1036,25 @@ const Home = () => {
                   sx={{ 
                     fontWeight: 800, 
                     color: '#0a1f44',
-                    mb: 2,
-                    fontSize: '1.5rem',
+                    mb: 3,
+                    fontSize: { xs: '1.5rem', md: '1.75rem' },
                     position: 'relative',
                     display: 'inline-block',
                     '&:after': {
                       content: '""',
                       position: 'absolute',
-                      bottom: '-8px',
+                      bottom: '-12px',
                       left: '50%',
                       transform: 'translateX(-50%)',
-                      width: '40px',
-                      height: '3px',
+                      width: '50px',
+                      height: '4px',
                       background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
-                      borderRadius: '3px'
+                      borderRadius: '4px',
+                      transition: 'all 0.4s ease'
+                    },
+                    '&:hover:after': {
+                      width: '70px',
+                      background: 'linear-gradient(90deg, #ff8a80, #ff5252)'
                     }
                   }}
                 >

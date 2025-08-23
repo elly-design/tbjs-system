@@ -68,54 +68,167 @@ const Contact = () => {
   };
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Typography 
-        variant="h4" 
-        component="h1" 
-        gutterBottom 
-        align="center"
-        sx={{
-          fontFamily: '"Berlin Sans FB Demi", "Arial Rounded MT Bold", "Arial", sans-serif',
-          fontWeight: 'bold',
-          letterSpacing: '0.5px',
-          textTransform: 'uppercase',
-          color: '#1976d2',
-          textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
+      <Box 
+        sx={{ 
+          textAlign: 'center', 
+          mb: 6,
+          background: 'linear-gradient(135deg, #f5f9ff 0%, #e3f2fd 100%)',
+          p: 4,
+          borderRadius: 2,
+          boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
         }}
       >
-        Contact Us
-      </Typography>
+        <Typography 
+          variant="h3" 
+          component="h1"
+          sx={{
+            fontWeight: 700,
+            color: '#0d47a1',
+            mb: 2,
+            fontSize: { xs: '2rem', md: '2.5rem' },
+            fontFamily: '"Poppins", "Roboto", sans-serif'
+          }}
+        >
+          Need any help?
+        </Typography>
+        <Typography 
+          variant="h4" 
+          component="h2"
+          sx={{
+            fontWeight: 600,
+            color: '#1976d2',
+            mb: 3,
+            fontSize: { xs: '1.5rem', md: '2rem' },
+            fontFamily: '"Poppins", "Roboto", sans-serif'
+          }}
+        >
+          Get in touch with us
+        </Typography>
+        <Typography 
+          variant="h6" 
+          component="p"
+          sx={{
+            color: '#455a64',
+            maxWidth: '800px',
+            mx: 'auto',
+            lineHeight: 1.7,
+            fontSize: { xs: '1rem', md: '1.1rem' },
+            mb: 3
+          }}
+        >
+          At <strong style={{ color: '#0d47a1' }}>Transformer Blessed Junior School</strong>, we value communication and collaboration. 
+          Whether you have questions, feedback or need assistance, we're here to help! 
+          Feel free to reach out through any of the following channels:
+        </Typography>
+      </Box>
 
       <Grid container spacing={4} sx={{ mt: 4 }}>
         <Grid item xs={12} md={6}>
           <Paper elevation={3} sx={{ p: 4 }}>
-            <Typography variant="h5" gutterBottom>
-              Get in Touch
+            <Typography 
+              variant="h5" 
+              gutterBottom
+              sx={{
+                color: '#0d47a1',
+                fontWeight: 600,
+                borderBottom: '2px solid #1976d2',
+                display: 'inline-block',
+                pb: 1,
+                mb: 3
+              }}
+            >
+              Send us a Message
             </Typography>
             <Box sx={{ mt: 2 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <LocationOn sx={{ fontSize: 24, mr: 1 }} />
-                <Typography>
-                  Mombasa, Kenya
-                </Typography>
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'flex-start', 
+                  mb: 3,
+                  p: 2,
+                  borderRadius: 1
+                }}
+              >
+                <LocationOn sx={{ 
+                  fontSize: 28, 
+                  color: '#1976d2',
+                  mr: 2,
+                  mt: 0.5
+                }} />
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>
+                    Our Location
+                  </Typography>
+                  <Typography variant="body1" color="text.secondary">
+                    Mombasa, Kenya
+                  </Typography>
+                </Box>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Phone sx={{ fontSize: 24, mr: 1 }} />
-                <Typography>
-                  Admission:+254727492055<br />Office: +254722983388
-                </Typography>
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'flex-start', 
+                  mb: 3,
+                  p: 2,
+                  borderRadius: 1
+                }}
+              >
+                <Phone sx={{ 
+                  fontSize: 28, 
+                  color: '#1976d2',
+                  mr: 2,
+                  mt: 0.5
+                }} />
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>
+                    Call Us
+                  </Typography>
+                  <Typography variant="body1" color="text.secondary">
+                    Office: +254 722 983 388
+                  </Typography>
+                </Box>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Email sx={{ fontSize: 24, mr: 1 }} />
-                <Typography>
-                  transformerblessedjnr@gmail.com
-                </Typography>
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'flex-start', 
+                  mb: 3,
+                  p: 2,
+                  borderRadius: 1
+                }}
+              >
+                <Email sx={{ 
+                  fontSize: 28, 
+                  color: '#1976d2',
+                  mr: 2,
+                  mt: 0.5
+                }} />
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>
+                    Email Us
+                  </Typography>
+                  <Typography variant="body1" color="text.secondary">
+                    transformerblessedjnr@gmail.com
+                  </Typography>
+                </Box>
               </Box>
             </Box>
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>
           <Paper elevation={3} sx={{ p: 4 }}>
-            <Typography variant="h5" gutterBottom>
+            <Typography 
+              variant="h5" 
+              gutterBottom
+              sx={{
+                color: '#0d47a1',
+                fontWeight: 600,
+                borderBottom: '2px solid #1976d2',
+                display: 'inline-block',
+                pb: 1,
+                mb: 3
+              }}
+            >
               Send us a Message
             </Typography>
             <form onSubmit={handleSubmit}>
@@ -163,11 +276,25 @@ const Contact = () => {
                 onChange={handleChange}
               />
               <Button
+                type="submit"
                 variant="contained"
                 color="primary"
-                size="large"
-                sx={{ mt: 2 }}
-                type="submit"
+                disabled={loading}
+                fullWidth
+                sx={{ 
+                  mt: 2,
+                  py: 1.5,
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  borderRadius: 1,
+                  boxShadow: '0 4px 6px rgba(25, 118, 210, 0.2)',
+                  '&:hover': {
+                    boxShadow: '0 6px 10px rgba(25, 118, 210, 0.3)',
+                    transform: 'translateY(-1px)'
+                  },
+                  transition: 'all 0.2s ease'
+                }}
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </Button>

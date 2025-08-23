@@ -271,7 +271,7 @@ const Admission = () => {
               textTransform: 'uppercase'
             }}
           >
-            Student Admission
+            Admission Enquiry
           </Typography>
           <Box sx={{
             width: '80px',
@@ -352,7 +352,7 @@ const Admission = () => {
           fontWeight: '400'
         }}>
           We're delighted you're considering <strong>Transformer Blessed Junior School</strong> for your child's education. 
-          Our dedicated team is here to support you through every step of the admissions journey.
+          Our dedicated team is here to support you through every step of the admission's journey.
         </Typography>
         
         <Typography variant="h6" component="div" sx={{

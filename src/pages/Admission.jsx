@@ -300,6 +300,88 @@ const Admission = () => {
         </Alert>
       </Snackbar>
 
+      {/* Welcome Message */}
+      <Box sx={{
+        maxWidth: '1000px',
+        mx: 'auto',
+        my: 6,
+        p: { xs: 3, md: 6 },
+        textAlign: 'center',
+        background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.02) 0%, rgba(25, 118, 210, 0.05) 100%)',
+        borderRadius: '16px',
+        border: '1px solid rgba(25, 118, 210, 0.1)',
+        boxShadow: '0 8px 32px rgba(25, 118, 210, 0.1)',
+        position: 'relative',
+        overflow: 'hidden',
+        '&:before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '4px',
+          background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+          opacity: 0.8
+        }
+      }}>
+        <School sx={{
+          fontSize: '4rem',
+          color: '#1976d2',
+          mb: 3,
+          opacity: 0.9
+        }} />
+        
+        <Typography variant="h4" component="h2" sx={{
+          color: '#1a237e',
+          fontWeight: '700',
+          mb: 3,
+          fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' },
+          lineHeight: 1.2,
+          letterSpacing: '-0.5px'
+        }}>
+          Begin Your Educational Journey With Us
+        </Typography>
+        
+        <Typography variant="h6" component="div" sx={{
+          color: '#37474f',
+          lineHeight: '1.9',
+          mb: 3,
+          fontSize: { xs: '1.1rem', sm: '1.25rem' },
+          maxWidth: '800px',
+          mx: 'auto',
+          fontWeight: '400'
+        }}>
+          We're delighted you're considering <strong>Transformer Blessed Junior School</strong> for your child's education. 
+          Our dedicated team is here to support you through every step of the admissions journey.
+        </Typography>
+        
+        <Typography variant="h6" component="div" sx={{
+          color: '#1a237e',
+          lineHeight: '1.8',
+          mb: 4,
+          fontSize: { xs: '1.1rem', sm: '1.25rem' },
+          fontWeight: '500',
+          maxWidth: '800px',
+          mx: 'auto',
+          px: { xs: 2, sm: 4 },
+          py: 3,
+          backgroundColor: 'rgba(25, 118, 210, 0.05)',
+          borderRadius: '8px',
+          borderLeft: '4px solid #1976d2'
+        }}>
+          To begin your application, please complete the admission form below:
+        </Typography>
+        
+        <Box sx={{
+          width: '100px',
+          height: '4px',
+          background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+          margin: '20px auto 0',
+          borderRadius: '2px',
+          opacity: 0.7
+        }} />
+      </Box>
+
       <Paper elevation={3} sx={{ p: 4, mt: 4 }}>
         <Typography variant="h5" gutterBottom>
           Student Information

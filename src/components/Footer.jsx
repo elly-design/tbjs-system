@@ -243,10 +243,7 @@ const Footer = () => {
                 mb: 3,
                 filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.2))',
                 display: 'block',
-                transition: 'transform 0.3s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)'
-                }
+                
               }}
               onError={(e) => { e.target.style.display = 'none' }}
             />

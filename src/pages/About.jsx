@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Container, Grid, Box, Chip, Button } from '@mui/material';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
@@ -367,7 +368,7 @@ const About = () => {
                     p: 2,
                     borderRadius: 2,
                     height: '100%',
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.4s ease',
                     '&:hover': {
                       transform: 'translateY(-2px)',
                       bgcolor: 'rgba(25, 118, 210, 0.08)'
@@ -577,7 +578,7 @@ const About = () => {
                 </Typography>
               </Box>
 
-              <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
+              <Grid container spacing={{ xs: 2, sm: 3, md: 4 }} justifyContent="center" sx={{ px: { xs: 1, sm: 2, md: 3 } }}>
                 {[
                   { 
                     icon: '❤️', 
@@ -604,102 +605,156 @@ const About = () => {
                     color: '#2e7d32'
                   }
                 ].map((value, index) => (
-                  <Grid item xs={12} sm={6} md={3} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
-                    <Box 
-                      sx={{
-                        height: '100%',
-                        p: { xs: 3, md: 4 },
-                        textAlign: 'center',
-                        borderRadius: 3,
-                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                        bgcolor: 'background.paper',
-                        border: '1px solid',
-                        borderColor: 'divider',
-                        boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-                        '&:hover': {
-                          transform: 'translateY(-8px)',
-                          boxShadow: '0 15px 30px rgba(25, 118, 210, 0.15)',
-                          borderColor: 'transparent',
-                          '& .value-icon': {
-                            transform: 'scale(1.1) rotate(5deg)',
-                            boxShadow: '0 10px 25px rgba(0,0,0,0.1)'
+                  <Grid 
+                    item 
+                    xs={12} 
+                    sm={6} 
+                    md={3} 
+                    key={index} 
+                    data-aos="fade-up" 
+                    data-aos-delay={index * 100}
+                    sx={{
+                      px: { xs: 1, sm: 2 },
+                      mb: { xs: 2, sm: 3, md: 0 },
+                      '&:last-child': {
+                        mb: 0
+                      }
+                    }}
+                  >
+                    <motion.div
+                      initial={{ x: -50, opacity: 0 }}
+                      animate={{ 
+                        x: [0, -5, 5, 0],
+                        opacity: 1,
+                        transition: {
+                          x: {
+                            repeat: Infinity,
+                            duration: 8,
+                            ease: 'easeInOut',
+                            times: [0, 0.2, 0.4, 0.6],
+                            delay: index * 0.5
+                          },
+                          opacity: {
+                            duration: 0.5,
+                            delay: index * 0.1
                           }
-                        },
-                        position: 'relative',
-                        overflow: 'hidden',
-                        '&:after': {
-                          content: '""',
-                          position: 'absolute',
-                          bottom: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '4px',
-                          background: `linear-gradient(90deg, ${value.color} 0%, ${value.color}80 100%)`,
-                          transform: 'scaleX(0)',
-                          transformOrigin: 'left',
-                          transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                        },
-                        '&:hover:after': {
-                          transform: 'scaleX(1)'
+                        }
+                      }}
+                      whileHover={{
+                        y: -5,
+                        scale: 1.02,
+                        boxShadow: '0 15px 30px rgba(25, 118, 210, 0.2)',
+                        transition: { 
+                          type: 'spring', 
+                          stiffness: 300, 
+                          damping: 10,
+                          y: { duration: 0.3 }
                         }
                       }}
                     >
-                      <Box
-                        className="value-icon"
+                      <Box 
                         sx={{
-                          width: 100,
-                          height: 100,
-                          borderRadius: '50%',
-                          background: `linear-gradient(135deg, ${value.color} 0%, ${value.color}cc 100%)`,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          mx: 'auto',
-                          mb: 3,
-                          color: 'white',
-                          fontSize: '42px',
+                          height: { xs: 'auto', sm: '100%' },
+                          minHeight: { xs: '280px', sm: '320px', md: '340px' },
+                          p: { xs: 2.5, sm: 3, md: 3.5 },
+                          textAlign: 'center',
+                          borderRadius: 3,
                           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                          boxShadow: '0 8px 20px rgba(0,0,0,0.1)'
-                        }}
-                      >
-                        {value.icon}
-                      </Box>
-                      <Typography 
-                        variant="h5" 
-                        component="h3" 
-                        sx={{ 
-                          fontWeight: 700,
-                          color: 'text.primary',
-                          mb: 2,
-                          fontSize: '1.4rem',
+                          bgcolor: 'background.paper',
+                          border: '1px solid',
+                          borderColor: 'divider',
+                          boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+                          '&:hover': {
+                            transform: 'translateY(-8px)',
+                            boxShadow: '0 15px 30px rgba(25, 118, 210, 0.15)',
+                            borderColor: 'transparent',
+                            '& .value-icon': {
+                              transform: 'scale(1.1) rotate(5deg)',
+                              boxShadow: '0 10px 25px rgba(0,0,0,0.1)'
+                            }
+                          },
+                          '@media (max-width: 600px)': {
+                            '&:hover': {
+                              transform: 'translateY(-4px)',
+                              boxShadow: '0 8px 20px rgba(25, 118, 210, 0.1)'
+                            }
+                          },
                           position: 'relative',
-                          display: 'inline-block',
+                          overflow: 'hidden',
                           '&:after': {
                             content: '""',
                             position: 'absolute',
-                            bottom: -8,
-                            left: '50%',
-                            transform: 'translateX(-50%)',
-                            width: '40px',
-                            height: '3px',
+                            bottom: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '4px',
                             background: `linear-gradient(90deg, ${value.color} 0%, ${value.color}80 100%)`,
-                            borderRadius: '3px'
+                            transform: 'scaleX(0)',
+                            transformOrigin: 'left',
+                            transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                          },
+                          '&:hover:after': {
+                            transform: 'scaleX(1)'
                           }
                         }}
                       >
-                        {value.title}
-                      </Typography>
-                      <Typography 
-                        variant="body1" 
-                        sx={{ 
-                          color: 'text.secondary',
-                          lineHeight: 1.7,
-                          fontSize: '1rem'
-                        }}
-                      >
-                        {value.description}
-                      </Typography>
-                    </Box>
+                        <Box
+                          className="value-icon"
+                          sx={{
+                            width: { xs: 85, sm: 90, md: 100 },
+                            height: { xs: 85, sm: 90, md: 100 },
+                            borderRadius: '50%',
+                            background: `linear-gradient(135deg, ${value.color} 0%, ${value.color}cc 100%)`,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            mx: 'auto',
+                            mb: 3,
+                            color: 'white',
+                            fontSize: { xs: '36px', sm: '40px', md: '42px' },
+                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                            boxShadow: '0 8px 20px rgba(0,0,0,0.1)'
+                          }}
+                        >
+                          {value.icon}
+                        </Box>
+                        <Typography 
+                          variant="h5" 
+                          component="h3" 
+                          sx={{ 
+                            fontWeight: 700,
+                            color: 'text.primary',
+                            mb: 2,
+                            fontSize: '1.4rem',
+                            position: 'relative',
+                            display: 'inline-block',
+                            '&:after': {
+                              content: '""',
+                              position: 'absolute',
+                              bottom: -8,
+                              left: '50%',
+                              transform: 'translateX(-50%)',
+                              width: '40px',
+                              height: '3px',
+                              background: `linear-gradient(90deg, ${value.color} 0%, ${value.color}80 100%)`,
+                              borderRadius: '3px'
+                            }
+                          }}
+                        >
+                          {value.title}
+                        </Typography>
+                        <Typography 
+                          variant="body1" 
+                          sx={{ 
+                            color: 'text.secondary',
+                            lineHeight: 1.7,
+                            fontSize: '1rem'
+                          }}
+                        >
+                          {value.description}
+                        </Typography>
+                      </Box>
+                    </motion.div>
                   </Grid>
                 ))}
               </Grid>

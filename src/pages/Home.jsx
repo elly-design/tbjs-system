@@ -14,8 +14,12 @@ import {
   Typography,
   Button,
   Fade,
-  Slide
+  Slide,
+  useTheme,
+  useMediaQuery,
+  Avatar
 } from '@mui/material';
+import { motion } from 'framer-motion';
 import { 
   School, 
   SportsBasketball, 
@@ -28,58 +32,7 @@ import {
   Groups,
   Person,
   PersonOutline,
-  PersonPin,
-  PersonPinCircle,
-  PersonAdd,
-  PersonAddAlt,
-  PersonAddAlt1,
-  PersonAddAltOutlined,
-  PersonAddDisabled,
-  PersonOff,
-  PersonOutlineOutlined,
-  PersonPinCircleOutlined,
-  PersonPinOutlined,
-  PersonRemove,
-  PersonRemoveAlt1,
-  PersonRemoveOutlined,
-  PersonSearch,
-  PersonSearchOutlined,
-  PersonSearchRounded,
-  PersonSearchSharp,
-  PersonSearchTwoTone,
-  PersonSharp,
-  PersonTwoTone,
-  PersonOutlineSharp,
-  PersonOutlineTwoTone,
-  PersonOffOutlined,
-  PersonOffRounded,
-  PersonOffSharp,
-  PersonOffTwoTone,
-  PersonAddAltRounded,
-  PersonAddAltSharp,
-  PersonAddAltTwoTone,
-  PersonAddDisabledOutlined,
-  PersonAddDisabledRounded,
-  PersonAddDisabledSharp,
-  PersonAddDisabledTwoTone,
-  PersonAddOutlined,
-  PersonAddRounded,
-  PersonAddSharp,
-  PersonAddTwoTone,
-  PersonOutlineRounded,
-  PersonPinCircleRounded,
-  PersonPinCircleSharp,
-  PersonPinCircleTwoTone,
-  PersonPinRounded,
-  PersonPinSharp,
-  PersonPinTwoTone,
-  PersonRemoveAlt1Outlined,
-  PersonRemoveAlt1Rounded,
-  PersonRemoveAlt1Sharp,
-  PersonRemoveAlt1TwoTone,
-  PersonRemoveRounded,
-  PersonRemoveSharp,
-  PersonRemoveTwoTone
+  PersonPin
 } from '@mui/icons-material';
 import ImageSlider from '../components/ImageSlider';
 import { Link as RouterLink } from 'react-router-dom';
@@ -444,19 +397,7 @@ const Home = () => {
                 margin: '0 auto 30px',
                 position: 'relative',
                 transition: 'all 0.4s ease',
-                '&:hover': {
-                  transform: 'scale(1.1) rotate(5deg)',
-                  backgroundColor: 'rgba(25, 118, 210, 0.15)'
-                },
-                '&:before': {
-                  content: '""',
-                  position: 'absolute',
-                  width: 'calc(100% + 10px)',
-                  height: 'calc(100% + 10px)',
-                  borderRadius: '30px',
-                  border: '2px dashed rgba(255, 82, 82, 0.4)',
-                  animation: 'pulse 3s ease-in-out infinite',
-                }
+                
               }}>
                 <Science sx={{
                   fontSize: 46,
@@ -482,10 +423,7 @@ const Home = () => {
                   transition: 'all 0.3s ease',
                   transformOrigin: 'center'
                 },
-                '&:hover:after': {
-                  width: '70px',
-                  background: 'linear-gradient(90deg, #ff5252, #ff1744)'
-                }
+                
               }}>
                 Modern Facilities
               </Typography>
@@ -1386,30 +1324,43 @@ const Home = () => {
           '& > .MuiGrid-item': {
             px: { xs: 2, sm: 3 },
             mb: { xs: 2, md: 0 },
-            '& > .MuiPaper-root': {
-              height: '100%',
-              p: { xs: 2, md: 4 },
-              mx: { xs: 2, sm: 0 },
-              '&:hover': {
-                transform: { xs: 'none', md: 'translateY(-5px)' },
-                boxShadow: { xs: '0 4px 12px rgba(0,0,0,0.1)', md: '0 15px 50px rgba(0,0,0,0.1)' }
-              }
-            }
+            overflow: 'hidden'
           }
         }}>
           {/* Testimonial 1 */}
-          <Grid item xs={12} md>
-            <Paper elevation={3} sx={{
-              background: 'white',
-              borderRadius: '12px',
-              padding: '30px',
-              position: 'relative',
-              height: '100%',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              '&:hover': {
-                transform: 'translateY(-5px)',
-                boxShadow: '0 15px 50px rgba(0,0,0,0.1)'
-              }
+          <Grid item>
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              whileInView={{ 
+                x: 0, 
+                opacity: 1,
+                transition: {
+                  type: 'spring',
+                  stiffness: 100,
+                  damping: 15,
+                  duration: 0.5,
+                  delay: 0.1
+                }
+              }}
+              viewport={{ once: true, margin: '-50px' }}
+            >
+              <Paper 
+                elevation={3} 
+                component={motion.div}
+                whileHover={{
+                  y: -5,
+                  transition: { type: 'spring', stiffness: 400, damping: 10 }
+                }}
+                sx={{
+                  borderRadius: '12px',
+                  transition: 'all 0.3s ease',
+                  height: '100%',
+                  p: { xs: 2, md: 4 },
+                  mx: { xs: 2, sm: 0 },
+                  '&:hover': {
+                    transform: { xs: 'none', md: 'translateY(-5px)' },
+                    boxShadow: { xs: '0 4px 12px rgba(0,0,0,0.1)', md: '0 15px 50px rgba(0,0,0,0.1)' }
+                  }
             }}>
               <Box sx={{
                 position: 'absolute',
@@ -1464,6 +1415,7 @@ const Home = () => {
                 </Box>
               </Box>
             </Paper>
+          </motion.div>
           </Grid>
 
           {/* Testimonial 2 */}

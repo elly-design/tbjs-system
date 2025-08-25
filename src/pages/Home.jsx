@@ -704,10 +704,7 @@ const Home = () => {
                 overflow: 'hidden',
                 transform: 'translateY(0)',
                 transition: 'all 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 12px 25px rgba(25, 118, 210, 0.35)'
-                },
+                
                 '&:before': {
                   content: '""',
                   position: 'absolute',
@@ -856,13 +853,7 @@ const Home = () => {
                   '&:before': {
                     transform: 'scaleX(1.1)'
                   },
-                  '& .stat-icon': {
-                    transform: 'scale(1.1) rotate(8deg)',
-                    '&:before': {
-                      transform: 'rotate(360deg)',
-                      opacity: 0.7
-                    }
-                  },
+                  
                   '& .count': {
                     background: 'linear-gradient(45deg, #ff5252, #ff8a80)',
                     WebkitBackgroundClip: 'text',
@@ -1031,9 +1022,7 @@ const Home = () => {
                   '&:before': {
                     transform: 'scale(1.1)'
                   },
-                  '& .stat-icon': {
-                    transform: 'scale(1.1) rotate(5deg)'
-                  }
+                  
                 },
                 '&:before': {
                   content: '""',
@@ -1159,9 +1148,7 @@ const Home = () => {
                   '&:before': {
                     transform: 'scale(1.1)'
                   },
-                  '& .stat-icon': {
-                    transform: 'scale(1.1) rotate(5deg)'
-                  }
+                  
                 },
                 '&:before': {
                   content: '""',

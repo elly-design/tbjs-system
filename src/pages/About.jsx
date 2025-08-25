@@ -664,15 +664,7 @@ const About = () => {
                           border: '1px solid',
                           borderColor: 'divider',
                           boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-                          '&:hover': {
-                            transform: 'translateY(-8px)',
-                            boxShadow: '0 15px 30px rgba(25, 118, 210, 0.15)',
-                            borderColor: 'transparent',
-                            '& .value-icon': {
-                              transform: 'scale(1.1) rotate(5deg)',
-                              boxShadow: '0 10px 25px rgba(0,0,0,0.1)'
-                            }
-                          },
+                          
                           '@media (max-width: 600px)': {
                             '&:hover': {
                               transform: 'translateY(-4px)',
@@ -693,9 +685,7 @@ const About = () => {
                             transformOrigin: 'left',
                             transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                           },
-                          '&:hover:after': {
-                            transform: 'scaleX(1)'
-                          }
+                          
                         }}
                       >
                         <Box

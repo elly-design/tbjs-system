@@ -168,21 +168,38 @@ const Navbar = () => {
             {menuItems.map((item) => (
               <Button 
                 key={item.path}
-                variant="contained"
+                variant="text"
                 component={RouterLink} 
                 to={item.path}
                 sx={{
-                  bgcolor: '#004d99',
-                  color: 'white',
-                  '&:hover': {
-                    bgcolor: '#003366',
-                    transform: 'scale(1.05)'
+                  color: '#1976d2',
+                  position: 'relative',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    width: '0',
+                    height: '2px',
+                    bottom: '8px',
+                    left: '50%',
+                    backgroundColor: '#1976d2',
+                    transition: 'all 0.3s ease',
+                    transform: 'translateX(-50%)',
                   },
-                  borderRadius: 2,
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                    '&::after': {
+                      width: '60%',
+                    }
+                  },
                   textTransform: 'none',
                   fontSize: '1rem',
                   px: 3,
-                  py: 1.5
+                  py: 1.5,
+                  '&.MuiButton-root.Mui-selected': {
+                    '&::after': {
+                      width: '60%',
+                    }
+                  }
                 }}
               >
                 {item.text}
@@ -200,13 +217,11 @@ const Navbar = () => {
           '& .MuiDrawer-paper': {
             width: '280px',
             boxSizing: 'border-box',
-            bgcolor: '#004d99',
-            color: 'white',
+            bgcolor: 'white',
+            color: '#1976d2',
             p: 3,
             borderRadius: 4,
             boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-            backdropFilter: 'blur(8px)',
-            background: 'linear-gradient(135deg, #004d99 0%, #003366 100%)',
           },
         }}
       >
@@ -219,13 +234,31 @@ const Navbar = () => {
               sx={{
                 mb: 1,
                 borderRadius: 2,
+                color: '#1976d2',
+                position: 'relative',
                 '&:hover': {
-                  bgcolor: '#003366',
+                  backgroundColor: 'transparent',
                   transform: 'translateX(5px)',
+                  '&::after': {
+                    width: '60%',
+                  }
+                },
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  width: '0',
+                  height: '2px',
+                  bottom: '8px',
+                  left: '50%',
+                  backgroundColor: '#1976d2',
                   transition: 'all 0.3s ease',
+                  transform: 'translateX(-50%)',
                 },
                 '&.Mui-selected': {
-                  bgcolor: '#003366',
+                  backgroundColor: 'transparent',
+                  '&::after': {
+                    width: '60%',
+                  }
                 }
               }}
             >
@@ -234,10 +267,11 @@ const Navbar = () => {
                 sx={{
                   fontSize: '1.1rem',
                   fontWeight: 'bold',
-                  opacity: 0.9,
-                  transition: 'opacity 0.3s ease',
+                  color: 'inherit',
+                  textAlign: 'center',
+                  width: '100%',
                   '&.Mui-selected': {
-                    opacity: 1,
+                    color: 'inherit',
                   }
                 }}
               />

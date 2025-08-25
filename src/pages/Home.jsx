@@ -441,58 +441,93 @@ const Home = () => {
       </Box>
 
       {/* Academic Programs Section */}
-      <Box sx={{ mt: 10, mb: 8 }}>
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Chip 
-            label="Learning Excellence" 
-            color="primary" 
-            sx={{ 
-              mb: 2, 
-              px: 2, 
-              py: 1, 
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
-              color: 'white'
-            }} 
-          />
-          <Typography 
-            variant="h4" 
-            sx={{ 
-              fontWeight: 700, 
-              color: '#1a237e',
-              fontSize: { xs: '1.8rem', sm: '2.125rem' },
-              lineHeight: 1.2,
-              mb: 2
-            }}
-          >
-            Our Academic Programs
-          </Typography>
-          <Typography 
-            variant="body1" 
-            sx={{ 
-              color: '#555', 
-              maxWidth: '700px',
-              mx: 'auto',
-              fontSize: '1.1rem',
-              lineHeight: 1.7
-            }}
-          >
-            Nurturing young minds through innovative and engaging learning experiences
-          </Typography>
-        </Box>
+      <Box sx={{ 
+        py: { xs: 8, md: 10 },
+        background: 'linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <Container maxWidth="lg">
+          <Box sx={{ 
+            textAlign: 'center', 
+            mb: { xs: 6, md: 8 },
+            position: 'relative',
+            zIndex: 1
+          }}>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Chip 
+                label="Champions in Academics" 
+                color="primary" 
+                sx={{ 
+                  mb: 2, 
+                  px: 2, 
+                  py: 1, 
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
+                  color: 'white',
+                  boxShadow: '0 4px 15px rgba(25, 118, 210, 0.2)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px'
+                }} 
+              />
+              <Typography 
+                variant="h3" 
+                component="h2" 
+                sx={{ 
+                  fontWeight: 800, 
+                  background: 'linear-gradient(90deg, #1a237e, #1976d2)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  mb: 3,
+                  fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                  lineHeight: 1.2,
+                  '&:after': {
+                    content: '""',
+                    display: 'block',
+                    width: '80px',
+                    height: '4px',
+                    background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                    margin: '1.5rem auto 0',
+                    borderRadius: '2px'
+                  }
+                }}
+              >
+                Nurturing Academic Excellence
+              </Typography>
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  color: '#4a5568', 
+                  maxWidth: '800px', 
+                  mx: 'auto',
+                  lineHeight: 1.8,
+                  fontSize: { xs: '1rem', md: '1.1rem' },
+                  px: { xs: 2, md: 4 },
+                  mb: 4
+                }}
+              >
+                At the heart of our mission is academic excellence. We provide a strong curriculum, dedicated teachers and modern learning approaches to ensure that every learner achieves their highest potential. By combining discipline with responsibility, our students are not just learners  they are champions in academics, capable of competing at the highest levels both nationally and globally.
+              </Typography>
+            </motion.div>
+          </Box>
 
-        <Grid container spacing={4}>
-          {/* PP1 Kindergarten Program */}
-          <Grid item xs={12} md={6}>
-            <Paper 
-              elevation={3} 
-              sx={{ 
-                p: 4, 
-                height: '100%', 
-                borderRadius: '16px',
-                transition: 'all 0.3s ease',
-                background: 'linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%)',
+          <Grid container spacing={4}>
+            {/* PP1 Kindergarten Program */}
+            <Grid item xs={12} md={6}>
+              <Paper 
+                elevation={3} 
+                sx={{ 
+                  p: 4, 
+                  height: '100%', 
+                  borderRadius: '16px',
+                  transition: 'all 0.3s ease',
+                  background: 'linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%)',
                 border: '1px solid rgba(25, 118, 210, 0.1)',
                 '&:hover': {
                   transform: 'translateY(-8px)',
@@ -580,684 +615,122 @@ const Home = () => {
               }}
             >
               <Box sx={{ height: '100%' }}>
-                <Box
-                  component="img"
-                  src="/public/group discussion.jpeg"
-                  alt="CBC Group Discussions"
-                  sx={{
-                    width: '100%',
-                    height: { xs: '250px', sm: '300px' },
-                    objectFit: 'cover',
-                    display: 'block',
-                    borderRadius: '8px 8px 0 0'
-                  }}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/public/group discussion.jpg';
-                  }}
-                />
-                <Box sx={{ p: 3 }}>
-                  <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 700, color: '#1a237e' }}>
-                    CBC Group Discussions
+                <Box sx={{ 
+                  position: 'relative',
+                  width: '100%',
+                  height: 0,
+                  paddingBottom: '66.67%', // 3:2 aspect ratio
+                  overflow: 'hidden',
+                  borderRadius: '8px 8px 0 0'
+                }}>
+                  <Box
+                    component="img"
+                    src="/public/grade 4.jpeg"
+                    alt="Students learning"
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center center',
+                      display: 'block',
+                      transition: 'transform 0.5s ease'
+                    }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/public/grade 5.jpeg';
+                    }}
+                  />
+                </Box>
+                <Box sx={{ p: 3, position: 'relative' }}>
+                  <Box sx={{
+                    position: 'absolute',
+                    top: '-12px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '60px',
+                    height: '4px',
+                    background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                    borderRadius: '2px'
+                  }} />
+                  <Typography variant="h5" component="h3" sx={{ 
+                    fontWeight: 800, 
+                    color: '#1a237e',
+                    mb: 2,
+                    textAlign: 'center',
+                    fontSize: '1.5rem',
+                    '&:after': {
+                      content: '""',
+                      display: 'block',
+                      width: '40px',
+                      height: '3px',
+                      background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                      margin: '12px auto 0',
+                      borderRadius: '2px'
+                    }
+                  }}>
+                    Academic Brilliance
                   </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: '1.7' }}>
-                    Our CBC-aligned group discussions foster critical thinking, communication and collaboration. Students engage in meaningful dialogues, develop problem-solving skills, and learn to articulate their thoughts effectively in a supportive environment.
+                  <Typography variant="body1" sx={{ 
+                    color: '#4a5568',
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem',
+                    textAlign: 'center'
+                  }}>
+                    We provide a dynamic learning atmosphere where every child is encouraged to ask questions, think creatively and explore knowledge beyond the classroom. Our learners gain both academic strength and practical skills to succeed in life.
                   </Typography>
-                  <Box sx={{ mt: 3 }}>
-                    <Chip 
-                      label="Critical Thinking" 
-                      sx={{ 
-                        mr: 1, 
-                        mb: 1,
-                        background: 'rgba(233, 30, 99, 0.1)',
-                        color: '#c2185b',
-                        fontWeight: 600
-                      }} 
-                    />
-                    <Chip 
-                      label="Teamwork" 
-                      sx={{ 
-                        mr: 1, 
-                        mb: 1,
-                        background: 'rgba(103, 58, 183, 0.1)',
-                        color: '#512da8',
-                        fontWeight: 600
-                      }} 
-                    />
-                    <Chip 
-                      label="Communication" 
-                      sx={{ 
-                        mr: 1, 
-                        mb: 1,
-                        background: 'rgba(25, 118, 210, 0.1)',
-                        color: '#00796b',
-                        fontWeight: 600
-                      }} 
-                    />
+                  <Box sx={{ 
+                    mt: 3,
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: 1
+                  }}>
+                    {["Personalized Learning", "Critical Thinking", "Hands-on Experience"].map((skill, index) => (
+                      <Chip 
+                        key={index}
+                        label={skill}
+                        sx={{ 
+                          background: 'rgba(25, 118, 210, 0.1)',
+                          color: '#1a237e',
+                          fontWeight: 600,
+                          px: 1.5,
+                          '&:hover': {
+                            transform: 'translateY(-2px)',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                          },
+                          transition: 'all 0.3s ease'
+                        }} 
+                      />
+                    ))}
                   </Box>
                 </Box>
               </Box>
             </Paper>
           </Grid>
-        </Grid>
-      </Box>
-
-      {/* Enhanced Statistics Section */}
-      <Box sx={{
-        mt: { xs: 8, md: 12 },
-        mb: 6,
-        position: 'relative',
-        overflow: 'hidden',
-        '&:before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '100%',
-          background: 'linear-gradient(135deg, rgba(245, 247, 250, 0.95) 0%, rgba(228, 232, 240, 0.95) 100%)',
-          zIndex: -1,
-          transform: 'skewY(-2deg)',
-          transformOrigin: 'top left',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.05)'
-        },
-        '&:after': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(circle at 10% 20%, rgba(25, 118, 210, 0.06) 0%, transparent 25%), radial-gradient(circle at 90% 80%, rgba(100, 181, 246, 0.06) 0%, transparent 25%)',
-          zIndex: -1,
-          pointerEvents: 'none'
-        },
-        py: { xs: 6, md: 8 }
-      }}>
-        <Container maxWidth="lg">
-          <Box 
-            sx={{ 
-              textAlign: 'center', 
-              mb: { xs: 6, md: 8 },
-              position: 'relative',
-              '&:after': {
-                content: '""',
-                display: 'block',
-                width: '60px',
-              }
-            }}
-          >
-            <Chip 
-              label="Our Impact" 
-              sx={{ 
-                mb: 3, 
-                px: 3, 
-                py: 1, 
-                fontSize: '0.95rem',
-                fontWeight: 700,
-                background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
-                color: 'white',
-                boxShadow: '0 8px 20px rgba(25, 118, 210, 0.25)',
-                letterSpacing: '1px',
-                textTransform: 'uppercase',
-                position: 'relative',
-                overflow: 'hidden',
-                transform: 'translateY(0)',
-                transition: 'all 0.3s ease',
-                
-                '&:before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: 'linear-gradient(45deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)',
-                  zIndex: 1
-                }
-              }} 
-              icon={
-                <Star sx={{ 
-                  color: 'white', 
-                  fontSize: '1.1rem',
-                  ml: 0.5,
-                  filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.1))',
-                  position: 'relative',
-                  zIndex: 2
-                }} />
-              }
-            />
-            <Typography 
-              variant="h3" 
-              component="h2"
-              sx={{ 
-                fontWeight: 900, 
-                fontSize: { xs: '2.25rem', sm: '2.75rem', md: '3.5rem' },
-                lineHeight: 1.1,
-                mb: 3,
-                letterSpacing: '-1px',
-                background: 'linear-gradient(90deg, #1565c0, #42a5f5)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'block',
-                position: 'relative',
-                maxWidth: '800px',
-                mx: 'auto',
-                '&:after': {
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '-12px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '100px',
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
-                  borderRadius: '4px',
-                  transition: 'all 0.4s ease',
-                  boxShadow: '0 2px 8px rgba(25, 118, 210, 0.3)'
-                },
-                '&:hover:after': {
-                  width: '150px',
-                  background: 'linear-gradient(90deg, #64b5f6, #1976d2)'
-                },
-                '@media (max-width: 600px)': {
-                  fontSize: '2rem',
-                  lineHeight: 1.2,
-                  mb: 2,
-                  '&:after': {
-                    bottom: '-10px',
-                    height: '3px',
-                    width: '80px'
-                  },
-                  '&:hover:after': {
-                    width: '100px'
-                  }
-                }
-              }}
-            >
-              Building Futures,<br />Creating Leaders
-            </Typography>
-            <Typography 
-              variant="body1" 
-              sx={{ 
-                color: '#4a5568', 
-                maxWidth: '800px',
-                mx: 'auto',
-                fontSize: { xs: '1.15rem', md: '1.3rem' },
-                lineHeight: 1.7,
-                fontWeight: 400,
-                px: { xs: 2, sm: 3, md: 0 },
-                textShadow: '0 1px 2px rgba(0,0,0,0.05)'
-              }}
-            >
-              Join our growing community of learners, educators, and successful alumni making a difference in the world. Our commitment to excellence shapes tomorrow's leaders today.
-            </Typography>
-          </Box>
-
-          <Grid container spacing={{ xs: 3, md: 4 }} sx={{ 
-            justifyContent: 'center',
-            position: 'relative',
-            zIndex: 1,
-            '&:before': {
-              content: '""',
-              position: 'absolute',
-              top: '-100px',
-              right: '-100px',
-              width: '300px',
-              height: '300px',
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(255,82,82,0.05) 0%, rgba(255,255,255,0) 70%)',
-              zIndex: -1,
-              '@media (max-width: 600px)': {
-                width: '200px',
-                height: '200px',
-                top: '-50px',
-                right: '-50px'
-              }
-            },
-            '&:after': {
-              content: '""',
-              position: 'absolute',
-              bottom: '-150px',
-              left: '-100px',
-              width: '400px',
-              height: '400px',
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(25,118,210,0.05) 0%, rgba(255,255,255,0) 70%)',
-              zIndex: -1,
-              '@media (max-width: 600px)': {
-                width: '250px',
-                height: '250px',
-                bottom: '-100px',
-                left: '-80px'
-              }
-            }
-          }}>
-            {/* Alumni Stat */}
-            <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{
-                background: 'rgba(255, 255, 255, 0.9)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '20px',
-                p: { xs: 3, md: 4 },
-                height: '100%',
-                textAlign: 'center',
-                boxShadow: '0 10px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.02)',
-                transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-                position: 'relative',
-                overflow: 'hidden',
-                border: '1px solid rgba(255, 255, 255, 0.5)',
-                '&:hover': {
-                  transform: 'translateY(-10px) scale(1.02)',
-                  boxShadow: '0 25px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.03)',
-                  '&:before': {
-                    transform: 'scaleX(1.1)'
-                  },
-                  
-                  '& .count': {
-                    background: 'linear-gradient(45deg, #ff5252, #ff8a80)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }
-                },
-                '&:before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '6px',
-                  background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
-                  transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-                  zIndex: 1
-                },
-                '&:after': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%)',
-                  zIndex: -1,
-                  borderRadius: '20px',
-                  border: '1px solid rgba(255, 255, 255, 0.5)'
-                }
-              }}>
-                <Box 
-                  className="stat-icon"
-                  sx={{
-                    width: { xs: '100px', md: '120px' },
-                    height: { xs: '100px', md: '120px' },
-                    borderRadius: '50%',
-                    background: 'linear-gradient(145deg, #ffffff, #f5f5f5)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 30px',
-                    position: 'relative',
-                    transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-                    boxShadow: '8px 8px 16px rgba(0,0,0,0.08), -8px -8px 16px rgba(255,255,255,0.8)',
-                    '&:before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: '-6px',
-                      left: '-6px',
-                      right: '-6px',
-                      bottom: '-6px',
-                      borderRadius: '50%',
-                      background: 'linear-gradient(135deg, rgba(255,82,82,0.1), rgba(255,138,128,0.2))',
-                      zIndex: -1,
-                      transition: 'all 0.6s ease',
-                      opacity: 0.5,
-                      animation: 'pulse 4s ease-in-out infinite',
-                      '@keyframes pulse': {
-                        '0%, 100%': { transform: 'scale(1)', opacity: 0.5 },
-                        '50%': { transform: 'scale(1.05)', opacity: 0.8 }
-                      }
-                    },
-                    '&:after': {
-                      content: '""',
-                      position: 'absolute',
-                      top: '2px',
-                      left: '2px',
-                      right: '2px',
-                      bottom: '2px',
-                      borderRadius: '50%',
-                      background: 'linear-gradient(145deg, #ffffff, #f5f5f5)',
-                      zIndex: 0,
-                      boxShadow: 'inset 2px 2px 5px rgba(0,0,0,0.05)'
-                    },
-                    '& .icon-container': {
-                      position: 'relative',
-                      zIndex: 2,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      '& .count': {
-                        fontSize: { xs: '2.5rem', md: '3rem' },
-                        fontWeight: 900,
-                        lineHeight: 1,
-                        marginBottom: '6px',
-                        color: '#0a1f44',
-                        background: 'linear-gradient(45deg, #0a1f44, #d32f2f)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        transition: 'all 0.6s ease'
-                      },
-                      '& .icon': {
-                        fontSize: { xs: '2rem', md: '2.5rem' },
-                        marginTop: '6px',
-                        color: '#ff5252',
-                        filter: 'drop-shadow(0 4px 8px rgba(255,82,82,0.2))',
-                        transition: 'all 0.4s ease'
-                      }
-                    }
-                  }}
-                >
-                  <Box className="icon-container">
-                    <EmojiEvents className="icon" sx={{ mb: 1 }} />
-                    <Box className="count">200+</Box>
-                  </Box>
-                </Box>
-                <Typography 
-                  variant="h5" 
-                  sx={{ 
-                    fontWeight: 800, 
-                    color: '#0a1f44',
-                    mb: 3,
-                    fontSize: { xs: '1.5rem', md: '1.75rem' },
-                    position: 'relative',
-                    display: 'inline-block',
-                    '&:after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: '-12px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '50px',
-                      height: '4px',
-                      background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
-                      borderRadius: '4px',
-                      transition: 'all 0.4s ease'
-                    },
-                    '&:hover:after': {
-                      width: '70px',
-                      background: 'linear-gradient(90deg, #ff8a80, #ff5252)'
-                    }
-                  }}
-                >
-                  Successful Alumni
-                </Typography>
-                <Typography 
-                  variant="body1" 
-                  sx={{ 
-                    color: '#4a5568',
-                    mt: 2,
-                    fontSize: '1.05rem',
-                    lineHeight: 1.7,
-                    px: { xs: 1, sm: 2 }
-                  }}
-                >
-                  Graduates excelling in diverse fields, making significant impacts in their communities and beyond.
-                </Typography>
-              </Box>
-            </Grid>
-
-            {/* Students Stat */}
-            <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{
-                background: 'white',
-                borderRadius: 4,
-                p: 4,
-                height: '100%',
-                textAlign: 'center',
-                boxShadow: '0 15px 35px rgba(0,0,0,0.05)',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                position: 'relative',
-                overflow: 'hidden',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                  '&:before': {
-                    transform: 'scale(1.1)'
-                  },
-                  
-                },
-                '&:before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #4caf50, #81c784)',
-                  transition: 'transform 0.4s ease'
-                }
-              }}>
-                <Box 
-                  className="stat-icon"
-                  sx={{
-                    width: '100px',
-                    height: '100px',
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.1) 0%, rgba(255, 138, 128, 0.2) 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 24px',
-                    color: '#d32f2f',
-                    fontSize: '2.5rem',
-                    fontWeight: '800',
-                    position: 'relative',
-                    transition: 'all 0.4s ease',
-                    '&:before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: '-5px',
-                      left: '-5px',
-                      right: '-5px',
-                      bottom: '-5px',
-                      borderRadius: '50%',
-                      border: '2px dashed rgba(255, 82, 82, 0.3)',
-                      animation: 'spin 20s linear infinite',
-                      '@keyframes spin': {
-                        '0%': { transform: 'rotate(0deg)' },
-                        '100%': { transform: 'rotate(360deg)' }
-                      }
-                    },
-                    '& .icon-container': {
-                      position: 'relative',
-                      zIndex: 1,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      '& .count': {
-                        fontSize: '2.5rem',
-                        fontWeight: 800,
-                        lineHeight: 1,
-                        marginBottom: '4px'
-                      },
-                      '& .icon': {
-                        fontSize: '2rem',
-                        marginTop: '4px',
-                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
-                      }
-                    }
-                  }}
-                >
-                  <Box className="icon-container">
-                    <School className="icon" sx={{ mb: 1 }} />
-                    <Box className="count">600+</Box>
-                  </Box>
-                </Box>
-                <Typography 
-                  variant="h5" 
-                  sx={{ 
-                    fontWeight: 800, 
-                    color: '#0a1f44',
-                    mb: 2,
-                    fontSize: '1.5rem',
-                    position: 'relative',
-                    display: 'inline-block',
-                    '&:after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: '-8px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '40px',
-                      height: '3px',
-                      background: 'linear-gradient(90deg, #4caf50, #81c784)',
-                      borderRadius: '3px'
-                    }
-                  }}
-                >
-                  Dedicated Students
-                </Typography>
-                <Typography 
-                  variant="body1" 
-                  sx={{ 
-                    color: '#4a5568',
-                    mt: 2,
-                    fontSize: '1.05rem',
-                    lineHeight: 1.7,
-                    px: { xs: 1, sm: 2 }
-                  }}
-                >
-                  Nurturing young minds in an innovative, supportive and inspiring learning environment.
-                </Typography>
-              </Box>
-            </Grid>
-
-            {/* Staff Stat */}
-            <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{
-                background: 'white',
-                borderRadius: 4,
-                p: 4,
-                height: '100%',
-                textAlign: 'center',
-                boxShadow: '0 15px 35px rgba(0,0,0,0.05)',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                position: 'relative',
-                overflow: 'hidden',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                  '&:before': {
-                    transform: 'scale(1.1)'
-                  },
-                  
-                },
-                '&:before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #ff9800, #ffb74d)',
-                  transition: 'transform 0.4s ease'
-                }
-              }}>
-                <Box 
-                  className="stat-icon"
-                  sx={{
-                    width: '100px',
-                    height: '100px',
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(255, 82, 82, 0.1) 0%, rgba(255, 138, 128, 0.2) 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 24px',
-                    color: '#d32f2f',
-                    fontSize: '2.5rem',
-                    fontWeight: '800',
-                    position: 'relative',
-                    transition: 'all 0.4s ease',
-                    '&:before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: '-5px',
-                      left: '-5px',
-                      right: '-5px',
-                      bottom: '-5px',
-                      borderRadius: '50%',
-                      border: '2px dashed rgba(255, 82, 82, 0.3)',
-                      animation: 'spin 20s linear infinite',
-                      '@keyframes spin': {
-                        '0%': { transform: 'rotate(0deg)' },
-                        '100%': { transform: 'rotate(360deg)' }
-                      }
-                    },
-                    '& .icon-container': {
-                      position: 'relative',
-                      zIndex: 1,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      '& .count': {
-                        fontSize: '2.5rem',
-                        fontWeight: 800,
-                        lineHeight: 1,
-                        marginBottom: '4px'
-                      },
-                      '& .icon': {
-                        fontSize: '2rem',
-                        marginTop: '4px',
-                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
-                      }
-                    }
-                  }}
-                >
-                  <Box className="icon-container">
-                    <Groups className="icon" sx={{ mb: 1 }} />
-                    <Box className="count">15+</Box>
-                  </Box>
-                </Box>
-                <Typography 
-                  variant="h5" 
-                  sx={{ 
-                    fontWeight: 800, 
-                    color: '#0a1f44',
-                    mb: 2,
-                    fontSize: '1.5rem',
-                    position: 'relative',
-                    display: 'inline-block',
-                    '&:after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: '-8px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '40px',
-                      height: '3px',
-                      background: 'linear-gradient(90deg, #ff9800, #ffb74d)',
-                      borderRadius: '3px'
-                    }
-                  }}
-                >
-                  Expert Staff
-                </Typography>
-                <Typography 
-                  variant="body1" 
-                  sx={{ 
-                    color: '#4a5568',
-                    mt: 2,
-                    fontSize: '1.05rem',
-                    lineHeight: 1.7,
-                    px: { xs: 1, sm: 2 }
-                  }}
-                >
-                  Passionate, qualified educators committed to nurturing each student's potential and success.
-                </Typography>
-              </Box>
-            </Grid>
           </Grid>
         </Container>
       </Box>
+
+      {/* Spacer */}
+      <Box sx={{ 
+        height: { xs: '60px', md: '100px' },
+        position: 'relative',
+        '&:before': {
+          content: '""',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '100px',
+          height: '3px',
+          background: 'linear-gradient(90deg, rgba(25, 118, 210, 0.2) 0%, rgba(25, 118, 210, 0.8) 50%, rgba(25, 118, 210, 0.2) 100%)',
+          borderRadius: '3px'
+        }
+      }} />
 
       {/* Testimonials Section */}
       <Box sx={{ 

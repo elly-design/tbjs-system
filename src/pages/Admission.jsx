@@ -504,7 +504,7 @@ const Admission = () => {
               <TextField
                 fullWidth
                 name="address"
-                label="Address"
+                label="Place of Residence"
                 variant="outlined"
                 margin="normal"
                 required

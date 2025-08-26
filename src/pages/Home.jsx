@@ -20,6 +20,7 @@ import {
   Avatar
 } from '@mui/material';
 import { motion } from 'framer-motion';
+import CountUp from 'react-countup';
 import { 
   School, 
   SportsBasketball, 
@@ -39,7 +40,8 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4, position: 'relative' }}>
+    <Box>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4, position: 'relative' }}>
       {/* Hero Section with Slideshow */}
       <Box sx={{ 
         position: 'relative', 
@@ -560,37 +562,39 @@ const Home = () => {
                     Our PP1 program provides a nurturing environment where young learners develop essential skills through play-based learning. Our curriculum focuses on holistic development, including language, numeracy and social-emotional growth.
                   </Typography>
                   <Box sx={{ mt: 3 }}>
-                    <Chip 
-                      label="Ages 4-5 Years" 
-                      color="primary" 
-                      sx={{ 
-                        mr: 1, 
-                        mb: 1,
-                        background: 'rgba(211, 47, 47, 0.1)',
-                        color: '#ff5252',
-                        fontWeight: 600
-                      }} 
-                    />
-                    <Chip 
-                      label="Play-Based Learning" 
-                      sx={{ 
-                        mr: 1, 
-                        mb: 1,
-                        background: 'rgba(25, 118, 210, 0.1)',
-                        color: '#00897b',
-                        fontWeight: 600
-                      }} 
-                    />
-                    <Chip 
-                      label="Holistic Development" 
-                      sx={{ 
-                        mr: 1, 
-                        mb: 1,
-                        background: 'rgba(211, 47, 47, 0.1)',
-                        color: '#ef6c00',
-                        fontWeight: 600
-                      }} 
-                    />
+                    <Box>
+                      <Chip 
+                        label="Ages 4-5 Years" 
+                        color="primary" 
+                        sx={{ 
+                          mr: 1, 
+                          mb: 1,
+                          background: 'rgba(211, 47, 47, 0.1)',
+                          color: '#ff5252',
+                          fontWeight: 600
+                        }} 
+                      />
+                      <Chip 
+                        label="Academic Excellence" 
+                        sx={{ 
+                          mr: 1, 
+                          mb: 1,
+                          background: 'rgba(25, 118, 210, 0.1)',
+                          color: '#1976d2',
+                          fontWeight: 600
+                        }} 
+                      />
+                      <Chip 
+                        label="Holistic Development" 
+                        sx={{ 
+                          mr: 1, 
+                          mb: 1,
+                          background: 'rgba(211, 47, 47, 0.1)',
+                          color: '#ef6c00',
+                          fontWeight: 600
+                        }} 
+                      />
+                    </Box>
                   </Box>
                 </Box>
               </Box>
@@ -689,23 +693,27 @@ const Home = () => {
                     justifyContent: 'center',
                     gap: 1
                   }}>
-                    {["Personalized Learning", "Critical Thinking", "Hands-on Experience"].map((skill, index) => (
-                      <Chip 
-                        key={index}
-                        label={skill}
-                        sx={{ 
-                          background: 'rgba(25, 118, 210, 0.1)',
-                          color: '#1a237e',
-                          fontWeight: 600,
-                          px: 1.5,
-                          '&:hover': {
-                            transform: 'translateY(-2px)',
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                          },
-                          transition: 'all 0.3s ease'
-                        }} 
-                      />
-                    ))}
+                    <Box>
+                      {['Science', 'Mathematics', 'Languages', 'Arts'].map((subject) => (
+                        <Chip 
+                          key={subject}
+                          label={subject} 
+                          sx={{ 
+                            mr: 1, 
+                            mb: 1,
+                            background: 'rgba(255, 255, 255, 0.8)',
+                            color: '#1a237e',
+                            fontWeight: 600,
+                            px: 1.5,
+                            '&:hover': {
+                              transform: 'translateY(-2px)',
+                              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                            },
+                            transition: 'all 0.3s ease'
+                          }} 
+                        />
+                      ))}
+                    </Box>
                   </Box>
                 </Box>
               </Box>
@@ -731,6 +739,361 @@ const Home = () => {
           borderRadius: '3px'
         }
       }} />
+
+      {/* Statistics Section */}
+      <Box sx={{ 
+        py: { xs: 6, md: 10 },
+        background: 'linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%)',
+        position: 'relative',
+        overflow: 'hidden',
+        '&:before': {
+          content: '""',
+          position: 'absolute',
+          width: '300px',
+          height: '300px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(25, 118, 210, 0.1) 0%, rgba(25, 118, 210, 0) 70%)',
+          top: '-100px',
+          right: '-100px',
+          zIndex: 0,
+          animation: 'float 8s ease-in-out infinite'
+        },
+        '&:after': {
+          content: '""',
+          position: 'absolute',
+          width: '400px',
+          height: '400px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(100, 181, 246, 0.1) 0%, rgba(100, 181, 246, 0) 70%)',
+          bottom: '-150px',
+          left: '-150px',
+          zIndex: 0,
+          animation: 'float 10s ease-in-out infinite 1s'
+        },
+        '@keyframes float': {
+          '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+          '50%': { transform: 'translateY(-20px) rotate(2deg)' }
+        }
+      }}>
+        <Container maxWidth="lg">
+          <Box sx={{ 
+            textAlign: 'center',
+            mb: { xs: 3, md: 5 },
+            position: 'relative',
+            zIndex: 1
+          }}>
+            <Typography variant="h4" component="h2" sx={{
+              fontWeight: 700,
+              color: '#1a237e',
+              mb: 2,
+              fontSize: { xs: '1.8rem', md: '2.2rem' },
+              position: 'relative',
+              display: 'inline-block',
+              '&:after': {
+                content: '""',
+                position: 'absolute',
+                width: '60px',
+                height: '3px',
+                background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                bottom: '-10px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                borderRadius: '3px'
+              }
+            }}>
+              Our Impact in Numbers
+            </Typography>
+            <Typography variant="body1" sx={{
+              color: '#555',
+              maxWidth: '700px',
+              mx: 'auto',
+              fontSize: { xs: '1rem', md: '1.1rem' },
+              lineHeight: 1.7
+            }}>
+              Years of excellence in education, nurturing minds and shaping futures
+            </Typography>
+          </Box>
+          
+          <Grid container spacing={3} sx={{ position: 'relative', zIndex: 1 }}>
+
+            {/* Staff Stat */}
+            <Grid item xs={12} md={4}>
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <Paper elevation={0} sx={{
+                  p: 4,
+                  height: '100%',
+                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.8)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(25, 118, 210, 0.1)',
+                  transition: 'all 0.5s ease',
+                  transform: 'translateX(0)'
+                }}>
+                  <motion.div
+                    initial={{ x: -80, opacity: 0 }}
+                    animate={{ 
+                      x: 0, 
+                      opacity: 1,
+                      transition: {
+                        type: 'spring',
+                        stiffness: 80,
+                        damping: 12,
+                        duration: 0.6
+                      }
+                    }}
+                    style={{
+                      width: '80px',
+                      height: '80px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #1976d2, #42a5f5)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto 20px',
+                      boxShadow: '0 8px 20px rgba(25, 118, 210, 0.2)'
+                    }}
+                  >
+                    <Groups sx={{ fontSize: 40, color: 'white' }} />
+                  </motion.div>
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                  >
+                    <Typography variant="h3" sx={{
+                      fontWeight: 700,
+                      color: '#1a237e',
+                      textAlign: 'center',
+                      mb: 1,
+                      fontSize: { xs: '2.2rem', md: '2.8rem' },
+                      background: 'linear-gradient(135deg, #1976d2, #42a5f5)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      textFillColor: 'transparent'
+                    }}>
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                      >
+                        <CountUp 
+                          end={15} 
+                          duration={2} 
+                          suffix="+"
+                          enableScrollSpy
+                          scrollSpyOnce
+                        />
+                      </motion.span>
+                    </Typography>
+                  </motion.div>
+                  <Typography 
+                    variant="h6" 
+                    sx={{
+                      textAlign: 'center',
+                      color: '#444',
+                      fontWeight: 600,
+                      fontSize: { xs: '1.1rem', md: '1.2rem' }
+                    }}
+                  >
+                    Dedicated Staff
+                  </Typography>
+                </Paper>
+              </motion.div>
+            </Grid>
+
+            {/* Students Stat */}
+            <Grid item xs={12} md={4}>
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <Paper elevation={0} sx={{
+                  p: 4,
+                  height: '100%',
+                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.8)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(25, 118, 210, 0.1)',
+                  transition: 'all 0.5s ease',
+                  transform: 'translateX(0)'
+                }}>
+                  <motion.div
+                    initial={{ x: -80, opacity: 0 }}
+                    animate={{ 
+                      x: 0, 
+                      opacity: 1,
+                      transition: {
+                        type: 'spring',
+                        stiffness: 80,
+                        damping: 12,
+                        duration: 0.6
+                      }
+                    }}
+                    style={{
+                      width: '80px',
+                      height: '80px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #1976d2, #42a5f5)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto 20px',
+                      boxShadow: '0 8px 20px rgba(25, 118, 210, 0.2)'
+                    }}
+                  >
+                    <School sx={{ fontSize: 40, color: 'white' }} />
+                  </motion.div>
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    <Typography variant="h3" sx={{
+                      fontWeight: 700,
+                      color: '#1a237e',
+                      textAlign: 'center',
+                      mb: 1,
+                      fontSize: { xs: '2.2rem', md: '2.8rem' },
+                      background: 'linear-gradient(135deg, #1976d2, #42a5f5)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      textFillColor: 'transparent'
+                    }}>
+                          <motion.span
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                      >
+                        <CountUp 
+                          end={600} 
+                          duration={2} 
+                          suffix="+"
+                          enableScrollSpy
+                          scrollSpyOnce
+                        />
+                      </motion.span>
+                    </Typography>
+                  </motion.div>
+                  <Typography 
+                    variant="h6" 
+                    sx={{
+                      textAlign: 'center',
+                      color: '#444',
+                      fontWeight: 600,
+                      fontSize: { xs: '1.1rem', md: '1.2rem' }
+                    }}
+                  >
+                    Dedicated Students
+                  </Typography>
+                </Paper>
+              </motion.div>
+            </Grid>
+
+            {/* Alumni Stat */}
+            <Grid item xs={12} md={4}>
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <Paper elevation={0} sx={{
+                  p: 4,
+                  height: '100%',
+                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.8)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(25, 118, 210, 0.1)',
+                  transition: 'all 0.5s ease',
+                  transform: 'translateX(0)'
+                }}>
+                  <motion.div
+                    initial={{ x: -80, opacity: 0 }}
+                    animate={{ 
+                      x: 0, 
+                      opacity: 1,
+                      transition: {
+                        type: 'spring',
+                        stiffness: 80,
+                        damping: 12,
+                        duration: 0.6
+                      }
+                    }}
+                    style={{
+                      width: '80px',
+                      height: '80px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #1976d2, #42a5f5)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto 20px',
+                      boxShadow: '0 8px 20px rgba(25, 118, 210, 0.2)'
+                    }}
+                  >
+                    <EmojiEvents sx={{ fontSize: 40, color: 'white' }} />
+                  </motion.div>
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                  >
+                    <Typography variant="h3" sx={{
+                      fontWeight: 700,
+                      color: '#1a237e',
+                      textAlign: 'center',
+                      mb: 1,
+                      fontSize: { xs: '2.2rem', md: '2.8rem' },
+                      background: 'linear-gradient(135deg, #1976d2, #42a5f5)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      textFillColor: 'transparent'
+                    }}>
+                      <motion.span
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.4 }}
+                    >
+                      <CountUp 
+                        end={200} 
+                        duration={2} 
+                        suffix="+"
+                        enableScrollSpy
+                        scrollSpyOnce
+                      />
+                    </motion.span>
+                  </Typography>
+                  </motion.div>
+                  <Typography variant="h6" sx={{
+                    textAlign: 'center',
+                    color: '#444',
+                    fontWeight: 600,
+                    fontSize: { xs: '1.1rem', md: '1.2rem' }
+                  }}>
+                    Successful Alumni
+                  </Typography>
+                </Paper>
+              </motion.div>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
 
       {/* Testimonials Section */}
       <Box sx={{ 
@@ -1161,7 +1524,8 @@ const Home = () => {
           </Box>
         </Container>
       </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 

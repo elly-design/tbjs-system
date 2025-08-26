@@ -212,6 +212,27 @@ const Contact = () => {
                   </Typography>
                 </Box>
               </Box>
+              
+              {/* Grade 6 Image */}
+              <Box sx={{ mt: 4, textAlign: 'center' }}>
+                <Box 
+                  component="img"
+                  src="/grade 4 (2).jpeg"
+                  alt=""
+                  sx={{
+                    width: '100%',
+                    maxWidth: '500px',
+                    height: 'auto',
+                    borderRadius: 2,
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+                    transition: 'transform 0.3s ease-in-out',
+                    
+                  }}
+                />
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1, fontStyle: 'italic' }}>
+                  
+                </Typography>
+              </Box>
             </Box>
           </Paper>
         </Grid>

@@ -82,12 +82,15 @@ const ImageSlider = () => {
     <Box
       sx={{
         position: 'relative',
-        height: { xs: '90vh', sm: '90vh', md: '85vh' },
-        maxHeight: '1200px',
-        minHeight: '500px',
+        height: { xs: '70vh', sm: '85vh', md: '90vh' },
+        minHeight: { xs: '500px', sm: '600px' },
+        maxHeight: { xs: '800px', md: '1000px' },
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         overflow: 'hidden',
         borderRadius: { xs: 0, sm: 4 },
-        mb: 4,
+        mb: { xs: 2, sm: 4 },
         boxShadow: { xs: 'none', sm: '0 8px 24px rgba(0,0,0,0.15)' },
         width: '100%',
         backgroundColor: '#f5f5f5',
@@ -120,22 +123,37 @@ const ImageSlider = () => {
               key={index}
               sx={{
                 position: 'absolute',
+                top: 0,
+                left: 0,
                 width: '100%',
                 height: '100%',
                 opacity: currentIndex === index ? 1 : 0,
                 transition: 'opacity 0.8s ease-in-out',
                 backgroundSize: 'cover',
-                backgroundPosition: 'center 30%',  // Adjust vertical position to show people
+                backgroundPosition: { xs: 'center 30%', sm: 'center center' },
                 backgroundRepeat: 'no-repeat',
                 backgroundImage: `url(${image})`,
-                backgroundAttachment: 'fixed',
+                backgroundAttachment: { xs: 'scroll', sm: 'fixed' },
                 backgroundColor: '#f5f5f5',
                 objectFit: 'cover',
-                objectPosition: 'center 30%',  // Match background position for better consistency
+                objectPosition: { xs: 'center 30%', sm: 'center center' },
                 WebkitBackfaceVisibility: 'hidden',
                 transform: 'translateZ(0)',
                 WebkitTransform: 'translateZ(0)',
                 willChange: 'opacity',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%)',
+                  zIndex: 1,
+                  '@media (max-width: 600px)': {
+                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%)',
+                  },
+                },
                 '@media (max-width: 900px)': {
                   backgroundPosition: 'center',
                   backgroundSize: 'cover',
@@ -182,14 +200,17 @@ const ImageSlider = () => {
               speed={100} // Standard typing speed (~50-100ms per character)
               trigger={currentIndex} // Reset animation when currentIndex changes
               sx={{
-                fontSize: { xs: '2.2rem', sm: '3.5rem' },
-                fontWeight: 700,
-                mb: 2,
-                lineHeight: 1.2,
-                minHeight: { xs: '6.6rem', sm: '8.4rem' }, // Prevent layout shift
-                display: 'inline-block',
-                textAlign: 'center',
-                width: '100%'
+                fontSize: { xs: '1.8rem', sm: '2.8rem', md: '3.5rem', lg: '4rem' },
+                fontWeight: 800,
+                mb: { xs: 1, sm: 2 },
+                lineHeight: { xs: 1.2, sm: 1.1 },
+                letterSpacing: { xs: 'normal', sm: '-0.5px' },
+                textTransform: 'none',
+                display: 'block',
+                maxWidth: { xs: '90%', sm: '90%', md: '1000px' },
+                mx: 'auto',
+                px: { xs: 2, sm: 3 },
+                textShadow: '0 2px 8px rgba(0,0,0,0.6)'
               }}
             />
             <AnimatedText

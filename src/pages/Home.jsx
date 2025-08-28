@@ -28,6 +28,7 @@ import {
   Science,
   GroupAdd,
   ArrowForward,
+  CheckCircle,
   Star,
   EmojiEvents,
   Groups,
@@ -42,38 +43,37 @@ const Home = () => {
   return (
     <Box>
       <Container maxWidth="lg" sx={{ mt: { xs: 8, md: 12 }, mb: 4, position: 'relative' }}>
-      {/* Hero Section with Slideshow */}
-      <Box sx={{ 
-        position: 'relative', 
-        mb: 4,
-        height: 600,
-        borderRadius: 2,
-        overflow: 'hidden',
-        background: 'transparent'
-      }}>
-        <ImageSlider />
-        <Box 
-          sx={{ 
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            px: 4,
-            py: 8,
-            zIndex: 1,
-            backdropFilter: 'blur(0.5px)',
-            background: 'rgba(0, 0, 0, 0.03)'
-          }}
-        >
-
-
+        {/* Hero Section with Slideshow */}
+        <Box sx={{ 
+          position: 'relative', 
+          mb: 4,
+          height: 600,
+          borderRadius: 2,
+          overflow: 'hidden',
+          background: 'transparent'
+        }}>
+          <ImageSlider />
+          <Box 
+            sx={{ 
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              px: 4,
+              py: 8,
+              zIndex: 1,
+              backdropFilter: 'blur(0.5px)',
+              background: 'rgba(0, 0, 0, 0.03)'
+            }}
+          >
+            {/* Hero content will go here */}
+          </Box>
         </Box>
-      </Box>
 
       {/* Why Choose Us Section */}
       <Box sx={{ 
@@ -108,10 +108,7 @@ const Home = () => {
             overflow: 'hidden',
             zIndex: 1,
             transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: '0 10px 25px rgba(25, 118, 210, 0.4)',
-            },
+            
             '&:before': {
               content: '""',
               position: 'absolute',
@@ -186,63 +183,74 @@ const Home = () => {
           </Box>
         </Box>
 
-        <Grid container spacing={{ xs: 3, md: 4 }} sx={{ 
+        <Grid container spacing={{ xs: 2, sm: 3, md: 4 }} sx={{ 
           mt: { xs: 3, md: 5 },
-          px: { xs: 2, sm: 3 },
+          px: { xs: 1, sm: 2, md: 3 },
           justifyContent: 'center',
           '& > .MuiGrid-item': {
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'stretch'
+            alignItems: 'stretch',
+            padding: { xs: '8px !important', sm: '12px !important' }
           }
         }}>
           {/* Academic Excellence */}
           <Grid item xs={12} sm={6} lg={4}>
             <Paper elevation={0} sx={{
-              p: 4,
+              p: { xs: 3, sm: 3.5, md: 4 },
               height: '100%',
-              borderRadius: '16px',
+              borderRadius: { xs: '12px', md: '16px' },
               background: 'white',
               border: '1px solid rgba(25, 118, 210, 0.1)',
               transition: 'all 0.3s ease',
               position: 'relative',
               overflow: 'hidden',
               '&:hover': {
-                transform: 'translateY(-8px)',
-                boxShadow: '0 15px 50px rgba(25, 118, 210, 0.15)',
-                '& $iconContainer': {
-                  transform: 'scale(1.1)'
+                transform: 'translateY(-5px)',
+                boxShadow: '0 10px 30px rgba(25, 118, 210, 0.12)',
+                '& .strength-icon-container': {
+                  transform: 'scale(1.08)'
+                }
+              },
+              '@media (max-width: 600px)': {
+                '&:hover': {
+                  transform: 'none',
+                  boxShadow: '0 5px 15px rgba(25, 118, 210, 0.1)'
                 }
               }
             }}>
               <Box className="strength-icon-container" sx={{
-                width: '90px',
-                height: '90px',
-                borderRadius: '25px',
+                width: { xs: '70px', sm: '80px', md: '90px' },
+                height: { xs: '70px', sm: '80px', md: '90px' },
+                borderRadius: { xs: '18px', md: '25px' },
                 background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(129, 199, 132, 0.15))',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                margin: '0 auto 30px',
+                margin: '0 auto 20px',
                 position: 'relative',
                 transition: 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-                boxShadow: '0 10px 30px rgba(255, 152, 0, 0.15)',
+                boxShadow: '0 8px 25px rgba(255, 152, 0, 0.12)',
                 '&:before': {
                   content: '""',
                   position: 'absolute',
                   width: '100%',
                   height: '100%',
-                  borderRadius: '30px',
+                  borderRadius: { xs: '22px', md: '30px' },
                   border: '2px dashed rgba(255, 82, 82, 0.4)',
                   animation: 'pulse 3s ease-in-out infinite',
+                  '@media (max-width: 600px)': {
+                    borderWidth: '1.5px',
+                    animation: 'none'
+                  }
                 }
               }}>
                 <School sx={{
-                  fontSize: { xs: 42, sm: 50 },
+                  fontSize: { xs: 36, sm: 44, md: 50 },
                   color: '#ff1744',
                   position: 'relative',
                   zIndex: 1,
-                  filter: 'drop-shadow(0 4px 8px rgba(255, 23, 68, 0.3))'
+                  filter: 'drop-shadow(0 3px 6px rgba(255, 23, 68, 0.25))'
                 }} />
                 <Box sx={{
                   position: 'absolute',
@@ -257,16 +265,17 @@ const Home = () => {
               <Typography variant="h5" sx={{
                 fontWeight: '700',
                 color: '#1a237e',
-                mb: 2,
+                mb: { xs: 1.5, sm: 2 },
                 textAlign: 'center',
                 position: 'relative',
+                fontSize: { xs: '1.25rem', sm: '1.35rem', md: '1.5rem' },
                 '&:after': {
                   content: '""',
                   display: 'block',
-                  width: '40px',
-                  height: '3px',
+                  width: { xs: '30px', sm: '35px', md: '40px' },
+                  height: { xs: '2px', sm: '2.5px', md: '3px' },
                   background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
-                  margin: '12px auto 0',
+                  margin: { xs: '8px auto 0', sm: '10px auto 0', md: '12px auto 0' },
                   borderRadius: '3px'
                 }
               }}>
@@ -275,8 +284,9 @@ const Home = () => {
               <Typography variant="body1" sx={{
                 color: '#555',
                 textAlign: 'center',
-                lineHeight: '1.7',
-                fontSize: '1.05rem'
+                lineHeight: { xs: 1.6, sm: 1.7 },
+                fontSize: { xs: '0.95rem', sm: '1rem', md: '1.05rem' },
+                px: { xs: 0.5, sm: 1 }
               }}>
                 Our dedicated faculty uses innovative teaching methods to ensure every student reaches their full potential through personalized learning experiences.
               </Typography>
@@ -286,19 +296,25 @@ const Home = () => {
           {/* Sports & Activities */}
           <Grid item xs={12} sm={6} lg={4}>
             <Paper elevation={0} sx={{
-              p: 4,
+              p: { xs: 3, sm: 3.5, md: 4 },
               height: '100%',
-              borderRadius: '16px',
+              borderRadius: { xs: '12px', md: '16px' },
               background: 'white',
               border: '1px solid rgba(25, 118, 210, 0.1)',
               transition: 'all 0.3s ease',
               position: 'relative',
               overflow: 'hidden',
               '&:hover': {
-                transform: 'translateY(-8px)',
-                boxShadow: '0 15px 50px rgba(25, 118, 210, 0.15)',
-                '& $iconContainer': {
-                  transform: 'scale(1.1)'
+                transform: 'translateY(-5px)',
+                boxShadow: '0 10px 30px rgba(25, 118, 210, 0.12)',
+                '& .strength-icon-container': {
+                  transform: 'scale(1.08)'
+                }
+              },
+              '@media (max-width: 600px)': {
+                '&:hover': {
+                  transform: 'none',
+                  boxShadow: '0 5px 15px rgba(25, 118, 210, 0.1)'
                 }
               }
             }}>
@@ -343,16 +359,17 @@ const Home = () => {
               <Typography variant="h5" sx={{
                 fontWeight: '700',
                 color: '#1a237e',
-                mb: 2,
+                mb: { xs: 1.5, sm: 2 },
                 textAlign: 'center',
                 position: 'relative',
+                fontSize: { xs: '1.25rem', sm: '1.35rem', md: '1.5rem' },
                 '&:after': {
                   content: '""',
                   display: 'block',
-                  width: '40px',
-                  height: '3px',
+                  width: { xs: '30px', sm: '35px', md: '40px' },
+                  height: { xs: '2px', sm: '2.5px', md: '3px' },
                   background: 'linear-gradient(90deg, #ff5252, #ff8a80)',
-                  margin: '12px auto 0',
+                  margin: { xs: '8px auto 0', sm: '10px auto 0', md: '12px auto 0' },
                   borderRadius: '3px'
                 }
               }}>
@@ -361,8 +378,9 @@ const Home = () => {
               <Typography variant="body1" sx={{
                 color: '#555',
                 textAlign: 'center',
-                lineHeight: '1.7',
-                fontSize: '1.05rem'
+                lineHeight: { xs: 1.6, sm: 1.7 },
+                fontSize: { xs: '0.95rem', sm: '1rem', md: '1.05rem' },
+                px: { xs: 0.5, sm: 1 }
               }}>
                 Extensive sports program including volleyball, soccer, netball  and more to develop physical fitness, teamwork, and leadership skills in a fun environment.
               </Typography>
@@ -372,19 +390,25 @@ const Home = () => {
           {/* Modern Facilities */}
           <Grid item xs={12} sm={6} lg={4}>
             <Paper elevation={0} sx={{
-              p: 4,
+              p: { xs: 3, sm: 3.5, md: 4 },
               height: '100%',
-              borderRadius: '16px',
+              borderRadius: { xs: '12px', md: '16px' },
               background: 'white',
               border: '1px solid rgba(25, 118, 210, 0.1)',
               transition: 'all 0.3s ease',
               position: 'relative',
               overflow: 'hidden',
               '&:hover': {
-                transform: 'translateY(-8px)',
-                boxShadow: '0 15px 50px rgba(25, 118, 210, 0.15)',
-                '& $iconContainer': {
-                  transform: 'scale(1.1)'
+                transform: 'translateY(-5px)',
+                boxShadow: '0 10px 30px rgba(25, 118, 210, 0.12)',
+                '& .strength-icon-container': {
+                  transform: 'scale(1.08)'
+                }
+              },
+              '@media (max-width: 600px)': {
+                '&:hover': {
+                  transform: 'none',
+                  boxShadow: '0 5px 15px rgba(25, 118, 210, 0.1)'
                 }
               }
             }}>
@@ -432,8 +456,9 @@ const Home = () => {
               <Typography variant="body1" sx={{
                 color: '#555',
                 textAlign: 'center',
-                lineHeight: '1.7',
-                fontSize: '1.05rem'
+                lineHeight: { xs: 1.6, sm: 1.7 },
+                fontSize: { xs: '0.95rem', sm: '1rem', md: '1.05rem' },
+                px: { xs: 0.5, sm: 1 }
               }}>
                 Modern, well-equipped classrooms with the latest technology to support effective teaching and learning in today's world.
               </Typography>
@@ -441,14 +466,15 @@ const Home = () => {
           </Grid>
         </Grid>
       </Box>
+    </Container>
 
-      {/* Academic Programs Section */}
-      <Box sx={{ 
-        py: { xs: 8, md: 10 },
-        background: 'linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+    {/* Academic Programs Section */}
+    <Box sx={{ 
+      py: { xs: 8, md: 10 },
+      background: 'linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
         <Container maxWidth="lg">
           <Box sx={{ 
             textAlign: 'center', 
@@ -978,7 +1004,7 @@ const Home = () => {
                         transition={{ duration: 1, delay: 0.2 }}
                       >
                         <CountUp 
-                          end={600} 
+                          end={500} 
                           duration={2} 
                           suffix="+"
                           enableScrollSpy
@@ -1071,7 +1097,7 @@ const Home = () => {
                       transition={{ duration: 1, delay: 0.4 }}
                     >
                       <CountUp 
-                        end={200} 
+                        end={100} 
                         duration={2} 
                         suffix="+"
                         enableScrollSpy
@@ -1097,164 +1123,276 @@ const Home = () => {
 
       {/* Testimonials Section */}
       <Box sx={{ 
-        margin: { xs: '60px 0', md: '80px 0' },
-        px: { xs: 0, sm: 3 }
+        py: { xs: 6, md: 10 },
+        px: { xs: 0, sm: 2 },
+        background: 'linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <Box sx={{ 
-          textAlign: 'center',
-          marginBottom: { xs: '40px', md: '50px' },
-          px: { xs: 1, sm: 0 }
-        }}>
-          <Box sx={{
-            display: 'inline-block',
-            background: 'linear-gradient(135deg, #1976d2, #64b5f6)',
-            color: 'white',
-            padding: '8px 25px',
-            borderRadius: '30px',
-            fontSize: '1rem',
-            fontWeight: '600',
-            marginBottom: '15px',
-            boxShadow: '0 4px 15px rgba(25, 118, 210, 0.2)'
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <Box sx={{ 
+            textAlign: 'center',
+            mb: { xs: 5, md: 7 },
+            px: { xs: 2, sm: 0 }
           }}>
-            Testimonials
+            <Chip 
+              label="Testimonials"
+              sx={{
+                bgcolor: 'primary.main',
+                color: 'white',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                px: 2,
+                py: 1,
+                mb: 2,
+                '& .MuiChip-label': { px: 1 }
+              }}
+            />
+            <Typography 
+              variant="h3" 
+              component="h2"
+              sx={{
+                fontWeight: 800,
+                fontSize: { xs: '1.75rem', sm: '2.25rem', md: '2.5rem' },
+                lineHeight: 1.2,
+                mb: 2,
+                background: 'linear-gradient(90deg, #1a237e, #1976d2)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                '& span': {
+                  background: 'linear-gradient(90deg, #1976d2, #00bcd4)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }
+              }}
+            >
+              What Our <span>Parents Say</span>
+            </Typography>
+            <Typography 
+              variant="h6" 
+              component="p"
+              sx={{
+                color: 'text.secondary',
+                maxWidth: '700px',
+                mx: 'auto',
+                fontWeight: 400,
+                lineHeight: 1.7,
+                fontSize: { xs: '1rem', sm: '1.1rem' },
+                px: { xs: 1, sm: 2 }
+              }}
+            >
+              Hear from the families who have experienced the Transformer Blessed Junior School difference.
+            </Typography>
           </Box>
-          <Typography variant="h4" sx={{
-            fontWeight: '700',
-            color: '#1a237e',
-            margin: '15px 0',
-            lineHeight: { xs: 1.2, sm: 1.3 },
-            fontSize: { xs: '1.75rem', sm: '2.125rem' }
-          }}>
-            What Our <span style={{ color: '#1976d2' }}>Parents Say</span>
-          </Typography>
-          <Typography variant="body1" sx={{
-            color: '#666',
-            maxWidth: '700px',
-            margin: '0 auto',
-            lineHeight: { xs: 1.6, sm: 1.7 },
-            fontSize: { xs: '1rem', sm: '1.1rem' },
-            px: { xs: 1, sm: 2 }
-          }}>
-            Hear from the families who have experienced the Transformer Blessed Junior School difference.
-          </Typography>
-        </Box>
 
-        <Grid container spacing={0} sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
-          gap: { xs: '16px', md: '30px' },
-          marginTop: { xs: '30px', md: '40px' },
-          '& > .MuiGrid-item': {
-            px: { xs: 2, sm: 3 },
-            mb: { xs: 2, md: 0 },
-            overflow: 'hidden'
-          }
-        }}>
-          {/* Testimonial 1 */}
-          <Grid item>
+          <Grid 
+            container 
+            spacing={{ xs: 3, md: 4 }}
+            sx={{
+              '& > .MuiGrid-item': {
+                display: 'flex',
+                flexDirection: 'column'
+              }
+            }}
+          >
+            {/* Testimonial 1 */}
+            <Grid item xs={12} md={4}>
+              <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                whileInView={{ 
+                  x: 0,
+                  opacity: 1,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 15,
+                    delay: 0.1,
+                    duration: 0.6
+                  }
+                }}
+                viewport={{ once: true, margin: '-50px 0px -100px 0px' }}
+                style={{ 
+                  height: '100%',
+                  willChange: 'transform, opacity'
+                }}
+              >
+                <Card 
+                  elevation={0}
+                  sx={{
+                    height: '100%',
+                    p: { xs: 2.5, md: 3.5 },
+                    borderRadius: 3,
+                    border: '1px solid rgba(145, 158, 171, 0.16)',
+                    background: 'white',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      boxShadow: '0 24px 48px -12px rgba(0, 0, 0, 0.12)',
+                      borderColor: 'transparent'
+                    },
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: 4,
+                      background: 'linear-gradient(90deg, #1976d2, #00bcd4)'
+                    }
+                  }}
+                >
+                  <Box sx={{ 
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%'
+                  }}>
+                    <Box sx={{ 
+                      position: 'relative',
+                      mb: 3,
+                      flex: 1
+                    }}>
+                      <Box sx={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        fontSize: '4.5rem',
+                        lineHeight: 1,
+                        color: 'rgba(25, 118, 210, 0.05)',
+                        fontFamily: 'Georgia, serif',
+                        fontStyle: 'italic',
+                        transform: 'translateY(-15px)'
+                      }}>"</Box>
+                      
+                      <Typography variant="body1" sx={{
+                        color: 'text.secondary',
+                        lineHeight: 1.8,
+                        fontSize: { xs: '0.95rem', md: '1rem' },
+                        mb: 0,
+                        position: 'relative',
+                        zIndex: 1
+                      }}>
+                        The transformation I've seen in my child since joining Transformer Blessed Junior School has been remarkable. The teachers are dedicated, and the learning environment is nurturing and stimulating.
+                      </Typography>
+                    </Box>
+                    
+                    <Box sx={{ 
+                      display: 'flex',
+                      alignItems: 'center',
+                      pt: 2.5,
+                      mt: 'auto',
+                      borderTop: '1px dashed rgba(145, 158, 171, 0.24)'
+                    }}>
+                      <Avatar 
+                        alt="Alice Mwangi"
+                        src="/path-to-avatar1.jpg"
+                        sx={{ 
+                          width: 56, 
+                          height: 56,
+                          mr: 2,
+                          bgcolor: 'primary.lighter',
+                          color: 'primary.dark',
+                          fontSize: '1.25rem',
+                          fontWeight: 600
+                        }}
+                      >
+                        AM
+                      </Avatar>
+                      <Box>
+                        <Typography 
+                          variant="subtitle1" 
+                          sx={{ 
+                            fontWeight: 600,
+                            color: 'text.primary',
+                            mb: 0.5,
+                            lineHeight: 1.3
+                          }}
+                        >
+                          Alice Mwangi
+                        </Typography>
+                        <Typography 
+                          variant="caption" 
+                          sx={{ 
+                            color: 'text.secondary',
+                            display: 'block',
+                            fontSize: '0.75rem',
+                            lineHeight: 1.5
+                          }}
+                        >
+                          Parent of Grade 3 Student
+                        </Typography>
+                        <Box sx={{ 
+                          display: 'flex',
+                          alignItems: 'center',
+                          mt: 0.5
+                        }}>
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star 
+                              key={star} 
+                              sx={{ 
+                                color: '#ffb74d',
+                                fontSize: '1rem',
+                                mr: 0.25
+                              }} 
+                            />
+                          ))}
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Card>
+              </motion.div>
+            </Grid>
+
+          {/* Testimonial 2 */}
+          <Grid item xs={12} md={4}>
             <motion.div
-              initial={{ x: -50, opacity: 0 }}
+              initial={{ x: -100, opacity: 0 }}
               whileInView={{ 
-                x: 0, 
+                x: 0,
                 opacity: 1,
                 transition: {
                   type: 'spring',
                   stiffness: 100,
                   damping: 15,
-                  duration: 0.5,
-                  delay: 0.1
+                  delay: 0.2,
+                  duration: 0.6
                 }
               }}
-              viewport={{ once: true, margin: '-50px' }}
+              viewport={{ once: true, margin: '-50px 0px -100px 0px' }}
+              style={{ 
+                height: '100%',
+                willChange: 'transform, opacity'
+              }}
             >
-              <Paper 
-                elevation={3} 
-                component={motion.div}
-                whileHover={{
-                  y: -5,
-                  transition: { type: 'spring', stiffness: 400, damping: 10 }
-                }}
+              <Card 
+                elevation={0}
                 sx={{
-                  borderRadius: '12px',
-                  transition: 'all 0.3s ease',
                   height: '100%',
-                  p: { xs: 2, md: 4 },
-                  mx: { xs: 2, sm: 0 },
+                  p: { xs: 2.5, md: 3.5 },
+                  borderRadius: 3,
+                  border: '1px solid rgba(145, 158, 171, 0.16)',
+                  background: 'white',
+                  transition: 'all 0.3s ease',
                   '&:hover': {
-                    transform: { xs: 'none', md: 'translateY(-5px)' },
-                    boxShadow: { xs: '0 4px 12px rgba(0,0,0,0.1)', md: '0 15px 50px rgba(0,0,0,0.1)' }
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 24px 48px -12px rgba(0, 0, 0, 0.12)',
+                    borderColor: 'transparent'
+                  },
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&:before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 4,
+                    background: 'linear-gradient(90deg, #00bcd4, #4caf50)'
                   }
-            }}>
-              <Box sx={{
-                position: 'absolute',
-                top: '20px',
-                right: '25px',
-                fontSize: '3rem',
-                color: 'rgba(25, 118, 210, 0.1)',
-                lineHeight: '1',
-                fontFamily: 'Georgia, serif',
-                fontStyle: 'italic'
-              }}>"</Box>
-              <Typography variant="body1" sx={{
-                lineHeight: '1.8',
-                color: '#555',
-                marginBottom: '25px',
-                position: 'relative',
-                zIndex: '1'
-              }}>
-                The transformation I've seen in my child since joining Transformer Blessed Junior School has been remarkable. The teachers are dedicated, and the learning environment is nurturing and stimulating.
-              </Typography>
-              <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                borderTop: '1px solid #eee',
-                paddingTop: '20px'
-              }}>
-                <Box sx={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  background: '#f0f7ff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: '15px',
-                  color: '#ff5252',
-                  fontWeight: 'bold',
-                  fontSize: '1.2rem'
-                }}>
-                  AM
-                </Box>
-                <Box>
-                  <Typography variant="subtitle1" sx={{
-                    fontWeight: '600',
-                    color: '#1a237e',
-                    marginBottom: '4px'
-                  }}>Alice Mwangi</Typography>
-                  <Typography variant="body2" sx={{
-                    color: '#777',
-                    fontSize: '0.85rem'
-                  }}>Parent of Grade 4 Student</Typography>
-                </Box>
-              </Box>
-            </Paper>
-          </motion.div>
-          </Grid>
-
-          {/* Testimonial 2 */}
-          <Grid item xs={12} md>
-            <Paper elevation={3} sx={{
-              background: 'white',
-              borderRadius: '12px',
-              padding: '30px',
-              position: 'relative',
-              height: '100%',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              '&:hover': {
-                transform: 'translateY(-5px)',
-                boxShadow: '0 15px 50px rgba(0,0,0,0.1)'
-              }
-            }}>
+                }}
+              >
               <Box sx={{
                 position: 'absolute',
                 top: '20px',
@@ -1304,106 +1442,188 @@ const Home = () => {
                   <Typography variant="body2" sx={{
                     color: '#777',
                     fontSize: '0.85rem'
-                  }}>Parent of Grade 2 Student</Typography>
+                  }}>Parent of Grade PP2 Student</Typography>
                 </Box>
               </Box>
-            </Paper>
-          </Grid>
-
-          {/* Testimonial 3 */}
-          <Grid item xs={12} md>
-            <Paper elevation={3} sx={{
-              background: 'white',
-              borderRadius: '12px',
-              padding: '30px',
-              position: 'relative',
-              height: '100%',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              '&:hover': {
-                transform: 'translateY(-5px)',
-                boxShadow: '0 15px 50px rgba(0,0,0,0.1)'
-              }
-            }}>
-              <Box sx={{
-                position: 'absolute',
-                top: '20px',
-                right: '25px',
-                fontSize: '3rem',
-                color: 'rgba(25, 118, 210, 0.1)',
-                lineHeight: '1',
-                fontFamily: 'Georgia, serif',
-                fontStyle: 'italic'
-              }}>"</Box>
-              <Typography variant="body1" sx={{
-                lineHeight: '1.8',
-                color: '#555',
-                marginBottom: '25px',
-                position: 'relative',
-                zIndex: '1'
-              }}>
-                The communication from the school is excellent and I appreciate how they involve parents in the learning journey. The teachers truly care about each child's success.
-              </Typography>
-              <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                borderTop: '1px solid #eee',
-                paddingTop: '20px'
-              }}>
-                <Box sx={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #f0f7ff, #e0f0ff)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: '15px',
-                  color: '#ff5252',
-                  fontWeight: 'bold',
-                  fontSize: '1.2rem'
-                }}>
-                  SM
-                </Box>
-                <Box>
-                  <Typography variant="subtitle1" sx={{
-                    fontWeight: '600',
-                    color: '#1a237e',
-                    marginBottom: '4px'
-                  }}>Sarah Mwazighe</Typography>
-                  <Typography variant="body2" sx={{
-                    color: '#777',
-                    fontSize: '0.85rem'
-                  }}>Parent of Kindergarten Student</Typography>
-                </Box>
-              </Box>
-            </Paper>
-          </Grid>
+            </Card>
+          </motion.div>
         </Grid>
+
+<Grid item xs={12} md={4}>
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ 
+                x: 0,
+                opacity: 1,
+                transition: {
+                  type: 'spring',
+                  stiffness: 100,
+                  damping: 15,
+                  delay: 0.3,
+                    duration: 0.6
+                  }
+                }}
+                viewport={{ once: true, margin: '-50px 0px -100px 0px' }}
+                style={{ 
+                  height: '100%',
+                  willChange: 'transform, opacity'
+                }}
+              >
+                <Card 
+                  elevation={0}
+                  sx={{
+                    height: '100%',
+                    p: { xs: 2.5, md: 3.5 },
+                    borderRadius: 3,
+                    border: '1px solid rgba(145, 158, 171, 0.16)',
+                    background: 'white',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      boxShadow: '0 24px 48px -12px rgba(0, 0, 0, 0.12)',
+                      borderColor: 'transparent'
+                    },
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: 4,
+                      background: 'linear-gradient(90deg, #4caf50, #ff9800)'
+                    }
+                  }}
+                >
+                  <Box sx={{ 
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%'
+                  }}>
+                    <Box sx={{ 
+                      position: 'relative',
+                      mb: 3,
+                      flex: 1
+                    }}>
+                      <Box sx={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        fontSize: '4.5rem',
+                        lineHeight: 1,
+                        color: 'rgba(76, 175, 80, 0.05)',
+                        fontFamily: 'Georgia, serif',
+                        fontStyle: 'italic',
+                        transform: 'translateY(-15px)'
+                      }}>"</Box>
+                      
+                      <Typography variant="body1" sx={{
+                        color: 'text.secondary',
+                        lineHeight: 1.8,
+                        fontSize: { xs: '0.95rem', md: '1rem' },
+                        mb: 0,
+                        position: 'relative',
+                        zIndex: 1
+                      }}>
+                        The communication from the school is excellent and I appreciate how they involve parents in the learning journey. The teachers truly care about each child's success.
+                      </Typography>
+                    </Box>
+                    
+                    <Box sx={{ 
+                      display: 'flex',
+                      alignItems: 'center',
+                      pt: 2.5,
+                      mt: 'auto',
+                      borderTop: '1px dashed rgba(145, 158, 171, 0.24)'
+                    }}>
+                      <Avatar 
+                        alt="Sarah Mwaura"
+                        src="/path-to-avatar3.jpg"
+                        sx={{ 
+                          width: 56, 
+                          height: 56,
+                          mr: 2,
+                          bgcolor: 'warning.lighter',
+                          color: 'warning.dark',
+                          fontSize: '1.25rem',
+                          fontWeight: 600
+                        }}
+                      >
+                        SM
+                      </Avatar>
+                      <Box>
+                        <Typography 
+                          variant="subtitle1" 
+                          sx={{ 
+                            fontWeight: 600,
+                            color: 'text.primary',
+                            mb: 0.5,
+                            lineHeight: 1.3
+                          }}
+                        >
+                          Sarah Mwazighe
+                        </Typography>
+                        <Typography 
+                          variant="caption" 
+                          sx={{ 
+                            color: 'text.secondary',
+                            display: 'block',
+                            fontSize: '0.75rem',
+                            lineHeight: 1.5
+                          }}
+                        >
+                          Parent of Grade 5 Student
+                        </Typography>
+                        <Box sx={{ 
+                          display: 'flex',
+                          alignItems: 'center',
+                          mt: 0.5
+                        }}>
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star 
+                              key={star} 
+                              sx={{ 
+                                color: '#ffb74d',
+                                fontSize: '1rem',
+                                mr: 0.25
+                              }} 
+                            />
+                          ))}
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Card>
+              </motion.div>
+            </Grid>
+          </Grid>
+        </Container>
       </Box>
 
       {/* Call to Action Section */}
       <Box 
-      sx={{
-        position: 'relative',
-        color: 'white',
-        py: { xs: 10, md: 12 },
-        px: 4,
-        borderRadius: 4,
-        textAlign: 'center',
-        overflow: 'hidden',
-        mb: 8,
-        backgroundImage: 'linear-gradient(135deg, rgba(25, 118, 210, 0.9) 0%, rgba(13, 71, 161, 0.95) 100%)',
-        boxShadow: '0 15px 35px rgba(0,0,0,0.1)',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'url("/classroom2.jpg") center/cover no-repeat',
-          zIndex: -1,
-          opacity: 0.15
+        sx={{
+          position: 'relative',
+          color: 'white',
+          py: { xs: 10, md: 12 },
+          px: 4,
+          borderRadius: 4,
+          textAlign: 'center',
+          overflow: 'hidden',
+          mb: 8,
+          backgroundImage: 'linear-gradient(135deg, rgba(25, 118, 210, 0.9) 0%, rgba(13, 71, 161, 0.95) 100%)',
+          boxShadow: '0 15px 35px rgba(0,0,0,0.1)',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'url("/classroom2.jpg") center/cover no-repeat',
+            zIndex: -1,
+            opacity: 0.15
         }
       }}>
         <Container maxWidth="md">
@@ -1411,122 +1631,205 @@ const Home = () => {
             position="relative" 
             zIndex={1}
             sx={{
-              px: { xs: 2, sm: 4 },
-              py: { xs: 4, md: 6 },
-              backdropFilter: 'blur(2px)',
-              borderRadius: 3
+              px: { xs: 3, sm: 4, md: 6 },
+              py: { xs: 5, md: 8 },
+              backdropFilter: 'blur(4px)',
+              borderRadius: 4,
+              background: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              maxWidth: '1200px',
+              mx: 'auto',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
             }}
           >
-            <Typography 
-              variant="h3" 
-              component="h2"
-              gutterBottom 
-              sx={{
-                fontWeight: 700,
-                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-                lineHeight: 1.2,
-                mb: 3,
-                textShadow: '0 2px 4px rgba(0,0,0,0.2)'
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              Ready to Transform Your Child's Future?
-            </Typography>
-            
-            <Typography 
-              variant="h6" 
-              component="p"
-              sx={{
-                maxWidth: '700px',
-                mx: 'auto',
-                mb: 4,
-                fontSize: { xs: '1.1rem', md: '1.25rem' },
-                lineHeight: 1.6,
-                opacity: 0.95
-              }}
-            >
-              Join the TBJS community and give your child the best start in life.
-              <Box 
-                component="span" 
-                sx={{ 
-                  display: 'block',
-                  mt: 1,
-                  fontWeight: 500,
-                  color: 'rgba(255,255,255,0.9)'
-                }}
-              >
-                Enrollment ongoing. Reserve your spot today.
-              </Box>
-            </Typography>
-            
-            <Box sx={{ 
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              gap: 2,
-              justifyContent: 'center',
-              mt: 2
-            }}>
-              <Button
-                variant="contained"
-                color="secondary"
-                size="large"
-                endIcon={<ArrowForward />}
+              <Typography 
+                variant="h3" 
+                component="h2"
                 sx={{
-                  px: 4,
-                  py: 1.5,
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  textTransform: 'none',
-                  borderRadius: 2,
-                  boxShadow: '0 4px 14px rgba(25, 118, 210, 0.4)',
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 6px 20px rgba(25, 118, 210, 0.5)'
+                  fontWeight: 800,
+                  fontSize: { 
+                    xs: '2rem', 
+                    sm: '2.5rem', 
+                    md: '3rem',
+                    lg: '3.5rem' 
                   },
-                  transition: 'all 0.3s ease'
-                }}
-                href="/admission"
-              >
-                Apply Now
-              </Button>
-              
-              <Button
-                variant="outlined"
-                color="inherit"
-                size="large"
-                startIcon={<School />}
-                sx={{
-                  px: 4,
-                  py: 1.5,
-                  fontSize: '1.1rem',
-                  fontWeight: 500,
-                  textTransform: 'none',
-                  borderRadius: 2,
-                  borderWidth: '2px',
-                  '&:hover': {
-                    backgroundColor: 'rgba(255,255,255,0.1)',
-                    borderWidth: '2px'
+                  lineHeight: 1.1,
+                  mb: { xs: 3, md: 4 },
+                  textAlign: 'center',
+                  background: 'linear-gradient(90deg, #ffffff, #e0f7fa)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  textShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                  position: 'relative',
+                  '&:after': {
+                    content: '""',
+                    display: 'block',
+                    width: { xs: '60px', md: '80px' },
+                    height: '4px',
+                    background: 'linear-gradient(90deg, #64b5f6, #00bcd4)',
+                    margin: '20px auto 0',
+                    borderRadius: '4px',
+                    transition: 'all 0.3s ease'
                   }
                 }}
-                href="/about"
               >
-                Learn More
-              </Button>
-            </Box>
-            
-            <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 3, alignItems: 'center' }}>
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} sx={{ color: '#ffd700', fontSize: '1.5rem' }} />
-              ))}
-              <Typography variant="body2" sx={{ ml: 1, opacity: 0.9 }}>
-                Rated 5/5 by 100+ parents
+                Ready to Transform Your Child's Future?
               </Typography>
-            </Box>
+              
+              <Box sx={{ 
+                maxWidth: '800px',
+                mx: 'auto',
+                mb: { xs: 4, md: 6 },
+                textAlign: 'center'
+              }}>
+                <Typography 
+                  component="p"
+                  sx={{
+                    color: 'rgba(255,255,255,0.95)',
+                    fontSize: { 
+                      xs: '1.1rem', 
+                      sm: '1.2rem', 
+                      md: '1.3rem' 
+                    },
+                    lineHeight: 1.6,
+                    mb: 3,
+                    fontWeight: 400
+                  }}
+                >
+                  Join the TBJS community and give your child the best start in life.
+                </Typography>
+                
+                <Typography 
+                  component="div"
+                  sx={{ 
+                    color: 'rgba(255,255,255,0.9)',
+                    fontSize: { 
+                      xs: '1rem', 
+                      md: '1.1rem' 
+                    },
+                    fontWeight: 500,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    px: 3,
+                    py: 1.5,
+                    borderRadius: 50,
+                    bgcolor: 'rgba(255,255,255,0.1)',
+                    backdropFilter: 'blur(5px)'
+                  }}
+                >
+                  Enrollment ongoing. Limited spots available.
+                </Typography>
+              </Box>
+              
+              <Box sx={{ 
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: { xs: 2, sm: 3 },
+                justifyContent: 'center',
+                alignItems: 'center',
+                mb: { xs: 4, md: 6 },
+                flexWrap: 'wrap'
+              }}>
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    endIcon={<ArrowForward />}
+                    sx={{
+                      px: { xs: 4, md: 5 },
+                      py: { xs: 1.5, md: 1.75 },
+                      fontSize: { xs: '1rem', md: '1.1rem' },
+                      fontWeight: 600,
+                      textTransform: 'none',
+                      borderRadius: 50,
+                      boxShadow: '0 4px 20px rgba(25, 118, 210, 0.3)',
+                      '&:hover': {
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 8px 25px rgba(25, 118, 210, 0.4)',
+                        backgroundColor: 'secondary.dark'
+                      },
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}
+                    href="/admission"
+                  >
+                    Start Application
+                  </Button>
+                </motion.div>
+                
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    variant="outlined"
+                    color="inherit"
+                    size="large"
+                    startIcon={<School />}
+                    sx={{
+                      px: { xs: 4, md: 5 },
+                      py: { xs: 1.5, md: 1.75 },
+                      fontSize: { xs: '1rem', md: '1.1rem' },
+                      fontWeight: 500,
+                      textTransform: 'none',
+                      borderRadius: 50,
+                      borderWidth: '2px',
+                      color: 'white',
+                      borderColor: 'rgba(255,255,255,0.3)',
+                      '&:hover': {
+                        backgroundColor: 'rgba(255,255,255,0.08)',
+                        borderColor: 'rgba(255,255,255,0.5)',
+                        borderWidth: '2px'
+                      },
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}
+                    href="/about"
+                  >
+                    Learn More
+                  </Button>
+                </motion.div>
+              </Box>
+              
+              <Box sx={{ 
+                display: 'flex', 
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 2,
+                pt: { xs: 3, md: 4 },
+                borderTop: '1px solid rgba(255,255,255,0.1)'
+              }}>
+                <Box sx={{ display: 'flex', gap: 0.5 }}>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <motion.div
+                      key={star}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Star sx={{ 
+                        color: '#ffd700', 
+                        fontSize: { xs: '1.5rem', md: '1.75rem' },
+                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
+                      }} />
+                    </motion.div>
+                  ))}
+                </Box>
+                <Typography variant="body1" sx={{ 
+                  color: 'rgba(255,255,255,0.9)',
+                  fontWeight: 500,
+                  fontSize: { xs: '0.95rem', md: '1.05rem' },
+                  textAlign: 'center'
+                }}>
+                  Trusted by 100+ parents for quality education
+                </Typography>
+              </Box>
+            </motion.div>
           </Box>
         </Container>
       </Box>
-      </Container>
     </Box>
   );
-};
+}
 
 export default Home;

@@ -85,9 +85,9 @@ const Clubs = () => {
     return colors[index % colors.length];
   };
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 }, mt: { xs: 6, md: 10 } }}>
       
-      <Box sx={{ textAlign: 'center', mb: 8 }}>
+      <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 }, px: { xs: 2, sm: 0 } }}>
         <Chip 
           label="Extracurricular" 
           color="primary" 

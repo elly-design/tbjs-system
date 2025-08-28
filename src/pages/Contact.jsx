@@ -67,11 +67,12 @@ const Contact = () => {
     }
   };
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 }, mt: { xs: 6, md: 10 }, mb: 4 }}>
       <Box 
         sx={{ 
           textAlign: 'center', 
-          mb: 6,
+          mb: { xs: 6, md: 8 }, 
+          px: { xs: 2, sm: 0 },
           background: 'linear-gradient(135deg, #f5f9ff 0%, #e3f2fd 100%)',
           p: 4,
           borderRadius: 2,
@@ -89,7 +90,7 @@ const Contact = () => {
             fontFamily: '"Poppins", "Roboto", sans-serif'
           }}
         >
-          Need any help?
+        
         </Typography>
         <Typography 
           variant="h4" 
@@ -122,7 +123,7 @@ const Contact = () => {
         </Typography>
       </Box>
 
-      <Grid container spacing={4} sx={{ mt: 4 }}>
+      <Grid container spacing={4} sx={{ mt: { xs: 4, md: 6 } }}>
         <Grid item xs={12} md={6}>
           <Paper elevation={3} sx={{ p: 4 }}>
             <Typography 

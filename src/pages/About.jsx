@@ -16,11 +16,11 @@ const About = () => {
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         borderRadius: '12px',
-        margin: '20px 0 50px',
+        margin: { xs: '80px 0 50px', md: '120px 0 70px' },
         position: 'relative',
         overflow: 'hidden',
         boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-        padding: '40px 20px'
+        padding: { xs: '60px 20px', md: '100px 20px' }
       }}>
         <div style={{
           position: 'absolute',

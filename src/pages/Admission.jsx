@@ -304,7 +304,7 @@ const Admission = () => {
       <Box sx={{
         maxWidth: '1000px',
         mx: 'auto',
-        my: 6,
+        my: { xs: 6, md: 10 },
         p: { xs: 3, md: 6 },
         textAlign: 'center',
         background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.02) 0%, rgba(25, 118, 210, 0.05) 100%)',
@@ -382,7 +382,7 @@ const Admission = () => {
         }} />
       </Box>
 
-      <Paper elevation={3} sx={{ p: 4, mt: 4 }}>
+      <Paper elevation={3} sx={{ p: 4, mt: { xs: 4, md: 6 }, mb: { xs: 4, md: 8 } }}>
         <Typography variant="h5" gutterBottom>
           Student Information
         </Typography>

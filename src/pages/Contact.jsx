@@ -67,11 +67,12 @@ const Contact = () => {
     }
   };
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 }, mt: { xs: 6, md: 10 }, mb: 4 }}>
       <Box 
         sx={{ 
           textAlign: 'center', 
-          mb: 6,
+          mb: { xs: 6, md: 8 }, 
+          px: { xs: 2, sm: 0 },
           background: 'linear-gradient(135deg, #f5f9ff 0%, #e3f2fd 100%)',
           p: 4,
           borderRadius: 2,
@@ -89,7 +90,7 @@ const Contact = () => {
             fontFamily: '"Poppins", "Roboto", sans-serif'
           }}
         >
-          Need any help?
+        
         </Typography>
         <Typography 
           variant="h4" 
@@ -122,7 +123,7 @@ const Contact = () => {
         </Typography>
       </Box>
 
-      <Grid container spacing={4} sx={{ mt: 4 }}>
+      <Grid container spacing={4} sx={{ mt: { xs: 4, md: 6 } }}>
         <Grid item xs={12} md={6}>
           <Paper elevation={3} sx={{ p: 4 }}>
             <Typography 
@@ -213,26 +214,7 @@ const Contact = () => {
                 </Box>
               </Box>
               
-              {/* Grade 6 Image */}
-              <Box sx={{ mt: 4, textAlign: 'center' }}>
-                <Box 
-                  component="img"
-                  src="/grade 4 (2).jpeg"
-                  alt=""
-                  sx={{
-                    width: '100%',
-                    maxWidth: '500px',
-                    height: 'auto',
-                    borderRadius: 2,
-                    boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
-                    transition: 'transform 0.3s ease-in-out',
-                    
-                  }}
-                />
-                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1, fontStyle: 'italic' }}>
-                  
-                </Typography>
-              </Box>
+              
             </Box>
           </Paper>
         </Grid>

@@ -41,7 +41,7 @@ import { Link as RouterLink } from 'react-router-dom';
 const Home = () => {
   return (
     <Box>
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 4, position: 'relative' }}>
+      <Container maxWidth="lg" sx={{ mt: { xs: 8, md: 12 }, mb: 4, position: 'relative' }}>
       {/* Hero Section with Slideshow */}
       <Box sx={{ 
         position: 'relative', 

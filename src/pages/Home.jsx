@@ -19,7 +19,7 @@ import {
   useMediaQuery,
   Avatar
 } from '@mui/material';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import CountUp from 'react-countup';
 import { 
   School, 
@@ -28,6 +28,8 @@ import {
   Science,
   GroupAdd,
   ArrowForward,
+  ArrowBack as ArrowBackIcon,
+  ArrowForward as ArrowForwardIcon,
   CheckCircle,
   Star,
   EmojiEvents,
@@ -36,10 +38,89 @@ import {
   PersonOutline,
   PersonPin
 } from '@mui/icons-material';
+import { useState, useEffect } from 'react';
 import ImageSlider from '../components/ImageSlider';
 import { Link as RouterLink } from 'react-router-dom';
 
 const Home = () => {
+  // Testimonial carousel state
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // 0: right, 1: left
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Testimonial data
+  const testimonials = [
+    {
+      id: 1,
+      name: 'Alice Mwangi',
+      role: 'Parent of Grade 3 Student',
+      quote: "The transformation I've seen in my child since joining Transformer Blessed Junior School has been remarkable. The teachers are dedicated, and the learning environment is nurturing and stimulating.",
+      rating: 5,
+      gradient: 'linear-gradient(90deg, #1976d2, #00bcd4)',
+      avatar: '/path-to-avatar1.jpg',
+      initials: 'AM'
+    },
+    {
+      id: 2,
+      name: 'James Omondi',
+      role: 'Parent of PP2 Student',
+      quote: "The school's focus on both academic excellence and character development is impressive. My child has grown not just academically but also in confidence and social skills.",
+      rating: 5,
+      gradient: 'linear-gradient(90deg, #00bcd4, #4caf50)',
+      avatar: '/path-to-avatar2.jpg',
+      initials: 'JO'
+    },
+    {
+      id: 3,
+      name: 'Sarah Mwazighe',
+      role: 'Parent of Grade 5 Student',
+      quote: "The communication from the school is excellent and I appreciate how they involve parents in the learning journey. The teachers truly care about each child's success.",
+      rating: 5,
+      gradient: 'linear-gradient(90deg, #4caf50, #ff9800)',
+      avatar: '/path-to-avatar3.jpg',
+      initials: 'SM'
+    }
+  ];
+
+  // Handle window resize for mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Auto-advance carousel
+  useEffect(() => {
+    if (!isHovered) {
+      const timer = setInterval(() => {
+        handleNext();
+      }, 5000);
+      return () => clearInterval(timer);
+    }
+  }, [isHovered]);
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prevIndex) => 
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
   return (
     <Box>
       <Container maxWidth="lg" sx={{ mt: { xs: 8, md: 12 }, mb: 4, position: 'relative' }}>
@@ -1185,419 +1266,287 @@ const Home = () => {
             </Typography>
           </Box>
 
-          <Grid 
-            container 
-            spacing={{ xs: 3, md: 4 }}
-            sx={{
-              '& > .MuiGrid-item': {
-                display: 'flex',
-                flexDirection: 'column'
-              }
+          <Box 
+            sx={{ 
+              position: 'relative',
+              width: '100%',
+              overflow: 'hidden',
+              py: 4,
+              minHeight: '400px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            {/* Testimonial 1 */}
-            <Grid item xs={12} md={4}>
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.div
-                initial={{ x: -100, opacity: 0 }}
-                whileInView={{ 
-                  x: 0,
-                  opacity: 1,
-                  transition: {
-                    type: 'spring',
-                    stiffness: 100,
-                    damping: 15,
-                    delay: 0.1,
-                    duration: 0.6
-                  }
-                }}
-                viewport={{ once: true, margin: '-50px 0px -100px 0px' }}
-                style={{ 
-                  height: '100%',
-                  willChange: 'transform, opacity'
+                key={currentIndex}
+                custom={direction}
+                initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction > 0 ? -100 : 100, position: 'absolute' }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                style={{
+                  width: '100%',
+                  maxWidth: '600px',
+                  margin: '0 auto',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '0 20px'
                 }}
               >
-                <Card 
-                  elevation={0}
-                  sx={{
-                    height: '100%',
-                    p: { xs: 2.5, md: 3.5 },
-                    borderRadius: 3,
-                    border: '1px solid rgba(145, 158, 171, 0.16)',
-                    background: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 24px 48px -12px rgba(0, 0, 0, 0.12)',
-                      borderColor: 'transparent'
-                    },
-                    position: 'relative',
-                    overflow: 'hidden',
-                    '&:before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: 4,
-                      background: 'linear-gradient(90deg, #1976d2, #00bcd4)'
-                    }
-                  }}
-                >
-                  <Box sx={{ 
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: '100%'
-                  }}>
-                    <Box sx={{ 
-                      position: 'relative',
-                      mb: 3,
-                      flex: 1
-                    }}>
-                      <Box sx={{
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                        fontSize: '4.5rem',
-                        lineHeight: 1,
-                        color: 'rgba(25, 118, 210, 0.05)',
-                        fontFamily: 'Georgia, serif',
-                        fontStyle: 'italic',
-                        transform: 'translateY(-15px)'
-                      }}>"</Box>
-                      
-                      <Typography variant="body1" sx={{
-                        color: 'text.secondary',
-                        lineHeight: 1.8,
-                        fontSize: { xs: '0.95rem', md: '1rem' },
-                        mb: 0,
-                        position: 'relative',
-                        zIndex: 1
-                      }}>
-                        The transformation I've seen in my child since joining Transformer Blessed Junior School has been remarkable. The teachers are dedicated, and the learning environment is nurturing and stimulating.
-                      </Typography>
-                    </Box>
-                    
-                    <Box sx={{ 
+                <Grid container justifyContent="center">
+                  <Grid 
+                    item 
+                    xs={12}
+                    md={8}
+                    key={testimonials[currentIndex].id}
+                    sx={{
                       display: 'flex',
-                      alignItems: 'center',
-                      pt: 2.5,
-                      mt: 'auto',
-                      borderTop: '1px dashed rgba(145, 158, 171, 0.24)'
-                    }}>
-                      <Avatar 
-                        alt="Alice Mwangi"
-                        src="/path-to-avatar1.jpg"
-                        sx={{ 
-                          width: 56, 
-                          height: 56,
-                          mr: 2,
-                          bgcolor: 'primary.lighter',
-                          color: 'primary.dark',
-                          fontSize: '1.25rem',
-                          fontWeight: 600
+                      justifyContent: 'center',
+                      width: '100%',
+                      position: 'relative'
+                    }}
+                  >
+                      <Card 
+                        elevation={0}
+                        sx={{
+                          width: '100%',
+                          maxWidth: 400,
+                          p: { xs: 2.5, md: 3 },
+                          borderRadius: 3,
+                          border: '1px solid rgba(145, 158, 171, 0.16)',
+                          background: 'white',
+                          transition: 'all 0.3s ease',
+                          '&:hover': {
+                            transform: 'translateY(-5px)',
+                            boxShadow: '0 10px 30px rgba(25, 118, 210, 0.12)',
+                            borderColor: 'transparent'
+                          },
+                          position: 'relative',
+                          overflow: 'hidden',
+                          '&:before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            height: 4,
+                            background: testimonials[currentIndex].gradient
+                          }
                         }}
                       >
-                        AM
-                      </Avatar>
-                      <Box>
-                        <Typography 
-                          variant="subtitle1" 
-                          sx={{ 
-                            fontWeight: 600,
-                            color: 'text.primary',
-                            mb: 0.5,
-                            lineHeight: 1.3
-                          }}
-                        >
-                          Alice Mwangi
-                        </Typography>
-                        <Typography 
-                          variant="caption" 
-                          sx={{ 
-                            color: 'text.secondary',
-                            display: 'block',
-                            fontSize: '0.75rem',
-                            lineHeight: 1.5
-                          }}
-                        >
-                          Parent of Grade 3 Student
-                        </Typography>
                         <Box sx={{ 
                           display: 'flex',
-                          alignItems: 'center',
-                          mt: 0.5
+                          flexDirection: 'column',
+                          height: '100%'
                         }}>
-                          {[1, 2, 3, 4, 5].map((star) => (
-                            <Star 
-                              key={star} 
+                          <Box sx={{ 
+                            position: 'relative',
+                            mb: 3,
+                            flex: 1
+                          }}>
+                            <Box sx={{
+                              position: 'absolute',
+                              top: 0,
+                              right: 0,
+                              fontSize: '4.5rem',
+                              lineHeight: 1,
+                              color: 'rgba(25, 118, 210, 0.05)',
+                              fontFamily: 'Georgia, serif',
+                              fontStyle: 'italic',
+                              transform: 'translateY(-15px)'
+                            }}>"</Box>
+                            
+                            <Typography 
+                              variant="body1" 
+                              sx={{
+                                color: 'text.secondary',
+                                lineHeight: 1.8,
+                                fontSize: { xs: '0.95rem', md: '1rem' },
+                                mb: 0,
+                                position: 'relative',
+                                zIndex: 1
+                              }}
+                            >
+                              {testimonials[currentIndex].quote}
+                            </Typography>
+                          </Box>
+                          
+                          <Box sx={{ 
+                            display: 'flex',
+                            alignItems: 'center',
+                            pt: 2.5,
+                            mt: 'auto',
+                            borderTop: '1px dashed rgba(145, 158, 171, 0.24)'
+                          }}>
+                            <Avatar 
+                              alt={testimonials[currentIndex].name}
+                              src={testimonials[currentIndex].avatar}
                               sx={{ 
-                                color: '#ffb74d',
-                                fontSize: '1rem',
-                                mr: 0.25
-                              }} 
-                            />
-                          ))}
+                                width: 56, 
+                                height: 56,
+                                mr: 2,
+                                bgcolor: 'primary.lighter',
+                                color: 'primary.dark',
+                                fontSize: '1.25rem',
+                                fontWeight: 600
+                              }}
+                            >
+                              {testimonials[currentIndex]?.initials || ''}
+                            </Avatar>
+                            <Box>
+                              <Typography 
+                                variant="subtitle1" 
+                                sx={{ 
+                                  fontWeight: 600,
+                                  color: 'text.primary',
+                                  mb: 0.5,
+                                  lineHeight: 1.3
+                                }}
+                              >
+                                {testimonials[currentIndex].name}
+                              </Typography>
+                              <Typography 
+                                variant="body2" 
+                                sx={{ 
+                                  color: 'text.secondary',
+                                  fontSize: '0.85rem',
+                                  lineHeight: 1.4
+                                }}
+                              >
+                                {testimonials[currentIndex].role}
+                              </Typography>
+                              <Box sx={{ display: 'flex', mt: 0.5 }}>
+                                {[...Array(5)].map((_, i) => (
+                                  <Star 
+                                    key={i} 
+                                    sx={{ 
+                                      color: i < testimonials[currentIndex].rating ? '#ffc107' : 'action.disabled',
+                                      fontSize: '1rem',
+                                      mr: 0.25
+                                    }} 
+                                  />
+                                ))}
+                              </Box>
+                            </Box>
+                          </Box>
                         </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Card>
+                      </Card>
+                  </Grid>
+                </Grid>
               </motion.div>
-            </Grid>
+            </AnimatePresence>
 
-          {/* Testimonial 2 */}
-          <Grid item xs={12} md={4}>
-            <motion.div
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ 
-                x: 0,
-                opacity: 1,
-                transition: {
-                  type: 'spring',
-                  stiffness: 100,
-                  damping: 15,
-                  delay: 0.2,
-                  duration: 0.6
+            {/* Navigation Arrows */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: { xs: 10, sm: 20 },
+                right: { xs: 10, sm: 20 },
+                transform: 'translateY(-50%)',
+                zIndex: 2,
+                display: 'flex',
+                justifyContent: 'space-between',
+                pointerEvents: 'none',
+                '& > *': {
+                  pointerEvents: 'auto'
                 }
               }}
-              viewport={{ once: true, margin: '-50px 0px -100px 0px' }}
-              style={{ 
-                height: '100%',
-                willChange: 'transform, opacity'
-              }}
             >
-              <Card 
-                elevation={0}
+              <Button
+                onClick={handlePrev}
+                variant="contained"
+                size="small"
                 sx={{
-                  height: '100%',
-                  p: { xs: 2.5, md: 3.5 },
-                  borderRadius: 3,
-                  border: '1px solid rgba(145, 158, 171, 0.16)',
-                  background: 'white',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 24px 48px -12px rgba(0, 0, 0, 0.12)',
-                    borderColor: 'transparent'
-                  },
-                  position: 'relative',
-                  overflow: 'hidden',
-                  '&:before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: 4,
-                    background: 'linear-gradient(90deg, #00bcd4, #4caf50)'
-                  }
-                }}
-              >
-              <Box sx={{
-                position: 'absolute',
-                top: '20px',
-                right: '25px',
-                fontSize: '3rem',
-                color: 'rgba(25, 118, 210, 0.1)',
-                lineHeight: '1',
-                fontFamily: 'Georgia, serif',
-                fontStyle: 'italic'
-              }}>"</Box>
-              <Typography variant="body1" sx={{
-                lineHeight: '1.8',
-                color: '#555',
-                marginBottom: '25px',
-                position: 'relative',
-                zIndex: '1'
-              }}>
-                The school's focus on both academic excellence and character development is impressive. My child has grown not just academically but also in confidence and social skills.
-              </Typography>
-              <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                borderTop: '1px solid #eee',
-                paddingTop: '20px'
-              }}>
-                <Box sx={{
-                  width: '50px',
-                  height: '50px',
+                  minWidth: '40px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #f0f7ff, #d0e5ff)',
+                  p: 0,
+                  bgcolor: 'background.paper',
+                  color: 'primary.main',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  '&:hover': {
+                    bgcolor: 'primary.main',
+                    color: 'white',
+                    transform: 'scale(1.1)'
+                  },
+                  transition: 'all 0.3s ease',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginRight: '15px',
-                  color: '#ff5252',
-                  fontWeight: 'bold',
-                  fontSize: '1.2rem'
-                }}>
-                  JO
-                </Box>
-                <Box>
-                  <Typography variant="subtitle1" sx={{
-                    fontWeight: '600',
-                    color: '#1a237e',
-                    marginBottom: '4px'
-                  }}>James Omondi</Typography>
-                  <Typography variant="body2" sx={{
-                    color: '#777',
-                    fontSize: '0.85rem'
-                  }}>Parent of Grade PP2 Student</Typography>
-                </Box>
-              </Box>
-            </Card>
-          </motion.div>
-        </Grid>
-
-<Grid item xs={12} md={4}>
-            <motion.div
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ 
-                x: 0,
-                opacity: 1,
-                transition: {
-                  type: 'spring',
-                  stiffness: 100,
-                  damping: 15,
-                  delay: 0.3,
-                    duration: 0.6
-                  }
-                }}
-                viewport={{ once: true, margin: '-50px 0px -100px 0px' }}
-                style={{ 
-                  height: '100%',
-                  willChange: 'transform, opacity'
+                  opacity: isHovered ? 1 : 0.7
                 }}
               >
-                <Card 
-                  elevation={0}
+                <ArrowBackIcon />
+              </Button>
+              <Button
+                onClick={handleNext}
+                variant="contained"
+                size="small"
+                sx={{
+                  minWidth: '40px',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  p: 0,
+                  bgcolor: 'background.paper',
+                  color: 'primary.main',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  '&:hover': {
+                    bgcolor: 'primary.main',
+                    color: 'white',
+                    transform: 'scale(1.1)'
+                  },
+                  transition: 'all 0.3s ease',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  opacity: isHovered ? 1 : 0.7
+                }}
+              >
+                <ArrowForwardIcon />
+              </Button>
+            </Box>
+
+            {/* Dots Indicator */}
+            <Box sx={{ 
+              display: 'flex',
+              justifyContent: 'center',
+              mt: 6,
+              '& > *': {
+                mx: 0.75
+              },
+              position: 'absolute',
+              bottom: '20px',
+              left: 0,
+              right: 0
+            }}>
+              {testimonials.map((_, index) => (
+                <Box
+                  key={index}
+                  onClick={() => goToSlide(index)}
                   sx={{
-                    height: '100%',
-                    p: { xs: 2.5, md: 3.5 },
-                    borderRadius: 3,
-                    border: '1px solid rgba(145, 158, 171, 0.16)',
-                    background: 'white',
+                    width: currentIndex === index ? '24px' : '10px',
+                    height: '10px',
+                    borderRadius: '5px',
+                    bgcolor: currentIndex === index ? 'primary.main' : 'action.disabled',
+                    cursor: 'pointer',
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 24px 48px -12px rgba(0, 0, 0, 0.12)',
-                      borderColor: 'transparent'
-                    },
-                    position: 'relative',
-                    overflow: 'hidden',
-                    '&:before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: 4,
-                      background: 'linear-gradient(90deg, #4caf50, #ff9800)'
+                      bgcolor: 'primary.main',
+                      transform: 'scale(1.2)'
                     }
                   }}
-                >
-                  <Box sx={{ 
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: '100%'
-                  }}>
-                    <Box sx={{ 
-                      position: 'relative',
-                      mb: 3,
-                      flex: 1
-                    }}>
-                      <Box sx={{
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                        fontSize: '4.5rem',
-                        lineHeight: 1,
-                        color: 'rgba(76, 175, 80, 0.05)',
-                        fontFamily: 'Georgia, serif',
-                        fontStyle: 'italic',
-                        transform: 'translateY(-15px)'
-                      }}>"</Box>
-                      
-                      <Typography variant="body1" sx={{
-                        color: 'text.secondary',
-                        lineHeight: 1.8,
-                        fontSize: { xs: '0.95rem', md: '1rem' },
-                        mb: 0,
-                        position: 'relative',
-                        zIndex: 1
-                      }}>
-                        The communication from the school is excellent and I appreciate how they involve parents in the learning journey. The teachers truly care about each child's success.
-                      </Typography>
-                    </Box>
-                    
-                    <Box sx={{ 
-                      display: 'flex',
-                      alignItems: 'center',
-                      pt: 2.5,
-                      mt: 'auto',
-                      borderTop: '1px dashed rgba(145, 158, 171, 0.24)'
-                    }}>
-                      <Avatar 
-                        alt="Sarah Mwaura"
-                        src="/path-to-avatar3.jpg"
-                        sx={{ 
-                          width: 56, 
-                          height: 56,
-                          mr: 2,
-                          bgcolor: 'warning.lighter',
-                          color: 'warning.dark',
-                          fontSize: '1.25rem',
-                          fontWeight: 600
-                        }}
-                      >
-                        SM
-                      </Avatar>
-                      <Box>
-                        <Typography 
-                          variant="subtitle1" 
-                          sx={{ 
-                            fontWeight: 600,
-                            color: 'text.primary',
-                            mb: 0.5,
-                            lineHeight: 1.3
-                          }}
-                        >
-                          Sarah Mwazighe
-                        </Typography>
-                        <Typography 
-                          variant="caption" 
-                          sx={{ 
-                            color: 'text.secondary',
-                            display: 'block',
-                            fontSize: '0.75rem',
-                            lineHeight: 1.5
-                          }}
-                        >
-                          Parent of Grade 5 Student
-                        </Typography>
-                        <Box sx={{ 
-                          display: 'flex',
-                          alignItems: 'center',
-                          mt: 0.5
-                        }}>
-                          {[1, 2, 3, 4, 5].map((star) => (
-                            <Star 
-                              key={star} 
-                              sx={{ 
-                                color: '#ffb74d',
-                                fontSize: '1rem',
-                                mr: 0.25
-                              }} 
-                            />
-                          ))}
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Card>
-              </motion.div>
-            </Grid>
-          </Grid>
+                />
+              ))}
+            </Box>
+          </Box>
         </Container>
       </Box>
 
@@ -1624,8 +1573,9 @@ const Home = () => {
             background: 'url("/classroom2.jpg") center/cover no-repeat',
             zIndex: -1,
             opacity: 0.15
-        }
-      }}>
+          }
+        }}
+      >
         <Container maxWidth="md">
           <Box 
             position="relative" 

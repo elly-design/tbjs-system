@@ -243,6 +243,54 @@ const ImageSlider = () => {
             
           </Box>
           
+          {/* Navigation Buttons */}
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: 0,
+              right: 0,
+              display: 'flex',
+              justifyContent: 'space-between',
+              px: 2,
+              zIndex: 3,
+              transform: 'translateY(-50%)',
+            }}
+          >
+            <Button
+              onClick={() => setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+              sx={{
+                minWidth: '40px',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                bgcolor: 'rgba(255, 255, 255, 0.2)',
+                color: 'white',
+                '&:hover': {
+                  bgcolor: 'rgba(255, 255, 255, 0.3)',
+                },
+              }}
+            >
+              ❮
+            </Button>
+            <Button
+              onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
+              sx={{
+                minWidth: '40px',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                bgcolor: 'rgba(255, 255, 255, 0.2)',
+                color: 'white',
+                '&:hover': {
+                  bgcolor: 'rgba(255, 255, 255, 0.3)',
+                },
+              }}
+            >
+              ❯
+            </Button>
+          </Box>
+
           {/* Loading indicator */}
           {isLoading && (
             <Box
@@ -251,7 +299,7 @@ const ImageSlider = () => {
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                zIndex: 3,
+                zIndex: 4,
               }}
             >
               <CircularProgress color="primary" />

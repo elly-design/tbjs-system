@@ -52,17 +52,17 @@ CREATE TABLE IF NOT EXISTS public.admission_status (
 );
 
 -- Create indexes for better query performance
-CREATE INDEX IF NOT EXISTS idx_students_admission_number ON public.students(admission_number);
+CREATE INDEX IF NOT EXISTS idx_students_assessment_number ON public.students(assessment_number);
 CREATE INDEX IF NOT EXISTS idx_documents_student_id ON public.documents(student_id);
 CREATE INDEX IF NOT EXISTS idx_admission_status_student_id ON public.admission_status(student_id);
 
 -- Drop existing triggers and functions if they exist
 DROP TRIGGER IF EXISTS update_students_updated_at ON public.students;
-DROP TRIGGER IF EXISTS generate_admission_number_trigger ON public.students;
+DROP TRIGGER IF EXISTS generate_assessment_number_trigger ON public.students;
 DROP TRIGGER IF EXISTS after_student_created ON public.students;
 
 DROP FUNCTION IF EXISTS update_updated_at_column() CASCADE;
-DROP FUNCTION IF EXISTS generate_admission_number() CASCADE;
+DROP FUNCTION IF EXISTS generate_assessment_number() CASCADE;
 DROP FUNCTION IF EXISTS handle_new_admission() CASCADE;
 
 -- Create a function to update the updated_at column
@@ -172,8 +172,8 @@ CREATE POLICY "Enable update for authenticated users on admission_status"
   ON public.admission_status FOR UPDATE
   USING (auth.role() = 'authenticated');
 
--- Create a function to generate admission numbers
-CREATE OR REPLACE FUNCTION generate_admission_number()
+-- Create a function to generate assessment numbers
+CREATE OR REPLACE FUNCTION generate_assessment_number()
 RETURNS TRIGGER AS $$
 DECLARE
   year_text TEXT;
@@ -183,27 +183,28 @@ BEGIN
   year_text := TO_CHAR(NOW(), 'YY');
   
   -- Get the next sequence number for this year
-  SELECT COALESCE(MAX(SUBSTRING(admission_number, 6)::INTEGER), 0) + 1
+  SELECT COALESCE(MAX(SUBSTRING(assessment_number, 6)::INTEGER), 0) + 1
   INTO seq_num
   FROM public.students
-  WHERE admission_number LIKE 'ADM' || year_text || '%';
+  WHERE assessment_number LIKE 'ASSM' || year_text || '%';
   
-  -- Format the admission number
-  NEW.admission_number := 'ADM' || year_text || LPAD(seq_num::TEXT, 4, '0');
+  -- Format the assessment number
+  NEW.assessment_number := 'ASSM' || year_text || LPAD(seq_num::TEXT, 4, '0');
   
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
--- Create or replace the trigger to generate admission numbers
+-- Create or replace the trigger to generate assessment numbers
 DO $$
 BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'generate_admission_number_trigger') THEN
-        CREATE TRIGGER generate_admission_number_trigger
+    IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'generate_assessment_number_trigger') THEN
+        DROP TRIGGER IF EXISTS generate_assessment_number_trigger ON public.students;
+        CREATE TRIGGER generate_assessment_number_trigger
         BEFORE INSERT ON public.students
         FOR EACH ROW
-        WHEN (NEW.admission_number IS NULL)
-        EXECUTE FUNCTION generate_admission_number();
+        WHEN (NEW.assessment_number IS NULL)
+        EXECUTE FUNCTION generate_assessment_number();
     END IF;
 END $$;
 

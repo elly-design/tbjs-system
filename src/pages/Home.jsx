@@ -801,7 +801,7 @@ const Home = () => {
                     gap: 1
                   }}>
                     <Box>
-                      {['Science', 'Mathematics', 'Languages', 'Arts'].map((subject) => (
+                      {['Science', 'Mathematics', 'Languages', 'Arts', 'French'].map((subject) => (
                         <Chip 
                           key={subject}
                           label={subject} 
@@ -812,10 +812,7 @@ const Home = () => {
                             color: '#1a237e',
                             fontWeight: 600,
                             px: 1.5,
-                            '&:hover': {
-                              transform: 'translateY(-2px)',
-                              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                            },
+                            
                             transition: 'all 0.3s ease'
                           }} 
                         />

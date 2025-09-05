@@ -63,20 +63,20 @@ const Home = () => {
     },
     {
       id: 2,
-      name: 'James Omondi',
+      name: 'Abubakar Rashid',
       role: 'Parent of PP2 Student',
       quote: "The school's focus on both academic excellence and character development is impressive. My child has grown not just academically but also in confidence and social skills.",
-      rating: 5,
+      rating: 4,
       gradient: 'linear-gradient(90deg, #00bcd4, #4caf50)',
       avatar: '/path-to-avatar2.jpg',
-      initials: 'JO'
+      initials: 'AR'
     },
     {
       id: 3,
       name: 'Sarah Mwazighe',
       role: 'Parent of Grade 5 Student',
       quote: "The communication from the school is excellent and I appreciate how they involve parents in the learning journey. The teachers truly care about each child's success.",
-      rating: 5,
+      rating: 4,
       gradient: 'linear-gradient(90deg, #4caf50, #ff9800)',
       avatar: '/path-to-avatar3.jpg',
       initials: 'SM'

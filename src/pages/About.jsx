@@ -143,7 +143,7 @@ const About = () => {
                   overflow: 'hidden'
                 }}>
                   <img 
-                    src="/uniform.jpeg" 
+                    src="/jss.jpeg" 
                     alt="Our Dedicated Staff"
                     style={{
                       position: 'absolute',

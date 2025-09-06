@@ -68,7 +68,7 @@ const Home = () => {
       title: 'Academic Brilliance',
       description: 'We provide a dynamic learning atmosphere where every child is encouraged to ask questions, think creatively and explore knowledge beyond the classroom. Our learners gain both academic strength and practical skills to succeed in life.',
       image: '/public/grade 4.jpeg',
-      fallbackImage: '/public/grade 5.jpeg',
+      fallbackImage: '/public/grade 4.jpeg',
       tags: ['Science', 'Mathematics', 'Languages', 'Arts', 'French']
     }
   ];

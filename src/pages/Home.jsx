@@ -43,11 +43,61 @@ import ImageSlider from '../components/ImageSlider';
 import { Link as RouterLink } from 'react-router-dom';
 
 const Home = () => {
-  // Testimonial carousel state
+  // Carousel states
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0); // 0: right, 1: left
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  
+  // Academic programs carousel state
+  const [currentProgramIndex, setCurrentProgramIndex] = useState(0);
+  const [isProgramHovered, setIsProgramHovered] = useState(false);
+  
+  // Academic programs data
+  const academicPrograms = [
+    {
+      id: 1,
+      title: 'PP1 Kindergarten Program',
+      description: 'Our PP1 program provides a nurturing environment where young learners develop essential skills through play-based learning. Our curriculum focuses on holistic development, including language, numeracy and social-emotional growth.',
+      image: '/public/pp1.jpeg',
+      fallbackImage: '/public/pp1.jpg',
+      tags: ['Ages 4-5 Years', 'Academic Excellence', 'Holistic Development']
+    },
+    {
+      id: 2,
+      title: 'Academic Brilliance',
+      description: 'We provide a dynamic learning atmosphere where every child is encouraged to ask questions, think creatively and explore knowledge beyond the classroom. Our learners gain both academic strength and practical skills to succeed in life.',
+      image: '/public/grade 4.jpeg',
+      fallbackImage: '/public/grade 5.jpeg',
+      tags: ['Science', 'Mathematics', 'Languages', 'Arts', 'French']
+    }
+  ];
+  
+  // Auto-advance academic programs carousel
+  useEffect(() => {
+    if (!isProgramHovered) {
+      const timer = setInterval(() => {
+        handleNextProgram();
+      }, 5000);
+      return () => clearInterval(timer);
+    }
+  }, [isProgramHovered]);
+  
+  const handleNextProgram = () => {
+    setCurrentProgramIndex((prevIndex) => 
+      prevIndex === academicPrograms.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+  
+  const handlePrevProgram = () => {
+    setCurrentProgramIndex((prevIndex) => 
+      prevIndex === 0 ? academicPrograms.length - 1 : prevIndex - 1
+    );
+  };
+  
+  const goToProgram = (index) => {
+    setCurrentProgramIndex(index);
+  };
 
   // Testimonial data
   const testimonials = [
@@ -626,204 +676,263 @@ const Home = () => {
             </motion.div>
           </Box>
 
-          <Grid container spacing={4}>
-            {/* PP1 Kindergarten Program */}
-            <Grid item xs={12} md={6}>
-              <Paper 
-                elevation={3} 
-                sx={{ 
-                  p: 4, 
-                  height: '100%', 
-                  borderRadius: '16px',
-                  transition: 'all 0.3s ease',
-                  background: 'linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%)',
-                border: '1px solid rgba(25, 118, 210, 0.1)',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 20px 40px rgba(25, 118, 210, 0.15)'
-                }
-              }}
-            >
-              <Box sx={{ height: '100%' }}>
-                <Box
-                  component="img"
-                  src="/public/pp1.jpeg"
-                  alt="PP1 Kindergarten Program"
-                  sx={{
-                    width: '100%',
-                    height: { xs: '250px', sm: '300px' },
-                    objectFit: 'cover',
-                    display: 'block',
-                    borderRadius: '8px 8px 0 0'
+          {/* Academic Programs Carousel */}
+          <Box 
+            sx={{ 
+              width: '100%',
+              maxWidth: '900px',
+              mx: 'auto',
+              position: 'relative',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              my: 6,
+              '&:hover .carousel-arrow': {
+                opacity: 1
+              }
+            }}
+            onMouseEnter={() => setIsProgramHovered(true)}
+            onMouseLeave={() => setIsProgramHovered(false)}
+          >
+            {/* Program Cards */}
+            <Box sx={{ 
+              display: 'flex',
+              transition: 'transform 0.5s ease-in-out',
+              transform: `translateX(-${currentProgramIndex * 100}%)`
+            }}>
+              {academicPrograms.map((program, index) => (
+                <Box 
+                  key={program.id}
+                  sx={{ 
+                    minWidth: '100%',
+                    px: { xs: 0, sm: 2 },
+                    py: 1
                   }}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/public/pp1.jpg';
+                >
+                  <Paper 
+                    elevation={3}
+                    sx={{
+                      p: { xs: 2, sm: 4 },
+                      height: '100%',
+                      borderRadius: '16px',
+                      transition: 'all 0.3s ease',
+                      background: 'linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%)',
+                      border: '1px solid rgba(25, 118, 210, 0.1)',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                        boxShadow: '0 20px 40px rgba(25, 118, 210, 0.15)'
+                      }
+                    }}
+                  >
+                    <Box sx={{ 
+                      display: 'flex', 
+                      flexDirection: { xs: 'column', md: 'row' },
+                      gap: 4
+                    }}>
+                      {/* Program Image */}
+                      <Box sx={{ 
+                        width: { xs: '100%', md: '45%' },
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                        position: 'relative',
+                        height: { xs: '250px', sm: '350px', md: 'auto' }
+                      }}>
+                        <Box
+                          component="img"
+                          src={program.image}
+                          alt={program.title}
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            display: 'block',
+                            transition: 'transform 0.5s ease',
+                            '&:hover': {
+                              transform: 'scale(1.05)'
+                            }
+                          }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = program.fallbackImage;
+                          }}
+                        />
+                      </Box>
+                      
+                      {/* Program Content */}
+                      <Box sx={{ 
+                        flex: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        py: { xs: 2, md: 0 }
+                      }}>
+                        <Typography 
+                          variant="h4" 
+                          component="h3"
+                          sx={{
+                            fontWeight: 800,
+                            color: '#1a237e',
+                            mb: 2,
+                            fontSize: { xs: '1.5rem', md: '2rem' },
+                            position: 'relative',
+                            '&:after': {
+                              content: '""',
+                              display: 'block',
+                              width: '60px',
+                              height: '4px',
+                              background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
+                              borderRadius: '2px',
+                              mt: 2,
+                              mb: 1
+                            }
+                          }}
+                        >
+                          {program.title}
+                        </Typography>
+                        
+                        <Typography 
+                          variant="body1" 
+                          sx={{ 
+                            color: '#4a5568',
+                            mb: 3,
+                            lineHeight: 1.8,
+                            fontSize: { xs: '1rem', md: '1.1rem' }
+                          }}
+                        >
+                          {program.description}
+                        </Typography>
+                        
+                        <Box sx={{ 
+                          mt: 'auto',
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          gap: 1
+                        }}>
+                          {program.tags.map((tag, tagIndex) => (
+                            <Chip 
+                              key={tagIndex}
+                              label={tag}
+                              sx={{
+                                background: 'rgba(25, 118, 210, 0.1)',
+                                color: '#1a237e',
+                                fontWeight: 600,
+                                px: 1.5,
+                                py: 1,
+                                '& .MuiChip-label': {
+                                  px: 1
+                                },
+                                '&:hover': {
+                                  background: 'rgba(25, 118, 210, 0.2)'
+                                }
+                              }}
+                            />
+                          ))}
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Paper>
+                </Box>
+              ))}
+            </Box>
+            
+            {/* Navigation Dots */}
+            <Box sx={{ 
+              display: 'flex',
+              justifyContent: 'center',
+              mt: 4,
+              gap: 1
+            }}>
+              {academicPrograms.map((_, index) => (
+                <Box
+                  key={index}
+                  onClick={() => goToProgram(index)}
+                  sx={{
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    bgcolor: index === currentProgramIndex ? 'primary.main' : 'action.disabled',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'scale(1.2)',
+                      bgcolor: 'primary.main'
+                    }
                   }}
                 />
-                <Box sx={{ p: 3 }}>
-                  <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 700, color: '#1a237e' }}>
-                    PP1 Kindergarten Program
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: '1.7' }}>
-                    Our PP1 program provides a nurturing environment where young learners develop essential skills through play-based learning. Our curriculum focuses on holistic development, including language, numeracy and social-emotional growth.
-                  </Typography>
-                  <Box sx={{ mt: 3 }}>
-                    <Box>
-                      <Chip 
-                        label="Ages 4-5 Years" 
-                        color="primary" 
-                        sx={{ 
-                          mr: 1, 
-                          mb: 1,
-                          background: 'rgba(211, 47, 47, 0.1)',
-                          color: '#ff5252',
-                          fontWeight: 600
-                        }} 
-                      />
-                      <Chip 
-                        label="Academic Excellence" 
-                        sx={{ 
-                          mr: 1, 
-                          mb: 1,
-                          background: 'rgba(25, 118, 210, 0.1)',
-                          color: '#1976d2',
-                          fontWeight: 600
-                        }} 
-                      />
-                      <Chip 
-                        label="Holistic Development" 
-                        sx={{ 
-                          mr: 1, 
-                          mb: 1,
-                          background: 'rgba(211, 47, 47, 0.1)',
-                          color: '#ef6c00',
-                          fontWeight: 600
-                        }} 
-                      />
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            </Paper>
-          </Grid>
-
-          {/* CBC Group Discussions */}
-          <Grid item xs={12} md={6}>
-            <Paper 
-              elevation={3} 
-              sx={{ 
-                p: 4, 
-                height: '100%', 
-                borderRadius: '16px',
+              ))}
+            </Box>
+            
+            {/* Navigation Arrows */}
+            <Box 
+              className="carousel-arrow"
+              onClick={handlePrevProgram}
+              sx={{
+                position: 'absolute',
+                left: { xs: '10px', sm: '20px' },
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                bgcolor: 'background.paper',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                zIndex: 2,
+                opacity: { xs: 1, md: 0 },
                 transition: 'all 0.3s ease',
-                background: 'linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%)',
-                border: '1px solid rgba(25, 118, 210, 0.1)',
                 '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 20px 40px rgba(25, 118, 210, 0.15)'
+                  bgcolor: 'primary.main',
+                  color: 'white',
+                  transform: 'translateY(-50%) scale(1.1)'
+                },
+                '@media (max-width: 900px)': {
+                  width: '36px',
+                  height: '36px',
+                  opacity: 0.8
                 }
               }}
             >
-              <Box sx={{ height: '100%' }}>
-                <Box sx={{ 
-                  position: 'relative',
-                  width: '100%',
-                  height: 0,
-                  paddingBottom: '66.67%', // 3:2 aspect ratio
-                  overflow: 'hidden',
-                  borderRadius: '8px 8px 0 0'
-                }}>
-                  <Box
-                    component="img"
-                    src="/public/grade 4.jpeg"
-                    alt="Students learning"
-                    sx={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center center',
-                      display: 'block',
-                      transition: 'transform 0.5s ease'
-                    }}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/public/grade 5.jpeg';
-                    }}
-                  />
-                </Box>
-                <Box sx={{ p: 3, position: 'relative' }}>
-                  <Box sx={{
-                    position: 'absolute',
-                    top: '-12px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: '60px',
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
-                    borderRadius: '2px'
-                  }} />
-                  <Typography variant="h5" component="h3" sx={{ 
-                    fontWeight: 800, 
-                    color: '#1a237e',
-                    mb: 2,
-                    textAlign: 'center',
-                    fontSize: '1.5rem',
-                    '&:after': {
-                      content: '""',
-                      display: 'block',
-                      width: '40px',
-                      height: '3px',
-                      background: 'linear-gradient(90deg, #1976d2, #64b5f6)',
-                      margin: '12px auto 0',
-                      borderRadius: '2px'
-                    }
-                  }}>
-                    Academic Brilliance
-                  </Typography>
-                  <Typography variant="body1" sx={{ 
-                    color: '#4a5568',
-                    mb: 3,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem',
-                    textAlign: 'center'
-                  }}>
-                    We provide a dynamic learning atmosphere where every child is encouraged to ask questions, think creatively and explore knowledge beyond the classroom. Our learners gain both academic strength and practical skills to succeed in life.
-                  </Typography>
-                  <Box sx={{ 
-                    mt: 3,
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    gap: 1
-                  }}>
-                    <Box>
-                      {['Science', 'Mathematics', 'Languages', 'Arts', 'French'].map((subject) => (
-                        <Chip 
-                          key={subject}
-                          label={subject} 
-                          sx={{ 
-                            mr: 1, 
-                            mb: 1,
-                            background: 'rgba(255, 255, 255, 0.8)',
-                            color: '#1a237e',
-                            fontWeight: 600,
-                            px: 1.5,
-                            
-                            transition: 'all 0.3s ease'
-                          }} 
-                        />
-                      ))}
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            </Paper>
-          </Grid>
-          </Grid>
+              <ArrowBackIcon />
+            </Box>
+            
+            <Box 
+              className="carousel-arrow"
+              onClick={handleNextProgram}
+              sx={{
+                position: 'absolute',
+                right: { xs: '10px', sm: '20px' },
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                bgcolor: 'background.paper',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                zIndex: 2,
+                opacity: { xs: 1, md: 0 },
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  bgcolor: 'primary.main',
+                  color: 'white',
+                  transform: 'translateY(-50%) scale(1.1)'
+                },
+                '@media (max-width: 900px)': {
+                  width: '36px',
+                  height: '36px',
+                  opacity: 0.8
+                }
+              }}
+            >
+              <ArrowForwardIcon />
+            </Box>
+          </Box>
         </Container>
       </Box>
 

@@ -158,7 +158,7 @@ const Admission = () => {
       if (result.success) {
         setSnackbar({
           open: true,
-          message: 'Thank you! Your admission has been successfully submitted!',
+          message: 'Success!  Admission has been successfully submitted!',
           severity: 'success'
         });
         // Reset form

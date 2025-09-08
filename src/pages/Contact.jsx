@@ -54,7 +54,7 @@ const Contact = () => {
         message: ''
       });
       
-      setSnackbarMessage('Message sent successfully!');
+      setSnackbarMessage('Success! Message sent successfully!');
       setSnackbarSeverity('success');
       setOpenSnackbar(true);
     } catch (error) {

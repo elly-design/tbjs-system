@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const teacherTestimonials = [
   {
     id: 1,
-    name: ' Bwere Charles',
+    name: ' Bwire Charles',
     position: 'Headteacher',
     avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
     quote: 'Teaching at Transformer Blessed has been an incredibly rewarding experience. The school\'s commitment to academic excellence and character development creates the perfect environment for both students and teachers to thrive.',

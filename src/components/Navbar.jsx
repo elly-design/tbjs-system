@@ -54,11 +54,12 @@ const Navbar = () => {
   }, [scrolled]);
 
   const menuItems = [
-    { text: 'Home', path: '/',  },
-    { text: 'About Us', path: '/about', },
-    { text: 'Clubs', path: '/clubs',  },
-    { text: 'Admission', path: '/admission',  },
-    { text: 'Contact', path: '/contact', }
+    { text: 'Home', path: '/' },
+    { text: 'About Us', path: '/about' },
+    { text: 'Clubs', path: '/clubs' },
+    { text: 'Admission', path: '/admission' },
+    { text: 'Calendar', path: '/calendar' },
+    { text: 'Contact', path: '/contact' }
   ];
 
   const handleDrawerToggle = () => {
